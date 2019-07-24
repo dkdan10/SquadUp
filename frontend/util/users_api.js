@@ -4,3 +4,13 @@ export const getAllUsers = () => (
         url: 'api/users'
     })
 )
+
+export const createNewUser = (user) => (
+    $.ajax({
+        method: 'POST',
+        url: 'api/users',
+        data: {
+            user
+        }
+    })
+)

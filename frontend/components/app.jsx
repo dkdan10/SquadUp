@@ -1,5 +1,6 @@
 import React from 'react'
+import TempUserComponent from './temp/user_component';
 
 export const App = () => (
-    <h1>Hello From App Component</h1>
+    <TempUserComponent/>
 )
