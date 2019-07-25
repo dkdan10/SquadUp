@@ -1,4 +1,4 @@
-import { RECIEVE_USERS, CREATE_USER } from "../actions/users_actions";
+import { RECIEVE_USERS, CREATE_USER } from "../../actions/users_actions";
 
 // const dummyUsers = [
 //     { username: "user1", email: "user1@email.com", id: 1},

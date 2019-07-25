@@ -64,7 +64,7 @@ class TempUserComponent extends React.Component {
 
 const mSP = state => {
     return {
-        users: Object.values(state.users)
+        users: Object.values(state.entities.users)
     }
 }
 
