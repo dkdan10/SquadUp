@@ -14,3 +14,20 @@ export const createNewUser = (user) => (
         }
     })
 )
+
+export const createNewSession = (credentials) => (
+    $.ajax({
+        method: 'POST',
+        url: 'api/session',
+        data: {
+            user: credentials
+        }
+    })
+)
+
+export const destroySession = () => (
+    $.ajax({
+        method: 'DELETE',
+        url: 'api/session'
+    })
+)
