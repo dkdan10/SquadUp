@@ -8,8 +8,18 @@ import { getAllUsers } from './util/users_api';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = configureStore();
 
+    let store
+    if (window.currentUser){
+        store = configureStore({ 
+            entities: {
+                users: {[window.currentUser.id]: window.currentUser} 
+            },
+            session: { currentUserId: window.currentUser.id}
+        });
+    } else {
+        store = configureStore()
+    }
     // TESTING...
     // window.store = store;
     // type store.dispatch(fetchUsers()) to test

@@ -31,24 +31,26 @@ class TempSignUpComponent extends React.Component {
 
     render() {
         return (
-            <>
-                <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="username"> Username:
-                        <input onChange={this.handleTextChange("username")} type="text" value={this.state.username} />
-                    </label>
-                    <br />
-                    <label htmlFor="email"> Email:
-                        <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
-                    </label>
-                    <br />
-                    <label htmlFor="password"> Password:
-                        <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
-                    </label>
-                    <br />
-                    <input type="submit" value="Create New User" />
+            <div className="auth-comp">
+                <form className="auth-form" onSubmit={this.handleSubmit}>
+                    <div className="auth-container">
+                        <h1>Sign Up</h1>
+                        <label htmlFor="username"> Username:
+                            <input onChange={this.handleTextChange("username")} type="text" value={this.state.username} />
+                        </label>
+                        <br />
+                        <label htmlFor="email"> Email:
+                            <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
+                        </label>
+                        <br />
+                        <label htmlFor="password"> Password:
+                            <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
+                        </label>
+                        <br />
+                        <input type="submit" value="Create New User" />
+                    </div>
                 </form>
-            </>
+            </div>
         )
     }
 

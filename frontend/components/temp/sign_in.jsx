@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { createNewSession } from "../../actions/users_actions";
+import { Link } from 'react-router-dom'
+
 
 class TempSignInComponent extends React.Component {
     constructor(props) {
@@ -30,20 +32,25 @@ class TempSignInComponent extends React.Component {
 
     render() {
         return (
-            <>
-                <h1>Sign In</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email"> Email:
-                        <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
-                    </label>
-                    <br />
-                    <label htmlFor="password"> Password:
-                        <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
-                    </label>
-                    <br />
-                    <input type="submit" value="Sign In" />
+            <div className="auth-comp">
+                <form className="auth-form" onSubmit={this.handleSubmit}>
+                    <div className="auth-container">
+                        <div className="login-header">
+                            <h1>Log in</h1>
+                            <p>Not registered with us yet? <Link to="/signUp">Sign up</Link></p>
+                        </div>
+                        <label htmlFor="email"> Email:
+                            <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
+                        </label>
+                        <br />
+                        <label htmlFor="password"> Password:
+                            <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
+                        </label>
+                        <br />
+                        <input type="submit" value="Log in" />
+                    </div>
                 </form>
-            </>
+            </div>
         )
     }
 

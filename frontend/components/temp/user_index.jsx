@@ -1,4 +1,4 @@
-import { fetchUsers, logoutUser } from "../../actions/users_actions";
+import { fetchUsers, destroySession } from "../../actions/users_actions";
 import { connect } from 'react-redux';
 import React from "react";
 
@@ -16,7 +16,7 @@ class TempUserIndex extends React.Component {
 
     handleLogout (e) {
         e.preventDefault();
-        this.props.logoutUser();
+        this.props.destroySession();
     }
 
     render() {
@@ -53,7 +53,7 @@ const mSP = state => {
 const mDP = dispatch => {
     return {
         fetchUsers: () => dispatch(fetchUsers()),
-        logoutUser: () => dispatch(logoutUser())
+        destroySession: () => dispatch(destroySession())
     }
 }
 
