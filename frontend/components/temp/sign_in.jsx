@@ -37,6 +37,7 @@ class TempSignInComponent extends React.Component {
                     <div className="auth-container">
                         <div className="login-header">
                             <h1>Log in</h1>
+                            <img src="https://secure.meetupstatic.com/s/img/09300654065624139187/icon/icon_padlock.gif" alt="login lock"/>
                             <p>Not registered with us yet? <Link to="/signUp">Sign up</Link></p>
                         </div>
                         <label htmlFor="email"> Email:
@@ -47,7 +48,7 @@ class TempSignInComponent extends React.Component {
                             <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
                         </label>
                         <br />
-                        <input type="submit" value="Log in" />
+                        <input className="login-btn" type="submit" value="Log in" />
                     </div>
                 </form>
             </div>
