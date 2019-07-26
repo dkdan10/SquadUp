@@ -4,7 +4,7 @@ import { createNewSession } from "../../actions/users_actions";
 import { Link } from 'react-router-dom'
 
 
-class TempSignInComponent extends React.Component {
+class TempLogInComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = { username: "", email: "", password: "" }
@@ -63,4 +63,4 @@ const mDP = dispatch => {
     }
 }
 
-export default connect(null, mDP)(TempSignInComponent)
+export default connect(null, mDP)(TempLogInComponent)

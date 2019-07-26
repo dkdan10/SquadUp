@@ -50,7 +50,7 @@ class TempSignUpComponent extends React.Component {
                         <br />
                         <input className="sign-up-btn" type="submit" value="Continue" />
                         <hr/>
-                        <p className="already-member">Already a member? <Link to="/signIn">Log in</Link>.</p>
+                        <p className="already-member">Already a member? <Link to="/login">Log in</Link>.</p>
                     </div>
                 </form>
             </div>
