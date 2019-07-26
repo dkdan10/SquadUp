@@ -57,7 +57,7 @@
     width: 120%;
 }
 
-.auth-form .login-header p {
+.auth-form p {
     font-size: 13px;
     font-weight: 550;
 }
@@ -71,7 +71,8 @@
 }
 
 .auth-form label {
-    font-size: 1em;
+    font-size: 13px;
+    font-weight: 550;
 }
 
 .auth-form .login-btn {
@@ -85,4 +86,32 @@
     font-weight: 600;
     outline-style: none;
     cursor: pointer;
+}
+
+.auth-form .sign-up-header {
+    text-align: center;
+    margin-top: .3em;
+    margin-bottom: .3em;
+}
+
+.auth-form .sign-up-btn {
+    background-color: rgb(237, 28, 64);
+    border-radius: 3px;
+    color: white;
+    min-height: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    outline-style: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.auth-form .sign-up-btn:hover, .auth-form .login-btn:hover {
+    background-color: rgb(208, 16, 49);
+}
+
+.auth-form .already-member {
+    text-align: center
 }
