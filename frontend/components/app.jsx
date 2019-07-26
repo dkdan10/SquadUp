@@ -3,6 +3,7 @@ import TempUserIndex from './temp/user_index';
 import TempLogInComponent from './temp/login';
 import TempSignUpComponent from './temp/sign_up';
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
+import {AuthRoute, ProtectedRoute} from '../util/route_utils'
 
 export const App = () => (
     <>
@@ -10,10 +11,10 @@ export const App = () => (
             <Link to="/login">Log in</Link>
             <Link to="/signUp">Sign Up</Link>
             <Switch>
-                <Route path="/login" component={TempLogInComponent} />
-                <Route path="/signUp" component={TempSignUpComponent} />
+                <AuthRoute path="/login" component={TempLogInComponent} />
+                <AuthRoute path="/signUp" component={TempSignUpComponent} />
             </Switch>
-            <Route path="/" component={TempUserIndex}/>
+            <ProtectedRoute path="/" component={TempUserIndex}/>
         </HashRouter>
     </>
 )

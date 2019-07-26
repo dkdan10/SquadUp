@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { createNewUser, logInUser } from "../../actions/users_actions";
+import { createNewUser, logInUser } from "../../actions/session_actions";
 import { Link } from 'react-router-dom';
 
 class TempSignUpComponent extends React.Component {

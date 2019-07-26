@@ -1,4 +1,4 @@
-import { fetchUsers, destroySession } from "../../actions/users_actions";
+import { fetchUsers, destroySession } from "../../actions/session_actions";
 import { connect } from 'react-redux';
 import React from "react";
 

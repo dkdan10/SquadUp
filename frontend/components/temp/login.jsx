@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { createNewSession } from "../../actions/users_actions";
+import { createNewSession } from "../../actions/session_actions";
 import { Link } from 'react-router-dom'
 
 
@@ -19,9 +19,10 @@ class TempLogInComponent extends React.Component {
 
         createNewSession({
             email, password
-        }).then(() => {
-            this.setState({ email: "", password: "" });
         })
+        // .then(() => {
+        //     this.setState({ email: "", password: "" });
+        // })
     }
 
     handleTextChange(field) {

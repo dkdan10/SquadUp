@@ -1,4 +1,4 @@
-import * as userAPI from '../util/users_api'
+import * as userAPI from '../util/session_api'
 
 export const RECIEVE_USERS = "RECIEVE_USERS"
 export const CREATE_USER = "CREATE_USER"

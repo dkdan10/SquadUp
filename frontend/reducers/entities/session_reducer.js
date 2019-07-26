@@ -1,4 +1,4 @@
-import { RECIEVE_USERS, CREATE_USER, LOG_IN_USER } from "../../actions/users_actions";
+import { RECIEVE_USERS, CREATE_USER, LOG_IN_USER } from "../../actions/session_actions";
 
 
 import {merge} from 'lodash'

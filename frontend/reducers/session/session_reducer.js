@@ -1,4 +1,4 @@
-import { LOG_IN_USER, LOG_OUT_USER } from "../../actions/users_actions";
+import { LOG_IN_USER, LOG_OUT_USER } from "../../actions/session_actions";
 
 export default (state = {currentUserId: null}, action) => {
     Object.freeze(state);
