@@ -18,8 +18,7 @@ class TempSignUpComponent extends React.Component {
         createNewUser({
             username, email, password
         }).then((res) => {
-            console.log(res.user)
-            this.props.logInUser(Object.keys(res.user)[0])
+            this.props.logInUser(res.user.id)
             this.setState({ username: "", email: "", password: "" });
         })
     }

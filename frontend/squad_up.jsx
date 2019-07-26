@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import configureStore from './store/store';
 import Root from './components/root';
+import { getAllUsers } from './util/users_api';
 // import { fetchUsers } from './actions/users_actions';
 // import * as userAPI from './util/users_api'
 
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.store = store;
     // type store.dispatch(fetchUsers()) to test
     // window.fetchUsers = fetchUsers;
+    // window.getAllUsers = getAllUsers
     // ...TESTING
 
     const root = document.getElementById('root');

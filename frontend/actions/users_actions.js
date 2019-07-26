@@ -22,7 +22,7 @@ export const createNewUser = (user) => dispatch => {
 export const createNewSession = (credentials) => dispatch => {
     return userAPI.createNewSession(credentials)
                             .then(loggedInUser => {
-                                return dispatch(logInUser(Object.keys(loggedInUser)[0]))
+                                return dispatch(logInUser(loggedInUser.id))
                             })
 }
 

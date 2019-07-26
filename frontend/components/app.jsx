@@ -13,8 +13,7 @@ export const App = () => (
                 <Route path="/signIn" component={TempSignInComponent} />
                 <Route path="/signUp" component={TempSignUpComponent} />
             </Switch>
+            <Route path="/" component={TempUserIndex}/>
         </HashRouter>
-
-        <TempUserIndex/>
     </>
 )

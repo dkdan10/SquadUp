@@ -8,9 +8,9 @@ export default (state = {}, action) => {
     switch (action.type) {
         case RECIEVE_USERS:
             // if we don't want to merge
-            return action.users
+            return merge({}, action.users)
         case CREATE_USER:
-            return merge({}, state, action.user)
+            return merge({}, state, {[action.user.id]: action.user})
         default:
             return state
     }
