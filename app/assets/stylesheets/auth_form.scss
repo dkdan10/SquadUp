@@ -20,98 +20,117 @@
     max-width: 500px;
     overflow: hidden;
     border-radius: 3px;
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #FAFAFA;
+        border: 1px solid #f1f1f1;
+    }
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+    h1 {
+        display: block;
+        font-size: 2em;
+        margin-top: 0.67em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    .login-header {
+        border-bottom: 1px solid #888;
+        margin-bottom: 10px;
+        margin-left: -30px;
+        width: 120%;
+        h1, p {
+            margin: 10px 0;
+            margin-left: 30px;
+        }
+        h1, img {
+            display: inline;
+        }
+    }
+
+    label {
+        font-size: 13px;
+        font-weight: 550;
+    }
+
+    p {
+        font-size: 13px;
+        font-weight: 550;
+    }
+
+    .login-btn {
+        background-color: rgb(237, 28, 64);
+        border-radius: 3px;
+        color: white;
+        min-height: 36px;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        outline-style: none;
+        cursor: pointer;
+    }
+
+    .sign-up-header {
+        text-align: center;
+        margin-top: .3em;
+        margin-bottom: .3em;
+    }
+
+    .sign-up-btn {
+        background-color: rgb(237, 28, 64);
+        border-radius: 3px;
+        color: white;
+        min-height: 40px;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        outline-style: none;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .sign-up-btn:hover, .login-btn:hover {
+        background-color: rgb(208, 16, 49);
+    }
+
+    .already-member {
+        text-align: center
+    }
 }
 
 .auth-container {
     padding: 16px;
 }
 
-.auth-form input[type=text], .auth-form input[type=password] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #FAFAFA;
-    border: 1px solid #f1f1f1;
-}
 
-.auth-form input[type=text]:focus, .auth-form input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
 
-.auth-form h1 {
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
+// .auth-form 
 
-.auth-form .login-header {
-    border-bottom: 1px solid #888;
-    margin-bottom: 10px;
-    margin-left: -30px;
-    width: 120%;
-}
+// .auth-form 
 
-.auth-form p {
-    font-size: 13px;
-    font-weight: 550;
-}
+// .auth-form 
 
-.auth-form .login-header h1, .auth-form .login-header p {
-    margin: 10px 0;
-    margin-left: 30px;
-}
-.auth-form .login-header h1, .auth-form .login-header img {
-    display: inline;
-}
+// .auth-form 
 
-.auth-form label {
-    font-size: 13px;
-    font-weight: 550;
-}
+// .auth-form .login-header 
 
-.auth-form .login-btn {
-    background-color: rgb(237, 28, 64);
-    border-radius: 3px;
-    color: white;
-    min-height: 36px;
-    padding-left: 16px;
-    padding-right: 16px;
-    font-size: 16px;
-    font-weight: 600;
-    outline-style: none;
-    cursor: pointer;
-}
+// .auth-form .login-header 
 
-.auth-form .sign-up-header {
-    text-align: center;
-    margin-top: .3em;
-    margin-bottom: .3em;
-}
+// .auth-form 
 
-.auth-form .sign-up-btn {
-    background-color: rgb(237, 28, 64);
-    border-radius: 3px;
-    color: white;
-    min-height: 40px;
-    padding-left: 16px;
-    padding-right: 16px;
-    font-size: 16px;
-    font-weight: 600;
-    outline-style: none;
-    width: 100%;
-    cursor: pointer;
-}
+// .auth-form 
+// .auth-form 
+// .auth-form 
 
-.auth-form .sign-up-btn:hover, .auth-form .login-btn:hover {
-    background-color: rgb(208, 16, 49);
-}
+// .auth-form 
 
-.auth-form .already-member {
-    text-align: center
-}
+// .auth-form 

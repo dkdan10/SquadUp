@@ -1,0 +1,20 @@
+.nav-bar {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+background: white;
+align-items: center;
+border-bottom: 1px solid #888;
+    .nav-link {
+        font-family: "Graphik Meetup", helvetica, arial, sans-serif;
+        background-color: white;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.54);
+        padding: 10px;
+        text-decoration: none;
+    }
+    .nav-link:hover {
+        color: red;
+    }
+}

@@ -2,14 +2,16 @@ import React from 'react'
 import TempUserIndex from './temp/user_index';
 import TempLogInComponent from './temp/login';
 import TempSignUpComponent from './temp/sign_up';
+import NavBarComponent from './nav_bar/nav_bar'
+
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
 import {AuthRoute, ProtectedRoute} from '../util/route_utils'
+
 
 export const App = () => (
     <>
         <HashRouter>
-            <Link to="/login">Log in</Link>
-            <Link to="/signUp">Sign Up</Link>
+            <NavBarComponent/>
             <Switch>
                 <AuthRoute path="/login" component={TempLogInComponent} />
                 <AuthRoute path="/signUp" component={TempSignUpComponent} />
