@@ -98,39 +98,56 @@
         cursor: pointer;
     }
 
+    .location {
+        color: rgba(0, 0, 0, 0.54);
+        .location-text {
+            font-size: 14px;
+            a, a:visited {
+                text-decoration: none;
+                color: blue;
+                font-weight: 400;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .disclaimer1 {
+        color: rgba(0, 0, 0, 0.54);
+        p {
+            font-weight: 400;
+            line-height: 20.8px;
+        }
+    }
+    .disclaimer2 {
+        color: rgba(0, 0, 0, 0.87);
+        p {
+            line-height: 20.8px;
+            text-align: center;
+            font-weight: 400;
+        }
+        margin-top: 10px;
+    }
+
     .sign-up-btn:hover, .login-btn:hover {
         background-color: rgb(208, 16, 49);
     }
 
     .already-member {
-        text-align: center
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 400;
+        a, a:visited {
+            text-decoration: none;
+            color: blue
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     }
 }
 
 .auth-container {
     padding: 16px;
 }
-
-
-
-// .auth-form 
-
-// .auth-form 
-
-// .auth-form 
-
-// .auth-form 
-
-// .auth-form .login-header 
-
-// .auth-form .login-header 
-
-// .auth-form 
-
-// .auth-form 
-// .auth-form 
-// .auth-form 
-
-// .auth-form 
-
-// .auth-form 

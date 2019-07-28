@@ -48,7 +48,19 @@ class TempSignUpComponent extends React.Component {
                             <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
                         </label>
                         <br />
+                        <div className="location">
+                            <i className="fas fa-map-marker-alt"> <span className="location-text">New York, NY <Link to="/signup">(change)</Link></span> </i>                        
+                        </div>
+                        <br/>
+                        <div className="disclaimer1">
+                            <p>Your name is public. We'll use your email address to send you updates, and your location to find Squadups near you.</p>
+                        </div>
+                        <br />
                         <input className="sign-up-btn" type="submit" value="Continue" />
+                        <br/>
+                        <div className="disclaimer2">
+                            <p>When you "Continue", you agree to Squadup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.</p>
+                        </div>
                         <hr/>
                         <p className="already-member">Already a member? <Link to="/login">Log in</Link>.</p>
                     </div>
