@@ -1,29 +1,35 @@
 import * as userAPI from '../util/session_api'
 
 export const RECIEVE_USERS = "RECIEVE_USERS"
-export const CREATE_USER = "CREATE_USER"
+export const RECIEVE_USER = "RECIEVE_USER"
 export const LOG_IN_USER = "LOG_IN_USER"
 export const LOG_OUT_USER = "LOG_OUT_USER"
+
+export const RECIEVE_SESSION_ERRORS = "RECIEVE_SESSION_ERRORS"
 
 export const fetchUsers = () => dispatch => {
     return userAPI.getAllUsers()
                     .then(users => {
                         dispatch(recievedUsers(users))
-                    });
+                    })
+                    .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
 
 export const createNewUser = (user) => dispatch => {
     return userAPI.createNewUser(user)
                     .then(newUser => {
-                        return dispatch(recievedUser(newUser))
+                        return dispatch(logInUser(newUser))
                     })
+                    .fail(err => dispatch(recievedErrors(err.responseJSON)));
+
 }
 
 export const createNewSession = (credentials) => dispatch => {
     return userAPI.createNewSession(credentials)
                             .then(loggedInUser => {
-                                return dispatch(logInUser(loggedInUser.id))
+                                return dispatch(logInUser(loggedInUser))
                             })
+                            .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
 
 export const destroySession = () => dispatch => {
@@ -31,23 +37,29 @@ export const destroySession = () => dispatch => {
                     .then(() => {
                         return dispatch(logoutUser())
                     })
+                    .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
 
-export const recievedUsers = (users) => ({
+const recievedUsers = (users) => ({
     type: RECIEVE_USERS,
     users
 })
 
-export const recievedUser = (user) => ({
-    type: CREATE_USER,
+const recievedUser = (user) => ({
+    type: RECIEVE_USER,
     user
 })
 
-export const logInUser = (id) => ({
+const logInUser = (user) => ({
     type: LOG_IN_USER,
-    id
+    user
 })
 
-export const logoutUser = () => ({
+const logoutUser = () => ({
     type: LOG_OUT_USER
+})
+
+const recievedErrors = (errors) => ({
+    type: RECIEVE_SESSION_ERRORS,
+    errors
 })

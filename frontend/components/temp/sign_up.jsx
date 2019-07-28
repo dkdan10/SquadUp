@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { createNewUser, logInUser } from "../../actions/session_actions";
+import { createNewUser } from "../../actions/session_actions";
 import { Link } from 'react-router-dom';
 
 class TempSignUpComponent extends React.Component {
@@ -55,6 +55,8 @@ class TempSignUpComponent extends React.Component {
                         <div className="disclaimer1">
                             <p>Your name is public. We'll use your email address to send you updates, and your location to find Squadups near you.</p>
                         </div>
+                        <br/>
+                        <p>{this.props.errors}</p>
                         <br />
                         <input className="sign-up-btn" type="submit" value="Continue" />
                         <br/>
@@ -71,6 +73,11 @@ class TempSignUpComponent extends React.Component {
 
 }
 
+const mSP = state => {
+    return {
+        errors: state.errors.session
+    }
+}
 
 const mDP = dispatch => {
     return {
@@ -79,4 +86,4 @@ const mDP = dispatch => {
     }
 }
 
-export default connect(null, mDP)(TempSignUpComponent)
+export default connect(mSP, mDP)(TempSignUpComponent)

@@ -48,6 +48,8 @@ class TempLogInComponent extends React.Component {
                         <label htmlFor="password"> Password:
                             <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
                         </label>
+                        <br/>
+                        <p>{this.props.errors}</p>
                         <br />
                         <input className="login-btn" type="submit" value="Log in" />
                     </div>
@@ -58,10 +60,17 @@ class TempLogInComponent extends React.Component {
 
 }
 
+
+const mSP = state => {
+    return {
+        errors: state.errors.session
+    }
+}
+
 const mDP = dispatch => {
     return {
         createNewSession: credentials => dispatch(createNewSession(credentials))
     }
 }
 
-export default connect(null, mDP)(TempLogInComponent)
+export default connect(mSP, mDP)(TempLogInComponent)
