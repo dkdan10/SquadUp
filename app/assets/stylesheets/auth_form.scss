@@ -28,10 +28,12 @@
         border: none;
         background: #FAFAFA;
         border: 1px solid #f1f1f1;
+        border-radius: 3px;
     }
     input[type=text]:focus, input[type=password]:focus {
-        background-color: #ddd;
+        background-color: white;
         outline: none;
+        border-color: blue;
     }
     h1 {
         display: block;

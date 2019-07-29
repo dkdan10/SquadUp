@@ -45,7 +45,7 @@ class TempSignUpComponent extends React.Component {
                         </label>
                         <br />
                         <label htmlFor="password"> Password
-                            <input onChange={this.handleTextChange("password")} type="text" value={this.state.password} />
+                            <input onChange={this.handleTextChange("password")} type="password" value={this.state.password} />
                         </label>
                         <br />
                         <div className="location">

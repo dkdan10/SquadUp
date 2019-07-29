@@ -59,7 +59,7 @@ const logoutUser = () => ({
     type: LOG_OUT_USER
 })
 
-const recievedErrors = (errors) => ({
+const recievedErrors = (errors = []) => ({
     type: RECIEVE_SESSION_ERRORS,
     errors
 })
