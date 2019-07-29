@@ -5,6 +5,7 @@ export const RECIEVE_USER = "RECIEVE_USER"
 export const LOG_IN_USER = "LOG_IN_USER"
 export const LOG_OUT_USER = "LOG_OUT_USER"
 
+export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 export const RECIEVE_SESSION_ERRORS = "RECIEVE_SESSION_ERRORS"
 
 export const fetchUsers = () => dispatch => {
@@ -40,15 +41,19 @@ export const destroySession = () => dispatch => {
                     .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
 
+export const removeErrors = () => dispatch => {
+    return dispatch({ type: CLEAR_SESSION_ERRORS})
+}
+
 const recievedUsers = (users) => ({
     type: RECIEVE_USERS,
     users
 })
 
-const recievedUser = (user) => ({
-    type: RECIEVE_USER,
-    user
-})
+// const recievedUser = (user) => ({
+//     type: RECIEVE_USER,
+//     user
+// })
 
 const logInUser = (user) => ({
     type: LOG_IN_USER,

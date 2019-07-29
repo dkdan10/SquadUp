@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { createNewUser } from "../../actions/session_actions";
+import { createNewUser, removeErrors } from "../../actions/session_actions";
 import { Link } from 'react-router-dom';
 
 class TempSignUpComponent extends React.Component {
@@ -9,6 +9,10 @@ class TempSignUpComponent extends React.Component {
         this.state = { username: "", email: "", password: "" }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentWillUnmount () {
+        this.props.removeErrors()
     }
 
     handleSubmit(e) {
@@ -82,7 +86,8 @@ const mSP = state => {
 const mDP = dispatch => {
     return {
         createNewUser: user => dispatch(createNewUser(user)),
-        logInUser: user => dispatch(logInUser(user))
+        logInUser: user => dispatch(logInUser(user)),
+        removeErrors: () => dispatch(removeErrors())
     }
 }
 

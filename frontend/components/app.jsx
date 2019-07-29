@@ -1,7 +1,7 @@
 import React from 'react'
 import TempUserIndex from './temp/user_index';
-import TempLogInComponent from './temp/login';
-import TempSignUpComponent from './temp/sign_up';
+import TempLogInComponent from './session/login';
+import TempSignUpComponent from './session/sign_up';
 import NavBarComponent from './nav_bar/nav_bar'
 
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'

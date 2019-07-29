@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { createNewSession } from "../../actions/session_actions";
+import { createNewSession, removeErrors } from "../../actions/session_actions";
 import { Link } from 'react-router-dom'
 
 
@@ -12,6 +12,10 @@ class TempLogInComponent extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentWillUnmount() {
+        this.props.removeErrors()
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const { email, password } = this.state;
@@ -20,9 +24,7 @@ class TempLogInComponent extends React.Component {
         createNewSession({
             email, password
         })
-        // .then(() => {
-        //     this.setState({ email: "", password: "" });
-        // })
+
     }
 
     handleTextChange(field) {
@@ -69,7 +71,8 @@ const mSP = state => {
 
 const mDP = dispatch => {
     return {
-        createNewSession: credentials => dispatch(createNewSession(credentials))
+        createNewSession: credentials => dispatch(createNewSession(credentials)),
+        removeErrors: () => dispatch(removeErrors())
     }
 }
 
