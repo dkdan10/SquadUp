@@ -8,5 +8,11 @@
 
 
 User.destroy_all
+Location.destroy_all
 
 u1 = User.create!(username: "daniel", email: "daniel@keinan.com", password: "password")
+
+l1 = Location.create!(name: "New York, NY", lat: 10, lng: 10)
+l2 = Location.create!(name: "San Fransico, SF", lat: 30, lng: 20)
+l3 = Location.create!(name: "Tokyo, JP", lat: 123, lng: -20)
+l4 = Location.create!(name: "Paris, FR", lat: 12, lng: 42)
