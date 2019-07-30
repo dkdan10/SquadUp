@@ -25,11 +25,16 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --mode=development --watch"
+    "webpack": "webpack --mode=development --watch",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dkdan10/SquadUp.git"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.10.2"
   },
   "keywords": [],
   "author": "",
