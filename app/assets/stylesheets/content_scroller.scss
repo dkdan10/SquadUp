@@ -1,0 +1,107 @@
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    .card {
+        display: inline-block;
+        height: 240px;
+        width: 340px;
+        border: 1px solid #888;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+
+        box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+        
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 240px;
+            .top-card {
+                span {
+                    display: block;
+                    margin-left: 10px;
+                }
+                .time {
+                    margin-top: 10px;
+                    color: rgb(0, 152, 171);
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20.02px;
+                    margin-bottom: 8px;
+                }
+                .name {
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: 29px;
+                    margin-bottom: 8px;
+                    max-height: 56px;
+                    width: 300px;
+                }
+                .description {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+                .location {
+                    margin-top: 10px;
+                    color: rgb(88, 88, 88);
+                    i {
+                        margin-right: 6px;
+                    }
+                }
+            }
+            .bottom-card {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                .attendees {
+                    margin-left: 10px;
+                    color: rgb(88, 88, 88);
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    padding-top: 20px;
+                }
+                .attend-button {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    color: rgb(0, 152, 171);
+                    border: 1px solid rgb(0, 152, 171);
+                    line-height: 20.02px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    width: 90px;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    justify-content: center;
+                    border-radius: 3px;
+                }
+                .attend-button:hover {
+                    background-color: rgb(0, 152, 171);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.splash-content-scroller {
+    margin-top: 10px;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+    .splash-content-header {
+        margin-left: 10px;
+        line-height: 28px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .splash-content-description {
+        margin-left: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}

@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+    font-family: PilsenFont;
+    src: url(./fonts/PilsenPlakat.ttf);
+    font-weight:500;
+}

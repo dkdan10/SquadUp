@@ -43,7 +43,7 @@ class NavBar extends React.Component {
         logout().then(() => this.props.history.push('/login'))
     }
 
-    render( ) {
+    render () {
         const { currentUser } = this.props
         const dropDown =  this.state.showDrop ?  ( 
             < div className = "nav-profile-dropdown-content" >
@@ -54,7 +54,7 @@ class NavBar extends React.Component {
         ) : null
         const navHeaderEl = currentUser ? (
             <header className="nav-bar">
-                <h1>Squad Up</h1>
+                <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
                 <div>
                     <Link to="/explore" className="nav-link">Expolore</Link>
                     <Link to="/messages" className="nav-link">Messages</Link>
@@ -72,7 +72,7 @@ class NavBar extends React.Component {
             :
             (
                 <header className="nav-bar">
-                    <h1>Squad Up</h1>
+                    <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
                     <div>
                         <Link className="nav-link" to="login">Log in</Link>
                         <Link className="nav-link" to="signup">Sign up</Link>

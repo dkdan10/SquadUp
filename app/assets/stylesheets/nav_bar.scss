@@ -5,6 +5,11 @@ padding: 20px;
 background: white;
 align-items: center;
 border-bottom: 1px solid #888;
+    .logo, .logo:visited {
+        text-decoration: none;  
+        color: black;
+        font-size: 30px;      
+    }
     .nav-link {
         font-family: "Graphik Meetup", helvetica, arial, sans-serif;
         background-color: white;

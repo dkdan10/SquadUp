@@ -12,9 +12,10 @@
     }
     display: flex;
     .header-text {
-        font-family: "Graphik Meetup";
+        font-family: PislenFont, Helvetica, Arial, sans-serif;
         color: white;
         text-align: center;
+        font-weight: 600;
         margin: auto;
         h1 {
             font-size: 42px;
