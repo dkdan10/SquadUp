@@ -1,6 +1,7 @@
 import React from 'react'
 import {SplashHeader} from './header'
-import ContentScroller from './content-scrollers/content-scroller'
+import EventScroller from './content-scrollers/events_near_you_container'
+import GroupScroller from './content-scrollers/groups_near_you_container';
 
 export default class Splash extends React.Component {
 
@@ -8,7 +9,8 @@ export default class Splash extends React.Component {
     return (
         <>
             <SplashHeader />
-            <ContentScroller />
+            <EventScroller />
+            <GroupScroller />
         </>
     )
  }
