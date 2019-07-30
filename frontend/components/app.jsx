@@ -3,7 +3,7 @@ import TempUserIndex from './temp/user_index';
 import TempLogInComponent from './session/login';
 import TempSignUpComponent from './session/sign_up';
 import NavBarComponent from './nav_bar/nav_bar'
-import {SplashHeader} from './splash/header'
+import {SplashHeader} from './no_user_splash/header'
 
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
 import {AuthRoute, ProtectedRoute} from '../util/route_utils'
