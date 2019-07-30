@@ -9,19 +9,23 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  location_id     :integer          not null
+#
 
 
 # USERNAME IS NOT UNIQUE BECAUSE EMAIL IS THE UNQUI DECIDER
 # MAYBE ADD LOCATION IN THE NEAR FUTURE
 # HAVE A USER PHOTO?
 class User < ApplicationRecord
-    validates :username, :password_digest, presence: true
+    validates :username, :password_digest, :location_id, presence: true
     validates :session_token, :email, uniqueness: true, presence: true
     validates :password, length: {minimum: 6}, allow_nil: true
 
     attr_reader :password
 
     after_initialize :ensure_session_token
+
+    belongs_to :location
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

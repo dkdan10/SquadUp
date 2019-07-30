@@ -116,6 +116,7 @@
                 text-decoration: none;
                 color: blue;
                 font-weight: 400;
+                cursor: pointer;
             }
             a:hover {
                 text-decoration: underline;
@@ -153,6 +154,26 @@
             color: blue
         }
         a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .location-list {
+
+        .location-list-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+        .location-list-item {
+            color: rgb(31, 36, 204);
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 23.2px;
+            padding-bottom: 16px;
+            padding-top: 16px;
+            border-bottom: 1px solid #888;
+        }
+        .location-list-item:hover {
             text-decoration: underline;
         }
     }

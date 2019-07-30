@@ -7,9 +7,10 @@ import { fetchLocations } from "../../actions/loaction_actions";
 class TempSignUpComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { username: "", email: "", password: "", selectingLocation: false, locationSearch: "" }
+        this.state = { username: "", email: "", password: "", locationId: 1, selectingLocation: false, locationSearch: "" }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSelectedLocation = this.handleSelectedLocation.bind(this)
         this.toggleSelectLocation = this.toggleSelectLocation.bind(this)
     }
 
@@ -24,14 +25,22 @@ class TempSignUpComponent extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const { username, email, password } = this.state;
+        const location_id = this.state.locationId
         const { createNewUser } = this.props;
 
         createNewUser({
-            username, email, password
-        }).then((res) => {
-            this.props.logInUser(res.user.id)
-            this.setState({ username: "", email: "", password: "" });
+            username, email, password, location_id
         })
+        // .then((res) => {
+        //     this.setState({ username: "", email: "", password: "" });
+        // })
+    }
+
+    handleSelectedLocation(locationId) {
+        return e => {
+            this.toggleSelectLocation()
+            this.setState({locationId})
+        }
     }
 
     handleTextChange(field) {
@@ -45,9 +54,19 @@ class TempSignUpComponent extends React.Component {
     }
 
     render() {
-        const locationLis = this.props.locations.map(location => {
-            return <li key={location.id}>{location.name}</li>
+        const {locations} = this.props
+        const filteredLocations = Object.values(locations).filter(location => {
+            if (location.name.toLowerCase().includes(this.state.locationSearch.toLowerCase()) || this.state.locationSearch.length === 0) {
+                return location
+            }
         })
+
+        const locationLis = filteredLocations.map(location => {
+            return <li onClick={this.handleSelectedLocation(location.id)} className="location-list-item" key={location.id}>{location.name}</li>
+        })
+
+        const userLocation = locations[this.state.locationId] ? locations[this.state.locationId].name : "New York, NY"
+
         const signInComp = this.state.selectingLocation ? (
             <div className="auth-comp">
                 <div className="auth-form">
@@ -55,7 +74,7 @@ class TempSignUpComponent extends React.Component {
                         <label>Location
                             <input type="text" onChange={this.handleTextChange("locationSearch")} value={this.state.locationSearch}/>
                         </label>
-                        <ul>
+                        <ul className="location-list">
                             {locationLis}
                         </ul>
                     </div>
@@ -81,7 +100,7 @@ class TempSignUpComponent extends React.Component {
                     </label>
                     <br />
                     <div className="location">
-                        <i className="fas fa-map-marker-alt"> <span className="location-text">New York, NY <a onClick={this.toggleSelectLocation}>(change)</a></span> </i>                        
+                                <i className="fas fa-map-marker-alt"> <span className="location-text"> {userLocation} <a onClick={this.toggleSelectLocation}>(change)</a></span> </i>                        
                     </div>
                     <br/>
                     <div className="disclaimer1">
@@ -111,7 +130,7 @@ class TempSignUpComponent extends React.Component {
 const mSP = state => {
     return {
         errors: state.errors.session,
-        locations: Object.values(state.entities.locations)
+        locations: state.entities.locations
     }
 }
 
