@@ -1,0 +1,57 @@
+.how-it-works-container {
+    height: 326px;
+    width: 100%;
+    background-color: rgb(15, 23, 33);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 800;
+    }
+
+    .content {
+        display: flex;
+        a, a:visited {
+            display: block;
+            color: rgb(0, 162, 199);
+            text-decoration: none;
+        }
+        .content-container {
+            display: flex;
+            justify-content: space-around;
+            .icon {
+                margin: 0 10px;
+                font-size: 72px;
+                color: rgb(0, 162, 199);
+            }
+            .inner-content {
+                h1 {
+                    margin: 10px;
+                    font-size: 26px;
+                    font-weight: 800;
+                }
+                span {
+                    display: block;
+                    margin: 10px;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+                a {
+                    margin: 10px;
+                    font-weight: 700;
+                    i {
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+}
