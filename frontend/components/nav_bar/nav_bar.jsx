@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import { destroySession } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,7 @@ class NavBar extends React.Component {
         this.state = {showDrop: false}
         this.toggleDropdown = this.toggleDropdown.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleLogout = this.handleLogout.bind(this)
     }
 
     toggleDropdown () {
@@ -37,11 +38,16 @@ class NavBar extends React.Component {
         }
     }
 
+    handleLogout () {
+        const {logout} = this.props
+        logout().then(() => this.props.history.push('/login'))
+    }
+
     render( ) {
-        const { currentUser, logout } = this.props
+        const { currentUser } = this.props
         const dropDown =  this.state.showDrop ?  ( 
             < div className = "nav-profile-dropdown-content" >
-            <a className="logout-btn" href="#" onClick={logout}>Log out</a>
+            <a className="logout-btn" href="#" onClick={this.handleLogout}>Log out</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
         </div >
@@ -91,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(destroySession()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))

@@ -1,0 +1,46 @@
+.header-content {
+    position: relative;
+    height: 460px;
+    background: rgba(0, 0, 0, 0.50);
+    overflow: hidden;
+    .header-video {
+        min-height: 460px;
+        position: absolute;
+        // height: 460px;
+        width: 100%; 
+        z-index: -1;
+    }
+    display: flex;
+    .header-text {
+        font-family: "Graphik Meetup";
+        color: white;
+        text-align: center;
+        margin: auto;
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 52.08px;
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 30px;
+        }
+        .header-join-btn, .header-join-btn:visited {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 25.6px;
+            background-color: rgb(241, 58, 89);
+            margin-top: 36px;
+            padding: .75em 7em;
+            border-radius: 5px;
+        }
+        .header-join-btn:hover {
+            background-color: red;
+        }
+    }
+}
