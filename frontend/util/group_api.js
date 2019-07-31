@@ -34,7 +34,7 @@ export const updateGroup = (group) => (
 
 export const deleteGroup = (id) => (
     $.ajax({
-        method: 'DESTROY',
+        method: 'DELETE',
         url: `api/groups/${id}`
     })
 )

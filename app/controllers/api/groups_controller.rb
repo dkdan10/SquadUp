@@ -28,6 +28,12 @@ class Api::GroupsController < ApplicationController
         render :show
     end
 
+    def destroy
+        @group = Group.find(params[:id])
+        @group.destroy
+        render :show
+    end
+
     private
     def group_params
         params.require(:group).permit(:name, :description, :location_id, :private)

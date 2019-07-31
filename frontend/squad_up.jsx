@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import configureStore from './store/store';
 import Root from './components/root';
 import { getAllUsers } from './util/session_api';
-import { fetchGroups, fetchGroup, createGroup } from './actions/group_actions';
+import { fetchGroups, fetchGroup, createGroup, deleteGroup } from './actions/group_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchGroups = fetchGroups;
     window.fetchGroup = fetchGroup;
     window.createGroup = createGroup;
+    window.deleteGroup = deleteGroup;
     // ...TESTING
 
     const root = document.getElementById('root');
