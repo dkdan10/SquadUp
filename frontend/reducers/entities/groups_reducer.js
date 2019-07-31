@@ -28,6 +28,20 @@ const dummyGroups = {
             numberOfEvents: 30,
             members: 100,
             id: 4
+        },
+        5: {
+            name: "Group",
+            description: "This is a group description",
+            numberOfEvents: 30,
+            members: 100,
+            id: 5
+        },
+        6: {
+            name: "Group",
+            description: "This is a group description",
+            numberOfEvents: 30,
+            members: 100,
+            id: 6
         }
 }
 

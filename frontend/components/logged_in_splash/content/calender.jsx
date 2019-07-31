@@ -1,29 +1,28 @@
-import React from "react"
+import React from 'react'
+import CalenderEvents from "./calender_events_container"
+import CalenderSide from "./calender_side"
 
-export default class CalenderContent extends React.Component {
-    constructor (props) {
-        super (props) 
+export default class Calender extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = { filterSelectedIndex: 1 }
+        this.toggleSelected = this.toggleSelected.bind(this)
     }
 
-    render () {
-        const eventLis = this.props.events.map(event => {
-            const dateTime = (event.startTime.getHours() % 12) + ":" + (event.startTime.getMinutes()) + (event.startTime.getHours() > 12 ? " PM" : " AM")
-
-            return (
-                <li key={event.id} className="event-li">
-                    <span className="time">{dateTime}</span>
-                    <div className="content">
-                        <span className="group-name">Group Name</span>
-                        <span className="name">{event.name}</span>
-                        <span className="attendees">{event.attendees} Members going</span>
-                    </div>
-                </li>
-            )
-        })
+    toggleSelected(idx) {
+        return e => {
+            this.setState({ filterSelectedIndex: idx })
+        }
+    }
+    
+    render() {
         return (
-            <ul className="calender-events">
-                {eventLis}
-            </ul>
+            <div className="splash-calender-container">
+                {/* <h1>{this.state.filterSelectedIndex}</h1> */}
+                <CalenderEvents />
+                <CalenderSide toggleSelected={this.toggleSelected} filterSelectedIndex={this.state.filterSelectedIndex}/>
+            </ div>
         )
     }
-} 
+}

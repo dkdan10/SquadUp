@@ -1,9 +1,8 @@
 .calender-events {
 
-    font-family: PislenFont, Helvetica, Arial, sans-serif;
     margin: 0 10px;
-    // border: 1px solid #888;
     border-radius: 3px;
+    width: 70%;
 
     .event-li:last-child {
         border: 1px solid #888;
@@ -18,9 +17,7 @@
         cursor: pointer;
         display: flex;
         padding: 10px;
-        max-width: 960px;
         background-color: white;
-        margin: 0 auto;
         line-height: 25px;
 
         border: 1px solid #888;
@@ -54,6 +51,40 @@
         }
         
 
+    }
+
+}
+
+.splash-calender-container {
+    max-width: 960px;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    display: flex;
+
+    .calender-side {
+        width: 30%;
+        .filter {
+            background-color: white;
+            margin-bottom: 20px;
+            li {
+                cursor: pointer;
+                border: 1px solid #888;
+                padding: 8px;
+                padding-left: 14px;
+                color: rgba(0,0,0,.87);
+            }
+            .selected {
+                font-weight: 700;
+                color: rgb(31, 36, 204);
+                background-color: rgba(0, 0, 255, 0.05);
+                border-left: 5px solid rgb(31, 36, 204);
+            }
+        }
+        .calender {
+            border: 1px solid #888;
+            background-color: white;
+            height: 230px;
+        }
     }
 
 }

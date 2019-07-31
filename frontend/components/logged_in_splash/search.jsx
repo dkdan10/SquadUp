@@ -3,29 +3,17 @@ import React from 'react'
 
 export default class SplashSearch extends React.Component {
 
-    constructor (props) {
-        super(props)
-        this.state = {calenderSelected: true}
-        this.toggleSelected = this.toggleSelected.bind(this)
-    }
-
-    toggleSelected (selectedCalender) {
-        return e => {
-            this.setState({ calenderSelected: selectedCalender})
-        }
-    }
-
     render () {
 
-        const toggleComp = this.state.calenderSelected ? (
+        const toggleComp = this.props.calenderSelected ? (
             <div className="search-toggle">
-                <span onClick={this.toggleSelected(false)} className="toggle">Groups</span>
-                <span onClick={this.toggleSelected(true)} className="selected toggle">Calendar</span>
+                <span onClick={this.props.toggleSelected(false)} className="toggle">Groups</span>
+                <span onClick={this.props.toggleSelected(true)} className="selected toggle">Calendar</span>
             </div>
         ) : (
             <div className="search-toggle">
-                <span onClick={this.toggleSelected(false)} className="selected toggle">Groups</span>
-                <span onClick={this.toggleSelected(true)} className="toggle">Calendar</span>
+                <span onClick={this.props.toggleSelected(false)} className="selected toggle">Groups</span>
+                <span onClick={this.props.toggleSelected(true)} className="toggle">Calendar</span>
             </div>
         )
 
