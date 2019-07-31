@@ -23,3 +23,7 @@
 html {
     background-color: rgb(245,245,245);
 }
+
+.logged-out-splash {
+    background-color: white;
+}
