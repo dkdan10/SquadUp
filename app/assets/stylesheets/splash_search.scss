@@ -1,0 +1,76 @@
+
+.search-bar-container {
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    background-color: rgb(15, 23, 33);
+    color: white;
+    margin: 0 auto;
+    align-items: center;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+    padding: 8px;
+    top: -20px;
+
+    .first-half {
+        display: flex;
+        align-items: center;
+        input[type=text] {
+          padding: 6px;
+          border: none;
+          margin: 8px;
+          font-size: 17px;
+          height: 45px;
+          width: 280px;
+          border-radius: 3px;
+        }
+        ::-webkit-input-placeholder {
+            font-style: italic;
+        }
+        :-moz-placeholder {
+            font-style: italic;  
+        }
+        ::-moz-placeholder {
+            font-style: italic;  
+        }
+        :-ms-input-placeholder {  
+            font-style: italic; 
+        }
+        .selectable {
+            text-decoration: underline;
+        }
+    }
+    .second-half {
+        margin-right: 8px;
+        .search-toggle {
+            font-size: 16px;
+            width: 240px;
+            .toggle:first-child {
+                border-top: 1px solid #888;
+                border-left: 1px solid #888;
+                border-bottom: 1px solid #888;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            .toggle:last-child {
+                border-top: 1px solid #888;
+                border-right: 1px solid #888;
+                border-bottom: 1px solid #888;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+            .toggle {
+                cursor: pointer;
+                padding: 15px 30px;
+                background-color: rgb(15, 23, 33);
+                color: rgba(255, 255, 255, 0.3)
+            }
+            .selected {
+                color: white;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+        }
+    }
+    
+}

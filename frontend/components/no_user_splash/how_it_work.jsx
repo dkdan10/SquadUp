@@ -17,7 +17,7 @@ export const HowItWorks = (props) => {
                         <span>
                             See who’s hosting local events for all the things you love.
                         </span>
-                        <Link className="link" to="/">Join Squad Up <i className="fas fa-arrow-right"></i></Link>
+                        <Link className="link" to="/signup">Join Squad Up <i className="fas fa-arrow-right"></i></Link>
                     </div>
                 </div>  
                 <div className="content-container">

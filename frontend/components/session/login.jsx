@@ -34,6 +34,9 @@ class TempLogInComponent extends React.Component {
     }
 
     render() {
+        const errors = this.props.errors.map(err => {
+            return <li>{err}</li>
+        })
         return (
             <div className="auth-comp">
                 <form className="auth-form" onSubmit={this.handleSubmit}>
@@ -51,7 +54,9 @@ class TempLogInComponent extends React.Component {
                             <input onChange={this.handleTextChange("password")} type="password" value={this.state.password} />
                         </label>
                         <br/>
-                        <p>{this.props.errors}</p>
+                        <ul>
+                            {errors}
+                        </ul>
                         <br />
                         <input className="login-btn" type="submit" value="Log in" />
                     </div>

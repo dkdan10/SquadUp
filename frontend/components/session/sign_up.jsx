@@ -54,6 +54,10 @@ class TempSignUpComponent extends React.Component {
     }
 
     render() {
+        const errors = this.props.errors.map(err => {
+            return <><li>{err}</li> <br /></>
+        })
+
         const {locations} = this.props
         const filteredLocations = Object.values(locations).filter(location => {
             if (location.name.toLowerCase().includes(this.state.locationSearch.toLowerCase()) || this.state.locationSearch.length === 0) {
@@ -107,7 +111,9 @@ class TempSignUpComponent extends React.Component {
                         <p>Your name is public. We'll use your email address to send you updates, and your location to find Squadups near you.</p>
                     </div>
                     <br/>
-                    <p>{this.props.errors}</p>
+                    <ul>
+                        {errors}
+                    </ul>
                     <br />
                     <input className="sign-up-btn" type="submit" value="Continue" />
                     <br/>
