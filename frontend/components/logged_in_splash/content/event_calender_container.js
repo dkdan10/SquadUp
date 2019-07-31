@@ -1,5 +1,5 @@
-import ContentScroller from "./content_scroller";
-import {connect} from 'react-redux'
+import CalenderContent from "./calender";
+import { connect } from 'react-redux'
 
 
 const mSP = state => {
@@ -10,4 +10,4 @@ const mSP = state => {
 }
 
 
-export default connect(mSP)(ContentScroller)
+export default connect(mSP)(CalenderContent)

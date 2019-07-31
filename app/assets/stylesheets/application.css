@@ -19,3 +19,7 @@
     src: url(./fonts/PilsenPlakat.ttf);
     font-weight:500;
 }
+
+html {
+    background-color: rgb(245,245,245);
+}
