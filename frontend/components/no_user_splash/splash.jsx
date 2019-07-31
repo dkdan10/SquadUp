@@ -8,12 +8,14 @@ export default class Splash extends React.Component {
 
  render () {
     return (
-        <div className="logged-out-splash">
+        <>
             <SplashHeader />
-            <HowItWorks />
-            <EventScroller />
-            <GroupScroller />
-        </div>
+            <div className="logged-out-splash">
+                <HowItWorks />
+                <EventScroller />
+                <GroupScroller />
+            </div>
+        </>
     )
  }
 }
