@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_020325) do
+ActiveRecord::Schema.define(version: 2019_07_31_185111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "location_id", null: false
+    t.boolean "private", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
