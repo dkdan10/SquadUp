@@ -29,7 +29,7 @@ export const HowItWorks = (props) => {
                         <span>
                             See who’s hosting local events for all the things you love.
                         </span>
-                        <Link className="link" to="/">Get Started <i className="fas fa-arrow-right"></i></Link>
+                        <Link className="link" to="/login">Get Started <i className="fas fa-arrow-right"></i></Link>
                     </div>
                 </div>  
             </div>

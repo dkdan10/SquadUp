@@ -5,13 +5,24 @@ padding: 20px;
 background: white;
 align-items: center;
 border-bottom: 1px solid #888;
+font-family: PislenFont, Helvetica, Arial, sans-serif;
     .logo, .logo:visited {
         text-decoration: none;  
         color: black;
         font-size: 30px;      
     }
+    .new-group-link, .new-group-link:visited {
+        color: rgb(246, 64, 96);
+        text-decoration: none;
+        font-weight: 700;
+
+        border-right: 1.2px solid #888;
+        padding-right: 8px;
+    }
+    .new-group-link:hover {
+        text-decoration: underline;
+    }
     .nav-link {
-        font-family: "Graphik Meetup", helvetica, arial, sans-serif;
         background-color: white;
         font-size: 14px;
         font-weight: 400;

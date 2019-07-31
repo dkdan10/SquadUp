@@ -56,6 +56,7 @@ class NavBar extends React.Component {
             <header className="nav-bar">
                 <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
                 <div>
+                    <Link to="/groups/new" className="new-group-link">Start a new group</Link>
                     <Link to="/explore" className="nav-link">Expolore</Link>
                     <Link to="/messages" className="nav-link">Messages</Link>
 
