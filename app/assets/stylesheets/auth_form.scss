@@ -2,7 +2,6 @@
 * {box-sizing: border-box;}
 
 .auth-comp {
-    font-family: "Graphik Meetup", helvetica, arial, sans-serif;
     left: 0;
     top: 0;
     width: 100%;
@@ -181,4 +180,47 @@
 
 .auth-container {
     padding: 16px;
+    font-family: "Graphik Meetup", helvetica, arial, sans-serif;
+
+    .background {
+        background-color: rgb(216, 223, 234);
+        padding-left: 30px;
+        padding-right: 30px;
+        margin: 0 auto;
+        margin-left: -30px;
+        margin-right: -30px;
+        margin-bottom: -30px;
+    }
+
+    .background .demo-login-btn {
+        margin-bottom: 30px;
+        width: 100%;
+        background-color: rgb(59, 89, 152);
+        color: white;
+        padding: 15px 0; 
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .or-hr {
+        width: 160%;
+        margin-left: -60px;
+        border-color: rgb(59, 89, 152);
+    }
+
+    .or-span {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        position: relative;
+        background-color: white;
+        border-radius: 5px;
+        width: fit-content;
+        font-weight: 700;
+        padding: 4px;
+        top: -20px;
+    }
+
 }

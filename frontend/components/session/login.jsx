@@ -10,10 +10,20 @@ class TempLogInComponent extends React.Component {
         this.state = { username: "", email: "", password: "" }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.loginDemoUser = this.loginDemoUser.bind(this)
     }
 
     componentWillUnmount() {
         this.props.removeErrors()
+    }
+
+    loginDemoUser (e) {
+        e.preventDefault()
+        const { createNewSession } = this.props;
+        createNewSession({
+            email: "demo@user.com",
+            password: "password"
+        })
     }
 
     handleSubmit(e) {
@@ -59,6 +69,12 @@ class TempLogInComponent extends React.Component {
                         </ul>
                         <br />
                         <input className="login-btn" type="submit" value="Log in" />
+
+                        <div className="background">
+                            <hr className="or-hr" />
+                            <span className="or-span">OR</span>
+                            <button onClick={this.loginDemoUser} className="demo-login-btn">Demo Login</button>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -19,3 +19,4 @@ l3 = Location.create!(name: "Tokyo, JP", lat: 123, lng: -20)
 l4 = Location.create!(name: "Paris, FR", lat: 12, lng: 42)
 
 u1 = User.create!(username: "daniel", email: "daniel@keinan.com", password: "password", location_id: l1.id)
+demoU = User.create!(username: "DemoUser", email: "demo@user.com", password: "password", location_id: l1.id)
