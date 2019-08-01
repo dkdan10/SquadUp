@@ -41,6 +41,16 @@ export default class AboutShowPage extends React.Component {
                         </ul>
                     </div>
                 </div>
+                <div className="about-right-coloumn">
+                    <div className="group-organizers">
+                        <h2>Organizers</h2>
+                        <ul className="organizers-list"></ul>
+                    </div>
+                    <div className="group-members">
+                        <h2>Members ({this.props.group.members})</h2>
+                        <ul className="members-list"></ul>
+                    </div>
+                </div>
             </div>
         )
     }
