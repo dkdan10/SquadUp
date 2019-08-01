@@ -2,6 +2,8 @@ import React from 'react'
 import { EventScrollerItem } from './event_scroller_item';
 import { GroupScrollerItem } from './group_scroller_item';
 
+import {Link} from 'react-router-dom'
+
 export default class ContentScroller extends React.Component {
 
     componentWillMount () {
@@ -19,7 +21,9 @@ export default class ContentScroller extends React.Component {
         :
         (
             this.props.groups.map(group => (
-                <GroupScrollerItem key={group.id} group={group} />
+                <Link to={`/groups/${group.id}`} key={group.id}>
+                    <GroupScrollerItem group={group} />
+                </Link>
             ))
         )
 

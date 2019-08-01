@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default class Groups extends React.Component {
 
@@ -10,12 +11,14 @@ export default class Groups extends React.Component {
 
         const groupsLis = this.props.groups.map(group => {
             return (
-            <li key={group.id}>
-                <div className="li-content">
-                    <span className="name">{group.name}</span>
-                    <span className="members">{group.members} Members</span>
-                </div>
-            </li>
+                <Link key={group.id} to={`/groups/${group.id}`}>
+                    <li >
+                        <div className="li-content">
+                            <span className="name">{group.name}</span>
+                            <span className="members">{group.members} Members</span>
+                        </div>
+                    </li>
+                </Link>
             )
         })
 

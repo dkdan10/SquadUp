@@ -58,7 +58,7 @@ export default (state = {}, action) => {
             })
             return merge({}, action.groups)
         case RECEIVE_GROUP:
-            action.group.members = 70
+            action.group.members = 2442
             action.group.numberOfEvents = 30
             return merge({}, state, {[action.group.id]: action.group})
         case REMOVE_GROUP: {
