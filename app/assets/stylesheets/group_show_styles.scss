@@ -16,7 +16,7 @@
             width: 600px;
             height: 340px;
             border-radius: 8px;
-            margin-right: 30px; 
+            margin-right: 30px;
         }
 
         .header-group-info {
@@ -48,7 +48,7 @@
             display: flex;
             width: 600px;
             justify-content: space-around;
-            margin-right: 30px; 
+            margin-right: 30px;
             li {
                 cursor: pointer;
                 color: rgb(33, 33, 33);
@@ -82,6 +82,168 @@
                 margin-left: 20px;
             }
         }
+    }
+
+    //CONTENT 
+    .content-container {
+        // ABOUT CONTENT
+        display: flex;
+        justify-content: center;
+        .about-content {
+            width: 1060px;
+            margin-top: 30px;
+            display: flex;
+            .about-left-coloumn {
+                width: 60%;
+                .description {
+                    h2 {
+                        color: rgb(33, 33, 33);
+                        font-size: 20px;
+                        font-weight: 600;
+                        letter-spacing: 1px;
+                    }
+                    p {
+                        margin-top: 20px;
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                    }
+                }
+                .upcoming-events-list {
+                    margin-top: 20px;
+                    h2 {
+                        color: rgb(33, 33, 33);
+                        font-size: 20px;
+                        font-weight: 600;
+                        letter-spacing: 0.7px;
+                    }
+                    .card-event {
+                        display: inline-block;
+                        height: 240px;
+                        width: 100%;
+                        border: 1px solid #888;
+                        margin: 10px 0;
+                        cursor: pointer;
+                        border-radius: 10px;
+                        background-color: white;
+                        box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+                        
+                        .card-content {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            height: 240px;
+                            .top-card {
+                                white-space: pre-wrap;
+                                
+                                span {
+                                    display: block;
+                                    margin-left: 10px;
+                                    width: 100%;
+                                }
+                                .time {
+                                    margin-top: 10px;
+                                    color: rgb(0, 152, 171);
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    line-height: 20.02px;
+                                    margin-bottom: 8px;
+                                }
+                                .name {
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    line-height: 29px;
+                                    margin-bottom: 8px;
+                                    max-height: 56px;
+                                    width: 300px;
+                                }
+                                .desctiption-container {
+                                    overflow: hidden;
+                                    .description {
+                                        font-weight: 400;
+                                        font-size: 16px;
+                                        line-height: 24px;
+                                        height: 3em;
+                                    }
+                                }
+                                .location {
+                                    margin-top: 10px;
+                                    color: rgb(88, 88, 88);
+                                    i {
+                                        margin-right: 6px;
+                                    }
+                                }
+                            }
+                            .bottom-card {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 10px;
+                                .attendees {
+                                    margin-left: 10px;
+                                    color: rgb(88, 88, 88);
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    line-height: 20px;
+                                    padding-top: 20px;
+                                }
+                                .attend-button {
+                                    cursor: pointer;
+                                    margin-right: 10px;
+                                    color: rgb(0, 152, 171);
+                                    border: 1px solid rgb(0, 152, 171);
+                                    line-height: 20.02px;
+                                    font-weight: 500;
+                                    font-size: 14px;
+                                    width: 90px;
+                                    box-sizing: border-box;
+                                    padding: 10px;
+                                    justify-content: center;
+                                    border-radius: 3px;
+                                }
+                                .attend-button:hover {
+                                    background-color: rgb(0, 152, 171);
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .about-right-coloumn {
+                margin-left: 26px;
+                width: 40%;
+                h2 {
+                    color: rgb(33, 33, 33);
+                    font-size: 20px;
+                    font-weight: 600;
+                    letter-spacing: 0.7px;
+                }
+                .group-organizers {
+                    margin-top: 20px;
+                    .organizers-list {
+                        margin-top: 10px;
+                        height: 60px;
+                        width: 100%;
+                        background-color: white;
+                    }
+                }
+                .group-members {
+                    margin-top: 20px;
+                    .members-list {
+                        margin-top: 10px;
+                        width: 100%;
+                        height: 228px;
+                        background-color: white;
+                    }
+                }
+
+            }
+            
+
+        }
+        // END ABOUT CONTENT
+
     }
 
 }

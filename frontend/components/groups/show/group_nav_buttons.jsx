@@ -11,7 +11,7 @@ export default class GroupNavButtons extends React.Component {
         const indexText = ["About", "Events", "Members", "Photos", "Discussion", "More"]
 
         const navLinkLis = indexText.map((text, idx) => {
-            return <li className={this.props.selectedIndex === idx ? "selected" : ""} onClick={this.props.setSelectedIndex(idx)}>{text}</li>
+            return <li key={`show-nav-${idx}`} className={this.props.selectedIndex === idx ? "selected" : ""} onClick={this.props.setSelectedIndex(idx)}>{text}</li>
         })
 
         return (
