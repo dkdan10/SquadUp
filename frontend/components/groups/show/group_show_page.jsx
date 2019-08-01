@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 
 import {GroupHeader} from './header_show'
 import GroupNavButtons from './group_nav_buttons'
+import AboutGroup from './content/about_content'
 
 class GroupShowPage extends React.Component {
-
 
     constructor(props) {
         super(props)
@@ -37,6 +37,10 @@ class GroupShowPage extends React.Component {
             <div className="group-show-container">
                 <GroupHeader group={this.props.group} />
                 <GroupNavButtons setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
+
+                <div className="content-container">
+                    <AboutGroup events={this.props.events} group={this.props.group} />
+                </div>
             </div>
             )
     }
@@ -53,13 +57,14 @@ const msp = (state, ownProps) => {
         private: false
     }
     return {
-        group: state.entities.groups[groupId] || (defaultGroup)
+        group: state.entities.groups[groupId] || (defaultGroup),
+        events: Object.values(state.entities.events)
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        fetchGroup: (groupId) => dispatch(fetchGroup(groupId))
+        fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
     }
 }
 
