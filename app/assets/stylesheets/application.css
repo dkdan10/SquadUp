@@ -22,6 +22,8 @@
 
 html {
     background-color: rgb(245,245,245);
+    height: 100vh;
+    overflow: scroll;
 }
 
 .logged-out-splash {

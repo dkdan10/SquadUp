@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Route, withRouter } from 'react-router-dom'
-import UserIndex from '../components/temp/user_index';
 import NoUserSplash from '../components/no_user_splash/splash'
 import UserSplash from '../components/logged_in_splash/splash'
 

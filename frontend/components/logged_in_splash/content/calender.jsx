@@ -19,7 +19,6 @@ export default class Calender extends React.Component {
     render() {
         return (
             <div className="splash-calender-container">
-                {/* <h1>{this.state.filterSelectedIndex}</h1> */}
                 <CalenderEvents />
                 <CalenderSide toggleSelected={this.toggleSelected} filterSelectedIndex={this.state.filterSelectedIndex}/>
             </ div>

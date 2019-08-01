@@ -1,0 +1,98 @@
+.group-create-form {
+    background-color: white;
+    height: 90vh;
+    
+    .main-content {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 88.5vh;
+        justify-content: space-between;
+
+        .step-count {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            color: rgb(155, 155, 155);
+            font-family: PislenFont, Helvetica, Arial, sans-serif;
+        }
+
+        .step-control-btns {
+            width: 100%;
+            border-top: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            height: 8vh;
+            .hide-btn {
+                visibility: hidden;
+            }
+
+            .step-btn {
+                border-radius: 4px;
+                font-size: 14px;
+                min-width: 206px;
+                min-height: 30px;
+                padding: 10px 0;
+                margin: 10px;
+                font-weight: 600;
+            }
+
+            .back-step {
+                color: rgb(88, 88, 88);
+            }
+
+            .next-step {
+                background-color: rgb(246, 88, 88);
+                color: white;
+            }
+        }
+
+    }
+    
+
+    .progress-bar {
+        width: 100%;
+        height: 1.5vh;
+        display: flex;
+        .completed {
+            background-color: rgb(0, 152, 171);
+            height: 100%;
+        }
+        .comp-step0 {
+            width: 20%
+        }
+        .comp-step1 {
+            width: 40%
+        }
+        .comp-step2 {
+            width: 60%
+        }
+        .comp-step3 {
+            width: 80%
+        }
+        .comp-step4 {
+            width: 100%
+        }
+        .to-go {
+            background-color: rgb(230, 230, 230);
+            height: 100%;
+        }
+        .left-step0 {
+            width: 80%;
+        }
+        .left-step1 {
+            width: 60%;
+        }
+        .left-step2 {
+            width: 40%;
+        }
+        .left-step3 {
+            width: 20%;
+        }
+        .left-step4 {
+            width: 0;
+        }
+    }
+}
