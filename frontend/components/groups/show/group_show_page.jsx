@@ -3,8 +3,16 @@ import { fetchGroup } from '../../../actions/group_actions';
 import {connect} from 'react-redux'
 
 import {GroupHeader} from './header_show'
+import GroupNavButtons from './group_nav_buttons'
 
 class GroupShowPage extends React.Component {
+
+
+    constructor(props) {
+        super(props)
+        this.state = {selectedIndex: 0}
+        this.setSelectedIndex = this.setSelectedIndex.bind(this)
+    }
 
     componentDidMount () {
         const groupId = this.props.match.params.groupId
@@ -18,10 +26,17 @@ class GroupShowPage extends React.Component {
         }
     }
 
+    setSelectedIndex (idx) {
+        return (e) => {
+            this.setState({selectedIndex: idx})
+        }
+    }
+
     render() {
         return (
             <div className="group-show-container">
                 <GroupHeader group={this.props.group} />
+                <GroupNavButtons setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
             </div>
             )
     }

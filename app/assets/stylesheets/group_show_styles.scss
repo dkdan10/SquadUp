@@ -2,12 +2,14 @@
 .group-show-container {
 
     font-family: PislenFont, Helvetica, Arial, sans-serif;
+    // max-width: 1100px;
 
+    // HEADER
     .group-show-header {
         background-color: white;
         padding: 10px 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         border-bottom: 1px solid #888;
 
         .header-image {
@@ -34,6 +36,50 @@
             }
         }
 
+    }
+
+    // NAV BAR
+    .group-nav-bar {
+        display: flex;
+        justify-content: space-around;
+        background-color: white;
+        .nav-links {
+            display: flex;
+            width: 600px;
+            justify-content: space-around;
+            li {
+                cursor: pointer;
+                color: rgb(33, 33, 33);
+                font-size: 16px;
+                line-height: 24px;
+                padding: 14px 0; 
+            }
+            li:hover, .selected {
+                color: rgb(0, 162, 199);
+            }
+        }
+        .nav-buttons {
+            width: 400px;
+            display: flex;
+            align-items: center;
+            button {
+                width: 140px;
+                height: 42px;
+                font-size: 14px;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+            .join-group-btn {
+                background-color: rgb(246, 88, 88);
+                color: white;
+            }
+            .extra-btn {
+                border: 1px solid rgb(197, 196, 196);
+                background-color: white;
+                width: 62px;
+                margin-left: 20px;
+            }
+        }
     }
 
 }
