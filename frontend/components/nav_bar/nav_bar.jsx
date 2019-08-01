@@ -75,8 +75,8 @@ class NavBar extends React.Component {
                 <header className="nav-bar">
                     <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
                     <div>
-                        <Link className="nav-link" to="login">Log in</Link>
-                        <Link className="nav-link" to="signup">Sign up</Link>
+                        <Link className="nav-link" to="/login">Log in</Link>
+                        <Link className="nav-link" to="/signup">Sign up</Link>
                     </div>
                 </header >
             )
