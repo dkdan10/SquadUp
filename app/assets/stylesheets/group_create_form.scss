@@ -2,6 +2,8 @@
     background-color: white;
     height: 90vh;
     
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+
     .main-content {
 
         display: flex;
@@ -10,13 +12,178 @@
         height: 88.5vh;
         justify-content: space-between;
 
-        .step-count {
-            margin-top: 20px;
-            font-size: 14px;
-            text-align: center;
-            color: rgb(155, 155, 155);
-            font-family: PislenFont, Helvetica, Arial, sans-serif;
+        .top-content {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+
+            .step-count {
+                margin-top: 20px;
+                font-size: 14px;
+                text-align: center;
+                color: rgb(155, 155, 155);
+            }
+            // EACH STEP HERE
+            .step-container {
+                margin-top: 30px;
+                width: 706px;
+                h1 {
+                    font-size: 42px;
+                    font-weight: 900;
+                }
+                p {
+                    margin-top: 10px;
+                    font-size: 16px;
+                    line-height: 24px;
+                    
+                }
+
+                .search {
+                    margin-top: 16px;
+                    width: 100%;
+                    border: 1px solid rgb(162, 162, 162);
+                    border-radius: 3px;
+                    font-size: 16px;
+                    height: 50px;
+                    padding: 6px;
+                }
+                .search:focus {
+                    border-color: rgb(0, 152, 171);
+                    outline: none;
+                }
+
+                // STEP ONE CSS
+                .selected-location-info {
+                    display: block;
+                    margin-top: 20px;
+                    color: rgb(33, 33, 33);
+                    .location-name {
+                        font-size: 32px;
+                    }
+                    .change-location {
+                        margin-left: 10px;
+                        color: rgb(0, 152, 171);
+                        cursor: pointer;
+                    }
+                    .change-location:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .location-picker {
+                    margin-top: 20px;
+                    
+                    .location-list {
+                        box-shadow: 2px 2px 16px #dcdcdc;
+                        margin-top: 6px;
+                        border-radius: 3px;
+                        .location-list-item:last-child {
+                            border-bottom: 0;
+                            padding-bottom: 16px;
+                        }
+                        .location-list-item {
+                            color: rgb(15, 23, 33);
+                            cursor: pointer;
+                            font-size: 14px;
+                            line-height: 23.2px;
+                            padding-bottom: 16px;
+                            padding-top: 16px;
+                            border-bottom: 1px solid #dcdcdc;
+                            span {
+                                margin-left: 10px;
+                                font-weight: 550;
+                            }
+                        }
+                        .location-list-item:hover {
+                            background-color: rgba(0,0,0,0.05);
+                        }
+                    }
+                }
+
+                // STEP TWO CSS
+                .topic-picker-comp {
+
+                    .topics-ul {
+                        display: flex;
+                        font-size: 16px;
+                        line-height: 24px;
+                        flex-wrap: wrap;
+                        .topic-item {
+                            color: rgb(0, 152, 171);
+                            border: 1px solid rgb(0, 152, 171);
+                            border-radius: 20px;
+                            cursor: pointer;
+                            height: 38px;
+                            padding: 8px 32px;
+                            margin: 6px;
+                            .topic-text {
+                                position: relative;
+                                top: -2px;
+                            }
+                        }
+                        // CHANGE TO SELECTED
+                        .topic-item:hover {
+                            background-color: rgb(0, 152, 171);
+                            color: white;
+                        }
+
+                    }
+
+                }
+
+                // STEP THREE
+                .name-comp {
+                    margin-top: 20px;
+                    .name-input {
+                        width: 100%;
+                        border: 1px solid rgb(162, 162, 162);
+                        border-radius: 3px;
+                        font-size: 16px;
+                        height: 50px;
+                        padding: 6px;
+                    }
+                    .name-input:focus {
+                        border-color: rgb(0, 152, 171);
+                        outline: none;
+                    }
+                }
+
+                // STEP FOUR
+                .choose-description {
+                    .description-list {
+                        line-height: 26px;
+                        margin-top: 15px;
+                    }
+                }
+                .description-comp {
+                    .description-textarea {
+                        margin-top: 14px;
+                        border: 1px solid rgb(162, 162, 162);
+                        border-radius: 4px;
+                        font-size: 16px;
+                        width: 100%;
+                        height: 156px;
+                        padding: 16px;
+                    }
+                    .description-textarea:focus {
+                        outline: none;
+                        border: 1px solid rgb(0, 152, 171);
+                    }
+                }
+
+                // STEP FIVE
+                .guidelines {
+                    .guidelines-list {
+                        list-style-type: disc;
+                        line-height: 26px;
+                        margin-top: 15px;
+                    }
+                }
+
+            }
+
         }
+
+        
 
         .step-control-btns {
             width: 100%;
@@ -43,9 +210,12 @@
                 color: rgb(88, 88, 88);
             }
 
-            .next-step {
+            .next-step, .create-btn {
                 background-color: rgb(246, 88, 88);
                 color: white;
+            }
+            .gone-btn {
+                display: none;
             }
         }
 

@@ -7,20 +7,74 @@ import StepThree from './group_form_steps/form_step_three'
 import StepFour from './group_form_steps/form_step_four'
 import StepFive from './group_form_steps/form_step_five'
 
+import {merge} from "lodash"
+
 class GroupCreateForm extends React.Component {
     constructor (props) {
         super(props)
-        this.state = {currentIndex: 0}
-        this.steps = [
-            <StepOne/>,
-            <StepTwo/>,
-            <StepThree/>,
-            <StepFour/>,
-            <StepFive/>
-        ]
+        this.state = {group: this.props.group, currentIndex: 0}
         this.nextStep = this.nextStep.bind(this)
         this.backStep = this.backStep.bind(this)
+
+        this.setLocation = this.setLocation.bind(this)
+        this.getSelectedLocationId = this.getSelectedLocationId.bind(this)
+
+        this.setName = this.setName.bind(this)
+        this.getCurrentName = this.getCurrentName.bind(this)
+        
+        this.setDescription = this.setDescription.bind(this)
+        this.getCurrentDescription = this.getCurrentDescription.bind(this)
+
+        this.steps = [
+            <StepOne setLocation={this.setLocation} getSelectedLocationId={this.getSelectedLocationId}/>,
+            <StepTwo/>,
+            <StepThree setName={this.setName} getCurrentName={this.getCurrentName}/>,
+            <StepFour setDescription={this.setDescription} getCurrentDescription={this.getCurrentDescription} />,
+            <StepFive/>
+        ]
     }
+
+    // COULD REFACTOR SETTERS INTO ONE FUNCTION
+
+    // STEP ONE
+    setLocation (locationId) {
+        const newState = Object.assign({}, this.state.group, {locationId})
+        this.setState(
+            { group: newState }
+        )
+    }
+
+    getSelectedLocationId (){
+        return this.state.group.locationId
+    }
+
+    // STEP TWO
+
+    // STEP THREE
+    setName(name) {
+        const newState = Object.assign({}, this.state.group, { name })
+        this.setState(
+            { group: newState }
+        )
+    }
+
+    getCurrentName() {
+        return this.state.group.name
+    }
+
+    // STEP FOUR
+    setDescription(description) {
+        const newState = Object.assign({}, this.state.group, { description })
+        this.setState(
+            { group: newState }
+        )
+    }
+
+    getCurrentDescription() {
+        return this.state.group.description
+    }
+
+    // STEPPERS
     
     nextStep (e) {
         e.preventDefault()
@@ -50,14 +104,19 @@ class GroupCreateForm extends React.Component {
             <div className="step-control-btns">
                 <button className={`${step === 0 ? "hide-btn" : null} step-btn back-step`} onClick={this.backStep}><i className="back-icon fas fa-chevron-left"></i> Back Step</button>
                 <button className={`${step === 4 ? "hide-btn" : null} step-btn next-step`} onClick={this.nextStep}>Next Step</button>
+                <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} >Agree &amp; Create</button>
             </div>
         )
         return (
             <div className="group-create-form">
                 {progressBar}
                 <div className="main-content">
-                    <span className="step-count">STEP {step + 1} OF 5 </span>
-                    {stepToRender}
+                    <div className="top-content">
+                        <span className="step-count">STEP {step + 1} OF 5 </span>
+                        <div className="step-container">
+                            {stepToRender}
+                        </div>
+                    </div>
                     {stepButtons}
                 </div>
             </div>
@@ -72,7 +131,7 @@ const msp = (state) => {
         group: {
             name: "",
             description: "",
-            location_id: 1,
+            locationId: 1,
             private: false
         }
     }

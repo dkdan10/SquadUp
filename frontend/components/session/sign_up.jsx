@@ -58,7 +58,7 @@ class TempSignUpComponent extends React.Component {
             return <><li>{err}</li> <br /></>
         })
 
-        const {locations} = this.props
+        const {locations} = this.props;
         const filteredLocations = Object.values(locations).filter(location => {
             if (location.name.toLowerCase().includes(this.state.locationSearch.toLowerCase()) || this.state.locationSearch.length === 0) {
                 return location
