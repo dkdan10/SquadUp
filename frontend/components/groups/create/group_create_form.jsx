@@ -27,7 +27,7 @@ class GroupCreateForm extends React.Component {
 
         this.handleSubmitForm = this.handleSubmitForm.bind(this)
 
-        // this.stepComplete = this.stepComplete.bind(this)
+        this.stepComplete = this.stepComplete.bind(this)
 
         this.steps = [
             <StepOne setLocation={this.setLocation} getSelectedLocationId={this.getSelectedLocationId}/>,
@@ -124,9 +124,22 @@ class GroupCreateForm extends React.Component {
 
     // Valid Step?
 
-    // stepComplete () {
-        
-    // }
+    stepComplete () {
+        const step = this.state.currentIndex
+        switch (step) {
+            case 0:
+                return this.state.group.locationId ? true : false
+            case 1: 
+                // VERIFY TAGS IN THE FUTURE
+                return true
+            case 2:
+                return this.state.group.name.length > 5 ? true : false
+            case 3: 
+                return this.state.group.description.length > 20 ? true : false
+            default:
+                return false
+        }
+    }
 
     render () {
         const step = this.state.currentIndex
@@ -141,9 +154,9 @@ class GroupCreateForm extends React.Component {
         const stepButtons = (
             <div className="step-control-btns">
                 <button className={`${step === 0 ? "hide-btn" : null} step-btn back-step`} onClick={this.backStep}><i className="back-icon fas fa-chevron-left"></i> Back Step</button>
-                <button  className={`${step === 4 ? "hide-btn" : null} step-btn next-step`} onClick={this.nextStep}>Next Step</button>
+                <button disabled={!this.stepComplete()} className={`${step === 4 ? "hide-btn" : null} step-btn next-step`} onClick={this.nextStep}>Next Step</button>
                 <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} onClick={this.handleSubmitForm}  >Agree &amp; Create</button>
-                {/* disabled={this.stepComplete} */}
+                
             </div>
         )
         return (

@@ -214,6 +214,12 @@
                 background-color: rgb(246, 88, 88);
                 color: white;
             }
+
+            .next-step:disabled, .next-step[disabled] {
+                background-color: rgb(217, 217, 217);
+                color: rgb(162, 162, 162);
+            }
+
             .gone-btn {
                 display: none;
             }
