@@ -25,6 +25,8 @@ class GroupCreateForm extends React.Component {
         this.setDescription = this.setDescription.bind(this)
         this.getCurrentDescription = this.getCurrentDescription.bind(this)
 
+        this.handleSubmitForm = this.handleSubmitForm.bind(this)
+
         this.steps = [
             <StepOne setLocation={this.setLocation} getSelectedLocationId={this.getSelectedLocationId}/>,
             <StepTwo/>,
@@ -90,6 +92,34 @@ class GroupCreateForm extends React.Component {
         }
     }
 
+    // CREATE!
+
+    handleSubmitForm (e) {
+        e.preventDefault()
+        if (this.validGroup) {
+            const stateGroup = this.state.group
+            const groupToCreate = {
+                name: stateGroup.name,
+                description: stateGroup.description,
+                location_id: stateGroup.locationId,
+                private: false
+            }
+            this.props.createGroup(groupToCreate)
+                .then(() => this.props.history.push("/"))
+        }
+    }
+
+    validGroup () {
+        return (
+            this.state.group.name.length
+            &&
+            this.state.group.description.length
+            &&
+            this.state.group.locationId
+        ) 
+        ? true : false
+    }
+
     render () {
         const step = this.state.currentIndex
         const stepToRender = this.steps[step]
@@ -104,7 +134,7 @@ class GroupCreateForm extends React.Component {
             <div className="step-control-btns">
                 <button className={`${step === 0 ? "hide-btn" : null} step-btn back-step`} onClick={this.backStep}><i className="back-icon fas fa-chevron-left"></i> Back Step</button>
                 <button className={`${step === 4 ? "hide-btn" : null} step-btn next-step`} onClick={this.nextStep}>Next Step</button>
-                <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} >Agree &amp; Create</button>
+                <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} onClick={this.handleSubmitForm}  >Agree &amp; Create</button>
             </div>
         )
         return (
