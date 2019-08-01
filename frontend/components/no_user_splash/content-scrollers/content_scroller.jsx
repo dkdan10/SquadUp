@@ -4,6 +4,12 @@ import { GroupScrollerItem } from './group_scroller_item';
 
 export default class ContentScroller extends React.Component {
 
+    componentWillMount () {
+        if (this.props.contentType !== "events") {
+            this.props.fetchGroups()
+        }
+    }
+
     render() {
         const contentLis = this.props.contentType === "events" ? (
             this.props.events.map(event => (

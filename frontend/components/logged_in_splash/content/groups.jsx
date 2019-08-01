@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default class Calender extends React.Component {
+export default class Groups extends React.Component {
 
+    componentWillMount() {
+        this.props.fetchGroups();
+    }
 
     render() {
 

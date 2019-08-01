@@ -8,5 +8,11 @@ const mSP = state => {
     }
 }
 
+const mDP = dispatch => {
+    return {
+        fetchGroups: () => dispatch(fetchGroups())
+    }
+}
 
-export default connect(mSP)(ContentScroller)
+
+export default connect(mSP, mDP)(ContentScroller)

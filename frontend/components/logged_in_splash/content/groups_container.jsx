@@ -1,6 +1,6 @@
 import GroupsContent from "./groups";
 import { connect } from 'react-redux'
-
+import { fetchGroups } from "../../../actions/group_actions";
 
 const mSP = state => {
     return {
@@ -8,5 +8,11 @@ const mSP = state => {
     }
 }
 
+const mDP = dispatch => {
+    return {
+        fetchGroups: () => dispatch(fetchGroups())
+    }
+}
 
-export default connect(mSP)(GroupsContent)
+
+export default connect(mSP, mDP)(GroupsContent)
