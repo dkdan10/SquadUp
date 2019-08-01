@@ -21,9 +21,12 @@
             justify-content: space-between;
             height: 240px;
             .top-card {
+                white-space: pre-wrap;
+                
                 span {
                     display: block;
                     margin-left: 10px;
+                    width: 100%;
                 }
                 .time {
                     margin-top: 10px;
@@ -41,10 +44,14 @@
                     max-height: 56px;
                     width: 300px;
                 }
-                .description {
-                    font-weight: 400;
-                    font-size: 16px;
-                    line-height: 24px;
+                .desctiption-container {
+                    overflow: hidden;
+                    .description {
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 24px;
+                        height: 3em;
+                    }
                 }
                 .location {
                     margin-top: 10px;
@@ -119,9 +126,12 @@
                 justify-content: space-between;
                 height: 194px;
                 .top-card {
+                    white-space: pre-wrap;
+
                     span {
                         display: block;
                         margin-left: 10px;
+                        width: 90%;
                     }
                     .name {
                         font-size: 20px;
@@ -129,12 +139,17 @@
                         line-height: 29px;
                         margin-bottom: 8px;
                         max-height: 56px;
-                        width: 300px;
                     }
-                    .description {
-                        font-weight: 400;
-                        font-size: 16px;
-                        line-height: 24px;
+                    .desctiption-container {
+                        overflow: hidden;
+                        .description {
+                            font-weight: 400;
+                            font-size: 16px;
+                            height: 3em;
+                        }
+                    }
+                    .event-counts {
+                        margin-top: 8px;
                     }
                 }
     
