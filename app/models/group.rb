@@ -20,5 +20,10 @@ class Group < ApplicationRecord
         class_name: :User
 
     belongs_to :location
+
+    has_many :group_memberships
+
+    has_many :members,
+        through: :group_memberships
     
 end

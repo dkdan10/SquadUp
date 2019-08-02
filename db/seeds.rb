@@ -10,10 +10,12 @@
 User.destroy_all
 Location.destroy_all
 Group.destroy_all
+GroupMembership.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('locations')
 ActiveRecord::Base.connection.reset_pk_sequence!('groups')
+ActiveRecord::Base.connection.reset_pk_sequence!('group_memberships')
 
 l1 = Location.create!(name: "New York, NY", lat: 10, lng: 10)
 l2 = Location.create!(name: "San Fransico, SF", lat: 30, lng: 20)
@@ -28,6 +30,11 @@ u4 = User.create!(username: "georgie!", email: "george@peni.com", password: "pas
 demoU = User.create!(username: "DemoUser", email: "demo@user.com", password: "password", location_id: l1.id)
 
 g1 = Group.create!(name:"First Group", description:"This is the first group", location_id: l1.id, private: false, owner_id: u1.id)
+g1.members << u1
+g1.members << u2
 g2 = Group.create!(name:"Second Group", description:"This is the second group", location_id: l3.id, private: false, owner_id: u2.id)
-g2 = Group.create!(name:"Third Group", description:"This is the third group", location_id: l5.id, private: false, owner_id: u3.id)
-g2 = Group.create!(name:"Fourth Group", description:"This is the fourth group", location_id: l4.id, private: false, owner_id: u4.id)
+g2.members << u2
+g3 = Group.create!(name:"Third Group", description:"This is the third group", location_id: l5.id, private: false, owner_id: u3.id)
+g3.members << u3
+g4 = Group.create!(name:"Fourth Group", description:"This is the fourth group", location_id: l4.id, private: false, owner_id: u4.id)
+g4.members << u4

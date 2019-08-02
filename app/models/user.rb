@@ -31,6 +31,12 @@ class User < ApplicationRecord
         class_name: :Group,
         foreign_key: :owner_id
 
+    has_many :group_memberships,
+        foreign_key: :member_id
+
+    has_many :groups,
+        through: :group_memberships
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user && user.is_password?(password)
