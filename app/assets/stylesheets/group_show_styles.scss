@@ -76,11 +76,18 @@
                 font-weight: 700;
                 color: white;
             }
+            .leave-group-btn {
+                font-weight: 700;
+                color: rgb(88, 88, 88);
+                background-color: rgb(246,247,248);
+                border: 1px solid rgb(88, 88, 88);
+            }
             .extra-btn {
                 border: 1px solid rgb(197, 196, 196);
                 background-color: white;
                 width: 62px;
                 margin-left: 20px;
+                font-weight: 700;
             }
         }
     }

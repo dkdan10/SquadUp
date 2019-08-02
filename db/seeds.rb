@@ -27,6 +27,7 @@ u1 = User.create!(username: "daniel", email: "daniel@keinan.com", password: "pas
 u2 = User.create!(username: "henDog", email: "henry@tan.com", password: "password", location_id: l3.id)
 u3 = User.create!(username: "spenki", email: "sen@ki.com", password: "password", location_id: l5.id)
 u4 = User.create!(username: "georgie!", email: "george@peni.com", password: "password", location_id: l4.id)
+u5 = User.create!(username: "Ram", email: "ram@ram.com", password: "password", location_id: l2.id)
 demoU = User.create!(username: "DemoUser", email: "demo@user.com", password: "password", location_id: l1.id)
 
 g1 = Group.create!(name:"First Group", description:"This is the first group", location_id: l1.id, private: false, owner_id: u1.id)
@@ -36,5 +37,11 @@ g2 = Group.create!(name:"Second Group", description:"This is the second group", 
 g2.members << u2
 g3 = Group.create!(name:"Third Group", description:"This is the third group", location_id: l5.id, private: false, owner_id: u3.id)
 g3.members << u3
-g4 = Group.create!(name:"Fourth Group", description:"This is the fourth group", location_id: l4.id, private: false, owner_id: u4.id)
+g4 = Group.create!(name:"Toyko Basketballers", description:"Lets all Squad up and play basketball together!", location_id: l3.id, private: false, owner_id: u1.id)
 g4.members << u4
+g5 = Group.create!(name:"Ram's social hour!", description:"This group is for friend's of Ram to hang out with Ram.", location_id: l1.id, private: false, owner_id: u5.id)
+g5.members << u1
+g5.members << u2
+g5.members << u3
+g5.members << u4
+g5.members << u5

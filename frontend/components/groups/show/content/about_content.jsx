@@ -28,7 +28,7 @@ export default class AboutShowPage extends React.Component {
         })
 
         let tempUserIcons = []
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; (i < this.props.group.memberIds.length) && (i < 15); i++) {
             tempUserIcons.push(<i key={`member-list-${i}`} className="user-image far fa-user-circle"></i>)          
         }
 
@@ -58,7 +58,7 @@ export default class AboutShowPage extends React.Component {
                         </ul>
                     </div>
                     <div className="group-members">
-                        <h2>Members ({this.props.group.members})</h2>
+                        <h2>Members ({this.props.group.memberIds.length})</h2>
                         <ul className="members-list">
                             {tempUserIcons}
                         </ul>

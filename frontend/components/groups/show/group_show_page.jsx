@@ -36,7 +36,7 @@ class GroupShowPage extends React.Component {
         return (
             <div className="group-show-container">
                 <GroupHeader group={this.props.group} />
-                <GroupNavButtons setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
+                <GroupNavButtons group={this.props.group} currentUserId={this.props.currentUserId} setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
 
                 <div className="content-container">
                     <AboutGroup events={this.props.events} group={this.props.group} />
@@ -54,10 +54,12 @@ const msp = (state, ownProps) => {
         name: "",
         description: "",
         locationId: 1,
-        private: false
+        private: false,
+        memberIds: []
     }
     return {
         group: state.entities.groups[groupId] || (defaultGroup),
+        currentUserId: state.session.currentUserId,
         events: Object.values(state.entities.events)
     }
 }

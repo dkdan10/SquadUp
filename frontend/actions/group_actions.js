@@ -34,9 +34,9 @@ const recieveGroups = (groups) => ({
     groups
 })
 
-const recieveGroup = (group) => ({
+export const recieveGroup = (groupData) => ({
     type: RECEIVE_GROUP,
-    group
+    groupData
 })
 
 const removeGroup = (groupId) => ({

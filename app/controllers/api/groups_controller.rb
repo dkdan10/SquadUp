@@ -34,6 +34,20 @@ class Api::GroupsController < ApplicationController
         render :show
     end
 
+
+    # CUSTOM CREATE ROUTES
+    def create_member
+        @group = Group.find(params[:id])
+        @group.members << current_user
+        render :show
+    end
+
+    def destroy_member
+        @group = Group.find(params[:id])
+        @group.members.delete(current_user)
+        render :show
+    end
+
     private
     def group_params
         params.require(:group).permit(:name, :description, :location_id, :private)
