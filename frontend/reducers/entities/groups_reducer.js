@@ -9,7 +9,6 @@ export default (state = {}, action) => {
         case RECEIVE_ALL_GROUPS:
             Object.keys(action.groups).forEach(key => {
                 action.groups[key].numberOfEvents = 100
-                action.groups[key].memberIds = []
             })
             return merge({}, action.groups)
         case RECEIVE_GROUP:
