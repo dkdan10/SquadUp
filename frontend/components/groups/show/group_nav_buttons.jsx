@@ -1,8 +1,8 @@
 import React from 'react'
 import { addMemberToGroup, removeMemberFromGroup } from '../../../actions/join_group_actions';
+import {withRouter} from 'react-router-dom'
 
-
-export default class GroupNavButtons extends React.Component {
+class GroupNavButtons extends React.Component {
     constructor (props) {
         super(props)
         this.joinGroup = this.joinGroup.bind(this)
@@ -12,6 +12,7 @@ export default class GroupNavButtons extends React.Component {
     joinGroup (e) {
         e.preventDefault()
         if (!this.props.currentUserId) {
+            this.props.history.push('/login')
             return
         }
         const target = e.target
@@ -63,3 +64,5 @@ export default class GroupNavButtons extends React.Component {
     }
 
 } 
+
+export default withRouter(GroupNavButtons)

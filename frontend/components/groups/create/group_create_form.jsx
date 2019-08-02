@@ -108,7 +108,7 @@ class GroupCreateForm extends React.Component {
             }
             this.props.createGroup(groupToCreate)
                 .then((res) => {
-                    this.props.history.push(`/groups/${res.group.id}`)
+                    this.props.history.push(`/groups/${res.groupData.group.id}`)
                 })
         }
     }

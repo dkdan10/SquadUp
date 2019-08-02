@@ -28,6 +28,7 @@ u2 = User.create!(username: "henDog", email: "henry@tan.com", password: "passwor
 u3 = User.create!(username: "spenki", email: "sen@ki.com", password: "password", location_id: l5.id)
 u4 = User.create!(username: "georgie!", email: "george@peni.com", password: "password", location_id: l4.id)
 u5 = User.create!(username: "Ram", email: "ram@ram.com", password: "password", location_id: l2.id)
+u6 = User.create!(username: "Betty", email: "bet@betty.com", password: "password", location_id: l5.id)
 demoU = User.create!(username: "DemoUser", email: "demo@user.com", password: "password", location_id: l1.id)
 
 g1 = Group.create!(name:"First Group", description:"This is the first group", location_id: l1.id, private: false, owner_id: u1.id)
@@ -45,3 +46,10 @@ g5.members << u2
 g5.members << u3
 g5.members << u4
 g5.members << u5
+g5.members << u6
+g6 = Group.create!(name:"Betty's Crafts!", description:"Come and do arts and crafts with Betty!", location_id: l1.id, private: false, owner_id: u6.id)
+g6.members << u1
+g6.members << u2
+g6.members << u3
+g6.members << u4
+g6.members << u5
