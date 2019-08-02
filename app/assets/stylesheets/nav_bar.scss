@@ -1,5 +1,5 @@
 .nav-bar {
-height: 10vh;
+height: 9vh;
 display: flex;
 justify-content: space-between;
 padding: 20px;
@@ -9,8 +9,10 @@ border-bottom: 1px solid #888;
 font-family: PislenFont, Helvetica, Arial, sans-serif;
     .logo, .logo:visited {
         text-decoration: none;  
-        color: black;
-        font-size: 30px;      
+        color: rgb(246, 64, 96);;
+        font-size: 40px;   
+        // font-family: 'Permanent Marker', cursive;
+        font-family: 'Pacifico', cursive;
     }
     .new-group-link, .new-group-link:visited {
         color: rgb(246, 64, 96);

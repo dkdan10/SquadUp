@@ -54,10 +54,10 @@ class NavBar extends React.Component {
         ) : null
         const navHeaderEl = currentUser ? (
             <header className="nav-bar">
-                <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
+                <Link className="logo" to="/"><h1 >SquadUp</h1></Link>
                 <div>
                     <Link to="/groups/new" className="new-group-link">Start a new group</Link>
-                    <Link to="/explore" className="nav-link">Expolore</Link>
+                    <Link to="/explore" className="nav-link">Explore</Link>
                     <Link to="/messages" className="nav-link">Messages</Link>
 
                     <div ref={dropdownRef => this.dropdownRef = dropdownRef} className="nav-dropdown">
@@ -73,7 +73,7 @@ class NavBar extends React.Component {
             :
             (
                 <header className="nav-bar">
-                    <Link className="logo" to="/"><h1 >Squad Up</h1></Link>
+                    <Link className="logo" to="/"><h1 >SquadUp</h1></Link>
                     <div>
                         <Link className="nav-link" to="/login">Log in</Link>
                         <Link className="nav-link" to="/signup">Sign up</Link>

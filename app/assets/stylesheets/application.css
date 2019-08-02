@@ -29,3 +29,7 @@ html {
 .logged-out-splash {
     background-color: white;
 }
+
+.all-content {
+    min-height: 75vh;
+}
