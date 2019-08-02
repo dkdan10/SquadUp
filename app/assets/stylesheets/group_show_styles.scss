@@ -73,6 +73,7 @@
             }
             .join-group-btn {
                 background-color: rgb(246, 88, 88);
+                font-weight: 700;
                 color: white;
             }
             .extra-btn {
@@ -219,13 +220,37 @@
                     font-weight: 600;
                     letter-spacing: 0.7px;
                 }
+                .user-image {
+                    font-size: 60px;
+                    // background-color: aqua;
+                    border-radius: 30px;
+                }
                 .group-organizers {
                     margin-top: 20px;
                     .organizers-list {
+                        display: flex;
                         margin-top: 10px;
                         height: 60px;
                         width: 100%;
-                        background-color: white;
+                        .organizer-text {
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 20px;
+                            p {
+                                margin-top: 10px;
+                                font-size: 14px;
+                            }
+                            .owner-name {
+                                font-weight: 800;
+                            }
+                            .message-owner {
+                                color: rgb(0, 152, 171);
+                                cursor: pointer;
+                            }
+                            .message-owner:hover {
+                                text-decoration: underline;
+                            }
+                        }
                     }
                 }
                 .group-members {
@@ -234,7 +259,10 @@
                         margin-top: 10px;
                         width: 100%;
                         height: 228px;
-                        background-color: white;
+                        i {
+                            margin-right: 20px;
+                            margin-bottom: 20px;
+                        }
                     }
                 }
 
