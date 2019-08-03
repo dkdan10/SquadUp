@@ -4,7 +4,7 @@ import StepTwo from './group_form_steps/form_step_two'
 import StepThree from './group_form_steps/form_step_three'
 import StepFour from './group_form_steps/form_step_four'
 import StepFive from './group_form_steps/form_step_five'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 
 export default class GroupCreateForm extends React.Component {
@@ -167,9 +167,15 @@ export default class GroupCreateForm extends React.Component {
                 
             </div>
         )
+
+        const cancelButton = this.props.editForm ? (
+            <Link to={`/groups/${this.props.group.id}`} className="cancel-group-edit">Cancel Edits</Link>
+        ) : null
+        
         return (
             <div className="group-create-form">
                 {progressBar}
+                {cancelButton}
                 <div className="main-content">
                     <div className="top-content">
                         <span className="step-count">STEP {step + 1} OF 5 </span>

@@ -4,6 +4,22 @@
     
     font-family: PislenFont, Helvetica, Arial, sans-serif;
 
+    .cancel-group-edit {
+        position: absolute;
+        border-radius: 4px;
+        font-size: 14px;
+        min-width: 206px;
+        min-height: 30px;
+        padding: 10px 0;
+        margin: 10px;
+        font-weight: 600;
+        background-color: rgb(246, 88, 88);
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+
+
     .main-content {
 
         display: flex;
@@ -12,6 +28,7 @@
         height: 88.5vh;
         justify-content: space-between;
 
+        
         .top-content {
             display: flex;
             flex-direction: column;

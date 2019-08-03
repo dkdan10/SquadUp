@@ -53,7 +53,7 @@ export default class AboutShowPage extends React.Component {
                         <ul className="organizers-list">
                             <i className="user-image far fa-user-circle"></i>
                             <div className="organizer-text">
-                                <p className="owner-name">{this.props.group.owner}</p>
+                                <p className="owner-name">{this.props.owner.username}</p>
                                 <p className="message-owner">Message</p>
                             </div>
                         </ul>

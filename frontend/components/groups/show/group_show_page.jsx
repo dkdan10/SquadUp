@@ -35,11 +35,11 @@ class GroupShowPage extends React.Component {
     render() {
         return (
             <div className="group-show-container">
-                <GroupHeader location={this.props.location} group={this.props.group} />
+                <GroupHeader owner={this.props.owner} location={this.props.location} group={this.props.group} />
                 <GroupNavButtons group={this.props.group} currentUserId={this.props.currentUserId} setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
 
                 <div className="content-container">
-                    <AboutGroup events={this.props.events} group={this.props.group} />
+                    <AboutGroup owner={this.props.owner} events={this.props.events} group={this.props.group} />
                 </div>
             </div>
             )
@@ -61,7 +61,8 @@ const msp = (state, ownProps) => {
         group: group,
         currentUserId: state.session.currentUserId,
         events: Object.values(state.entities.events),
-        location: state.entities.locations[group.locationId] || {name: ""}
+        location: state.entities.locations[group.locationId] || {name: ""},
+        owner: state.entities.users[group.ownerId] || {name: ""}
     }
 }
 

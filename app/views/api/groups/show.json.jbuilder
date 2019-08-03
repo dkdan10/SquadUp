@@ -12,6 +12,9 @@ json.members do
             json.extract! user, :id, :username, :email, :location_id
         end
     end
+    json.set! @group.owner_id do 
+        json.extract! @group.owner, :id, :username, :email, :location_id
+    end
 end
 
 json.location do

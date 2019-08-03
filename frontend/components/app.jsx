@@ -8,6 +8,8 @@ import GroupCreateForm from './groups/create_and_edit/create_form_container';
 import GroupShowPage from './groups/show/group_show_page';
 import GroupEditForm from './groups/create_and_edit/edit_form_container';
 
+import Modal from './modals/modal'
+
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
 import {AuthRoute, ProtectedRoute, SplashRoute} from '../util/route_utils'
 
@@ -15,6 +17,7 @@ import {AuthRoute, ProtectedRoute, SplashRoute} from '../util/route_utils'
 export const App = () => (
     <>
         <HashRouter>
+            <Modal />
             <NavBarComponent/>
             <div className="all-content">
             <Switch>

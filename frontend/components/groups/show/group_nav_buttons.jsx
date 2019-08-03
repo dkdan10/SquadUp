@@ -1,6 +1,7 @@
 import React from 'react'
 import { addMemberToGroup, removeMemberFromGroup } from '../../../actions/join_group_actions';
 import {withRouter, Link} from 'react-router-dom'
+import { openModal } from '../../../actions/modal_actions';
 
 class GroupNavButtons extends React.Component {
     constructor (props) {
@@ -75,11 +76,13 @@ class GroupNavButtons extends React.Component {
                 <button onClick={this.joinGroup} className="join-group-btn">Join this group</button>
         )
 
+
+        // TRRIIIIIPLLLLLE TUUUUUUURNary
         const extraDropdown = this.state.showExtraDropdown ? (
             (this.props.group.ownerId === this.props.currentUserId) ? (
                 < div className="multiple extra-drowpdown-content" >
                     <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
-                    <a >Delete Group</a>
+                    <a onClick={() => {this.setState({ showExtraDropdown: false }) ; dispatch(openModal('delete-group'));}}>Delete Group</a>
                 </div >
             ) : (
                 < div className="single extra-drowpdown-content" >
