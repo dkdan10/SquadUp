@@ -8,8 +8,8 @@ export const GroupHeader = (props) => {
             <div className="header-group-info">
                 <h1>{group.name}</h1>
                 <div className="header-details">
-                    <h2>{group.location}</h2>
-                    <h2>{group.members} members * {group.private ? "Private Group" : "Public Group"}</h2>
+                    <h2>{props.location.name}</h2>
+                    <h2>{group.memberIds.length} members * {group.private ? "Private Group" : "Public Group"}</h2>
                     <h2>Organized by {group.owner}</h2>
                 </div>
             </div>

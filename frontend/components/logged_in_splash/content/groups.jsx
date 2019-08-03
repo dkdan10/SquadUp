@@ -15,7 +15,7 @@ export default class Groups extends React.Component {
                     <li >
                         <div className="li-content">
                             <span className="name">{group.name}</span>
-                            <span className="members">{group.members} Members</span>
+                            <span className="members">{group.memberIds.length} Members</span>
                         </div>
                     </li>
                 </Link>

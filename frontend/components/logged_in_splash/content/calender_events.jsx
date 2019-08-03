@@ -1,4 +1,5 @@
 import React from "react"
+import { hours12 } from "../../../util/helper_functions";
 
 export default class CalenderContent extends React.Component {
     constructor (props) {
@@ -7,7 +8,7 @@ export default class CalenderContent extends React.Component {
 
     render () {
         const eventLis = this.props.events.map(event => {
-            const dateTime = (event.startTime.getHours() % 12) + ":" + (event.startTime.getMinutes()) + (event.startTime.getHours() > 12 ? " PM" : " AM")
+            const dateTime = (hours12(event.startTime)) + ":" + (event.startTime.getMinutes() < 10 ? "0" : "") + (event.startTime.getMinutes()) + (event.startTime.getHours() > 11 ? " PM" : " AM")
 
             return (
                 <li key={event.id} className="event-li">

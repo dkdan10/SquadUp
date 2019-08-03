@@ -35,7 +35,7 @@ class GroupShowPage extends React.Component {
     render() {
         return (
             <div className="group-show-container">
-                <GroupHeader group={this.props.group} />
+                <GroupHeader location={this.props.location} group={this.props.group} />
                 <GroupNavButtons group={this.props.group} currentUserId={this.props.currentUserId} setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
 
                 <div className="content-container">
@@ -49,7 +49,7 @@ class GroupShowPage extends React.Component {
 
 const msp = (state, ownProps) => {
     const groupId = ownProps.match.params.groupId
-    const defaultGroup = {
+    const group = state.entities.groups[groupId] || {
         id: null,
         name: "",
         description: "",
@@ -58,9 +58,10 @@ const msp = (state, ownProps) => {
         memberIds: []
     }
     return {
-        group: state.entities.groups[groupId] || (defaultGroup),
+        group: group,
         currentUserId: state.session.currentUserId,
-        events: Object.values(state.entities.events)
+        events: Object.values(state.entities.events),
+        location: state.entities.locations[group.locationId] || {name: ""}
     }
 }
 

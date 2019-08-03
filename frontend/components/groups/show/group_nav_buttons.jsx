@@ -36,6 +36,12 @@ class GroupNavButtons extends React.Component {
         })
     }
 
+    componentDidUpdate (prevProps) {
+        if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
+            this.setState({showExtraDropdown: false})
+        }
+    }
+
     componentWillMount() {
         document.addEventListener('mousedown', this.handleClick, false)
     }
@@ -70,10 +76,16 @@ class GroupNavButtons extends React.Component {
         )
 
         const extraDropdown = this.state.showExtraDropdown ? (
-            < div className="extra-drowpdown-content" >
-                <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
-                <a >Delete Group</a>
-            </div >
+            (this.props.group.ownerId === this.props.currentUserId) ? (
+                < div className="multiple extra-drowpdown-content" >
+                    <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
+                    <a >Delete Group</a>
+                </div >
+            ) : (
+                < div className="single extra-drowpdown-content" >
+                    <a>Report Group</a>
+                </div >
+            )
         ) : (
             null
         )

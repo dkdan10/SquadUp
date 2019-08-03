@@ -1,7 +1,8 @@
 import React from 'react'
+import { hours12 } from '../../../util/helper_functions';
 
 export const EventScrollerItem = ({event}) => {
-    const dateTime = (event.startTime.getHours() % 12) + ":" + (event.startTime.getMinutes()) + (event.startTime.getHours() > 12 ? " PM" : " AM")
+    const dateTime = (hours12(event.startTime)) + ":" + (event.startTime.getMinutes() < 10 ? "0" : "") + (event.startTime.getMinutes()) + (event.startTime.getHours() > 11 ? " PM" : " AM")
     const dateString = event.startTime.toDateString().slice(0, -5) + ", " + dateTime
 
     return (

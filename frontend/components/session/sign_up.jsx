@@ -4,7 +4,7 @@ import { createNewUser, removeErrors } from "../../actions/session_actions";
 import { Link } from 'react-router-dom';
 import { fetchLocations } from "../../actions/loaction_actions";
 
-class TempSignUpComponent extends React.Component {
+class SignUpComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = { username: "", email: "", password: "", locationId: 1, selectingLocation: false, locationSearch: "" }
@@ -149,4 +149,4 @@ const mDP = dispatch => {
     }
 }
 
-export default connect(mSP, mDP)(TempSignUpComponent)
+export default connect(mSP, mDP)(SignUpComponent)
