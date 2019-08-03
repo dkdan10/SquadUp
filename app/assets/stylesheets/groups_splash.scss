@@ -43,6 +43,8 @@
                 .name {
                     font-size: 30px;
                     font-weight: 600;
+                    max-height: 3em;
+                    overflow: hidden;
                 }
                 .members {
                     margin-bottom: 10px;
