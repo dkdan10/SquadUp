@@ -1,18 +1,16 @@
 import React from "react"
-import { createGroup } from "../../../actions/group_actions";
-import { connect } from 'react-redux'
 import StepOne from './group_form_steps/form_step_one'
 import StepTwo from './group_form_steps/form_step_two'
 import StepThree from './group_form_steps/form_step_three'
 import StepFour from './group_form_steps/form_step_four'
 import StepFive from './group_form_steps/form_step_five'
+import { Redirect } from 'react-router-dom'
 
-import {merge} from "lodash"
 
-class GroupCreateForm extends React.Component {
+export default class GroupCreateForm extends React.Component {
     constructor (props) {
         super(props)
-        this.state = {group: this.props.group, currentIndex: 0}
+        this.state = {group: this.props.group, currentIndex: 0, redirectToUrl: false}
         this.nextStep = this.nextStep.bind(this)
         this.backStep = this.backStep.bind(this)
 
@@ -106,9 +104,10 @@ class GroupCreateForm extends React.Component {
                 location_id: stateGroup.locationId,
                 private: false
             }
-            this.props.createGroup(groupToCreate)
+            if (this.props.editForm) groupToCreate.id = this.props.group.id
+            this.props.action(groupToCreate)
                 .then((res) => {
-                    this.props.history.push(`/groups/${res.groupData.group.id}`)
+                    this.setState({ redirectToUrl: `/groups/${res.groupData.group.id}`})
                 })
         }
     }
@@ -144,9 +143,16 @@ class GroupCreateForm extends React.Component {
     }
 
     render () {
+
+        if (this.state.redirectToUrl) {
+            return (
+                <Redirect to={this.state.redirectToUrl} />
+            )
+        }
+
+
         const step = this.state.currentIndex
         const stepToRender = this.steps[step]
-
         const progressBar = (
             <div className="progress-bar">
                 <div className={`completed comp-${"step" + step}`}></div>
@@ -157,7 +163,7 @@ class GroupCreateForm extends React.Component {
             <div className="step-control-btns">
                 <button className={`${step === 0 ? "hide-btn" : null} step-btn back-step`} onClick={this.backStep}><i className="back-icon fas fa-chevron-left"></i> Back Step</button>
                 <button disabled={!this.stepComplete()} className={`${step === 4 ? "hide-btn" : null} step-btn next-step`} onClick={this.nextStep}>Next Step</button>
-                <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} onClick={this.handleSubmitForm}  >Agree &amp; Create</button>
+                <button className={`${step === 4 ?  null : "gone-btn"} step-btn create-btn`} onClick={this.handleSubmitForm}  >Agree &amp; {this.props.editForm ? "Update" : "Create"}</button>
                 
             </div>
         )
@@ -178,23 +184,3 @@ class GroupCreateForm extends React.Component {
     }
 
 }
-
-
-const msp = (state) => {
-    return {
-        group: {
-            name: "",
-            description: "",
-            locationId: 1,
-            private: false
-        }
-    }
-}
-
-const mdp = (dispatch) => {
-    return {
-        createGroup: (group) => dispatch(createGroup(group))
-    }
-}
-
-export default connect(msp, mdp)(GroupCreateForm)

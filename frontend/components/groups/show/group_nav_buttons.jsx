@@ -1,12 +1,14 @@
 import React from 'react'
 import { addMemberToGroup, removeMemberFromGroup } from '../../../actions/join_group_actions';
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 class GroupNavButtons extends React.Component {
     constructor (props) {
         super(props)
         this.joinGroup = this.joinGroup.bind(this)
         this.leaveGroup = this.leaveGroup.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.state = {showExtraDropdown: false}
     }
 
     joinGroup (e) {
@@ -34,6 +36,24 @@ class GroupNavButtons extends React.Component {
         })
     }
 
+    componentWillMount() {
+        document.addEventListener('mousedown', this.handleClick, false)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false)
+    }
+
+    handleClick(e) {
+        if ((this.dropdownRef && this.dropBtnRef) && this.dropdownRef.contains(e.target)) {
+            if (this.dropBtnRef.contains(e.target)) {
+                this.setState({ showExtraDropdown: !this.state.showExtraDropdown })
+            }
+            return
+        }
+        this.setState({ showExtraDropdown: false })
+    }
+
 
 
     render () {
@@ -49,6 +69,15 @@ class GroupNavButtons extends React.Component {
                 <button onClick={this.joinGroup} className="join-group-btn">Join this group</button>
         )
 
+        const extraDropdown = this.state.showExtraDropdown ? (
+            < div className="extra-drowpdown-content" >
+                <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
+                <a >Delete Group</a>
+            </div >
+        ) : (
+            null
+        )
+
         return (
             <div className="group-nav-bar">
                 <ul className="nav-links">
@@ -56,7 +85,10 @@ class GroupNavButtons extends React.Component {
                 </ul>
                 <ul className="nav-buttons">
                     {joinLeaveBtn}
-                    <button className="extra-btn">...</button>
+                    <div ref={dropdownRef => this.dropdownRef = dropdownRef} className="extra-dropdown-container">
+                        <button ref={dropBtnRef => this.dropBtnRef = dropBtnRef} className="extra-btn">...</button>
+                        {extraDropdown}
+                    </div>
                 </ul>
             </div>
             

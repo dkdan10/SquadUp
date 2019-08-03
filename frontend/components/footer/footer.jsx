@@ -25,7 +25,7 @@ class Footer extends React.Component {
         return (
             <div className="footer-container">
                 <div className="left-side">
-                    <div className="logo">SquadUp</div>
+                    <a className="logo" href="#/">SquadUp</a>
                     <div className="links-info">    
                         <span className="stay-connected">STAY CONNECTED</span>
                         <div className="the-links">

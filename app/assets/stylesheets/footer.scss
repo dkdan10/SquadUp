@@ -2,6 +2,7 @@
     background-color: rgb(15, 23, 33);
     height: 16vh;
     margin-top: 25px;
+    min-height: 150px;
 
     display: flex;
     justify-content: space-around;
@@ -16,7 +17,8 @@
         flex-direction: column;
         width: 14%;
         // justify-content: space-around;
-        .logo {
+        .logo, .logo:visited {
+            text-decoration: none;
             margin-top: 20px;
             color: rgb(246, 64, 96);;
             font-size: 30px;   

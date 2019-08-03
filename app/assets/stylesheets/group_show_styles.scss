@@ -86,8 +86,30 @@
                 border: 1px solid rgb(197, 196, 196);
                 background-color: white;
                 width: 62px;
+                right: 40px;
                 margin-left: 20px;
                 font-weight: 700;
+            }
+            .extra-drowpdown-content {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                background-color: white;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                margin-top: 10px;
+                margin-left: 20px;
+                a {
+                    padding: 10px;
+                    cursor: pointer;
+                    font-weight: 300;
+                    &:first-child {
+                        border-bottom: 1px solid #888;
+                    }
+                    &:hover {
+                        background-color: rgba(0,0,0,0.1)
+                    }
+                }
             }
         }
     }

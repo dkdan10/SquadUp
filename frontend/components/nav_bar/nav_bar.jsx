@@ -47,10 +47,10 @@ class NavBar extends React.Component {
         const { currentUser } = this.props
         const dropDown =  this.state.showDrop ?  ( 
             < div className = "nav-profile-dropdown-content" >
-            <a className="logout-btn" href="#" onClick={this.handleLogout}>Log out</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div >
+                <a className="logout-btn" href="#" onClick={this.handleLogout}>Log out</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div >
         ) : null
         const navHeaderEl = currentUser ? (
             <header className="nav-bar">

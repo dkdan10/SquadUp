@@ -4,8 +4,9 @@ import SignUpComponent from './session/sign_up';
 import NavBarComponent from './nav_bar/nav_bar';
 import FooterComponent from './footer/footer';
 
-import GroupCreateForm from './groups/create/group_create_form'
+import GroupCreateForm from './groups/create_and_edit/create_form_container';
 import GroupShowPage from './groups/show/group_show_page';
+import GroupEditForm from './groups/create_and_edit/edit_form_container';
 
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
 import {AuthRoute, ProtectedRoute, SplashRoute} from '../util/route_utils'
@@ -20,6 +21,7 @@ export const App = () => (
                 <AuthRoute exact path="/login" component={LogInComponent} />
                 <AuthRoute exact path="/signUp" component={SignUpComponent} />
                 <ProtectedRoute exact path="/groups/new" component={GroupCreateForm} />
+                <ProtectedRoute exact path="/groups/:groupId/edit" component={GroupEditForm} />
                 <Route path="/groups/:groupId" component={GroupShowPage} />
                 <SplashRoute path="/"/>
             </Switch>

@@ -15,7 +15,7 @@ class Api::GroupsController < ApplicationController
         end
     end
 
-    def edit
+    def update
         @group = Group.find(params[:id])
         if @group.update_attributes(group_params)
             render :show
