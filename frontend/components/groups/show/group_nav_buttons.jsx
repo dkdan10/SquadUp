@@ -82,7 +82,7 @@ class GroupNavButtons extends React.Component {
             (this.props.group.ownerId === this.props.currentUserId) ? (
                 < div className="multiple extra-drowpdown-content" >
                     <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
-                    <a onClick={() => {this.setState({ showExtraDropdown: false }) ; dispatch(openModal('delete-group'));}}>Delete Group</a>
+                    <a onClick={() => {this.setState({ showExtraDropdown: false }); dispatch(openModal({type: 'delete-group', groupId: this.props.group.id}));}}>Delete Group</a>
                 </div >
             ) : (
                 < div className="single extra-drowpdown-content" >

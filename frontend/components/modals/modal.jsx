@@ -1,15 +1,16 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import DeleteGroupModal from './delete_group_modal';
 
-function Modal({modal, closeModal}) {
+const Modal = ({modal, closeModal}) => {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case 'delete-group':
-      component = <h1>Delete Group Here</h1>;
+      component = <DeleteGroupModal groupId={modal.groupId}/>;
       break;
     default:
       return null;

@@ -26,7 +26,7 @@ export const updateGroup = (group) => dispatch => (
 
 export const deleteGroup = (id) => dispatch => (
     groupAPI.deleteGroup(id)
-        .then(group => dispatch(removeGroup(group.id)))
+        .then(groupData => dispatch(removeGroup(groupData.group.id)))
 )
 
 const recieveGroups = (groups) => ({
