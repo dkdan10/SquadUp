@@ -17,12 +17,14 @@ class GroupShowPage extends React.Component {
     componentDidMount () {
         const groupId = this.props.match.params.groupId
         this.props.fetchGroup(groupId)
+        window.scrollTo(0, 0)
     }
 
     componentDidUpdate (prevProps) {
         if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
             const groupId = this.props.match.params.groupId
             this.props.fetchGroup(groupId)
+            window.scrollTo(0, 0)
         }
     }
 
