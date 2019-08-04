@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 class LogInComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { username: "", email: "", password: "" }
+        this.state = { username: "", email: "", password: ""}
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.loginDemoUser = this.loginDemoUser.bind(this)
@@ -30,10 +30,35 @@ class LogInComponent extends React.Component {
         e.preventDefault();
         const { email, password } = this.state;
         const { createNewSession } = this.props;
+        let errors = {password: false, email: false}
+        if (!email.length) {
+            this.setState({
+                emailErrors: "Please enter your email address."
+            })
+            errors.email = true
+        }
 
-        createNewSession({
-            email, password
-        })
+        if (!password.length) {
+            this.setState({
+                passwordErrors: "Please enter your password."
+            })
+            errors.password = true
+        }
+
+        if (!errors.password && !errors.email) {
+            this.setState({ passwordErrors: "", emailErrors: ""})
+            createNewSession({
+                email, password
+            })
+        } else {
+            this.setState({password: ""})
+            if (!errors.password) {
+                this.setState({ passwordErrors: ""})
+            }
+            if (!errors.email) {
+                this.setState({ emailErrors: "" })
+            }
+        }
 
     }
 
@@ -44,11 +69,25 @@ class LogInComponent extends React.Component {
     }
 
     render() {
-        const errors = this.props.errors.map(err => {
-            return <li>{err}</li>
-        })
+        let errorsBox = null;
+        if (this.state.emailErrors || this.state.passwordErrors) {
+            errorsBox = (
+                <div className="errors-box">
+                    <h1 className="errors-header">Sorry, there was a problem.</h1>
+                    <p>You'll find more details highlighted below.</p>
+                </div>
+            )
+        } else if (this.props.errors.length) {
+            errorsBox = (
+                <div className="errors-box">
+                    <h1 className="errors-header">Your email or password was entered incorrectly.</h1>
+                </div>
+            )
+        }
+
         return (
             <div className="auth-comp">
+                {errorsBox}
                 <form className="auth-form" onSubmit={this.handleSubmit}>
                     <div className="auth-container">
                         <div className="login-header">
@@ -58,15 +97,13 @@ class LogInComponent extends React.Component {
                         </div>
                         <label htmlFor="email"> Email:
                             <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
+                            <p>{this.state.emailErrors}</p>
                         </label>
                         <br />
                         <label htmlFor="password"> Password:
                             <input onChange={this.handleTextChange("password")} type="password" value={this.state.password} />
+                            <p>{this.state.passwordErrors}</p>
                         </label>
-                        <br/>
-                        <ul>
-                            {errors}
-                        </ul>
                         <br />
                         <input className="login-btn" type="submit" value="Log in" />
 

@@ -20,7 +20,7 @@ class DeleteGroupModal extends React.Component {
 
     deleteGroup(e) {
         this.props.deleteGroup(this.props.groupId).then(() => {
-            this.props.closeModal()
+            this.props.closeModal();
             this.props.history.push("/");
         })
     }
