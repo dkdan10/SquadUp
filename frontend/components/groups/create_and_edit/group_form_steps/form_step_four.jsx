@@ -18,7 +18,13 @@ export default class FormStepFour extends React.Component {
 
         const compToShow = (
             <div className="description-comp">
-                <textarea placeholder="Please describe your group" onChange={this.updateDescription} value={this.state.localDescription}  className="description-textarea"/>
+                <textarea 
+                    placeholder="Please describe your group" 
+                    onChange={this.updateDescription} 
+                    value={this.state.localDescription}  
+                    className="description-textarea"
+                    maxLength="1000" 
+                />
             </div>
         )
 

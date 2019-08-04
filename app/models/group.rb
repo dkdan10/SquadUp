@@ -13,8 +13,10 @@
 #
 
 class Group < ApplicationRecord
-    validates :owner_id, :name, :description, :location_id, presence: true
+    validates :owner_id, :location_id, presence: true
     validates :private, inclusion: { in: [ true, false ] }
+    validates :name, length: {minimum: 5, maximum: 50}, presence: true
+    validates :description, length: {minimum: 20, maximum: 1000}, presence: true
 
     belongs_to :owner,
         class_name: :User

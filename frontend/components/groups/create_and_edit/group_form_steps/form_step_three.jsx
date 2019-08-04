@@ -18,7 +18,14 @@ export default class FormStepThree extends React.Component {
 
         const compToShow = (
             <div className="name-comp">
-                <input placeholder="Enter group name here" onChange={this.updateName} value={this.state.localName} className="name-input" type="text"/>
+                <input 
+                    placeholder="Enter group name here" 
+                    onChange={this.updateName} 
+                    value={this.state.localName} 
+                    className="name-input" 
+                    type="text"
+                    maxLength="50"
+                />
             </div>
         )
 
