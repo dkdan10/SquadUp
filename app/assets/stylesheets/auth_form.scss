@@ -13,14 +13,14 @@
     .errors-box {
         margin: 0 auto;
         background-color: rgb(251, 225, 227);
-        width: 40%;
+        width: 45%;
         text-align: center;
         border: 1px solid red;
         .errors-header {
             color: rgb(204, 0, 0);
             font-size: 34px;
             font-weight: 800;
-            padding: 10px;
+            padding: 20px;
         }
         p {
             font-size: 16px;
@@ -39,6 +39,15 @@
     max-width: 500px;
     overflow: hidden;
     border-radius: 3px;
+    .yellow-border {
+        border: 1px solid rgb(255, 145, 26) !important;
+        margin-bottom: 6px !important;
+    }
+    .signup-error-text {
+        color: rgb(255, 145, 26);
+        font-size: 16px;
+        font-weight: 200;
+    }
     input[type=text], input[type=password] {
         width: 100%;
         padding: 10px;
@@ -82,6 +91,13 @@
         h1, img {
             display: inline;
         }
+    }
+
+    .login-error-text {
+        color: rgb(204, 0, 0);
+        font-size: 16px;
+        padding: 4px;
+        font-weight: 300;
     }
 
     label {

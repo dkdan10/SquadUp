@@ -7,11 +7,22 @@ import { fetchLocations } from "../../actions/loaction_actions";
 class SignUpComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { username: "", email: "", password: "", locationId: 1, selectingLocation: false, locationSearch: "" }
+        this.state = { 
+            username: "", 
+            email: "", 
+            password: "", 
+            locationId: 1, 
+            selectingLocation: false, 
+            locationSearch: "", 
+            usernameErrors: "", 
+            emailErrors: "",
+            passwordErrors: ""  
+        }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleSelectedLocation = this.handleSelectedLocation.bind(this)
         this.toggleSelectLocation = this.toggleSelectLocation.bind(this)
+        this.checkInput = this.checkInput.bind(this)
     }
 
     componentDidMount () {
@@ -28,12 +39,74 @@ class SignUpComponent extends React.Component {
         const location_id = this.state.locationId
         const { createNewUser } = this.props;
 
-        createNewUser({
-            username, email, password, location_id
-        })
-        // .then((res) => {
-        //     this.setState({ username: "", email: "", password: "" });
-        // })
+        if (this.validForm()) {
+            createNewUser({
+                username, email, password, location_id
+            })
+        } else {
+
+        }
+    }
+
+    validForm() {
+        // TRIPLE!
+        let submitForm = true 
+
+        if (!this.state.username.length) {
+            submitForm = false
+            this.setState({ usernameErrors: "Can't be empty" })
+        }
+        if (!this.state.email.length) {
+            submitForm = false
+            this.setState({ emailErrors: "Can't be empty" })
+        } 
+        if (!this.state.password.length)  {
+            submitForm = false
+            this.setState({ passwordErrors: "Can't be empty" })
+        }
+        return submitForm ? (
+            /\S+@\S+\.\S+/.test(this.state.email) ? (
+                this.state.password.length > 5 ? 
+                (
+                    true
+                ) : false
+            ) : (
+                false
+            )
+        ) : (
+            false
+        )
+    }
+
+    checkInput (field) {
+        return e => {
+            const inputValue = e.target.value
+            if (inputValue.length) {
+                switch (field) {
+                    case "usernameErrors":
+                        this.setState({[field]: ""})
+                        break;
+                    case "emailErrors":
+                        if (/\S+@\S+\.\S+/.test(inputValue)) {
+                            this.setState({ [field]: "" })
+                        } else {
+                            this.setState({[field]: "Doesn't look like an email address"})
+                        }
+                        break;
+                    case "passwordErrors":
+                        if (inputValue.length > 5) {
+                            this.setState({ [field]: "" })
+                        } else {
+                            this.setState({ [field]: "Should be at least 6 characters" })
+                        }
+                        break;
+                    default:
+                        return
+                }
+            } else {
+                this.setState({[field]: "Can't be empty"})
+            }
+        }
     }
 
     handleSelectedLocation(locationId) {
@@ -54,9 +127,9 @@ class SignUpComponent extends React.Component {
     }
 
     render() {
-        const errors = this.props.errors.map(err => {
-            return <><li>{err}</li> <br /></>
-        })
+        const emailAlreadyExist = this.props.errors.length ?  (
+            <p className="signup-error-text">This email is already in use. Would you rather <Link to="/login">log in</Link>?</p>
+        ) : null
 
         const {locations} = this.props;
         const filteredLocations = Object.values(locations).filter(location => {
@@ -92,28 +165,46 @@ class SignUpComponent extends React.Component {
                 <div className="auth-container">
                     <h1 className="sign-up-header">Sign Up</h1>
                     <label htmlFor="username"> Username
-                        <input onChange={this.handleTextChange("username")} type="text" value={this.state.username} />
+                        <input 
+                            onBlur={this.checkInput("usernameErrors")} 
+                            onChange={this.handleTextChange("username")} 
+                            type="text" 
+                            value={this.state.username} 
+                            className={ this.state.usernameErrors.length ? "yellow-border" : "" }
+                        />
+                        <p className="signup-error-text">{this.state.usernameErrors}</p>
                     </label>
                     <br />
                     <label htmlFor="email"> Email
-                        <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
+                        <input 
+                            onBlur={this.checkInput("emailErrors")} 
+                            onChange={this.handleTextChange("email")} 
+                            type="text" 
+                            value={this.state.email} 
+                            className={(this.state.emailErrors.length || emailAlreadyExist) ? "yellow-border" : ""}
+                        />
+                        <p className="signup-error-text">{this.state.emailErrors}</p>
+                        {emailAlreadyExist}
                     </label>
                     <br />
                     <label htmlFor="password"> Password
-                        <input onChange={this.handleTextChange("password")} type="password" value={this.state.password} />
+                        <input 
+                            onBlur={this.checkInput("passwordErrors")} 
+                            onChange={this.handleTextChange("password")} 
+                            type="password" 
+                            value={this.state.password} 
+                            className={this.state.passwordErrors.length ? "yellow-border" : ""}
+                        />
+                        <p className="signup-error-text">{this.state.passwordErrors}</p>
                     </label>
                     <br />
                     <div className="location">
-                                <i className="fas fa-map-marker-alt"> <span className="location-text"> {userLocation} <a onClick={this.toggleSelectLocation}>(change)</a></span> </i>                        
+                        <i className="fas fa-map-marker-alt"> <span className="location-text"> {userLocation} <a onClick={this.toggleSelectLocation}>(change)</a></span> </i>                        
                     </div>
                     <br/>
                     <div className="disclaimer1">
                         <p>Your name is public. We'll use your email address to send you updates, and your location to find Squadups near you.</p>
                     </div>
-                    <br/>
-                    <ul>
-                        {errors}
-                    </ul>
                     <br />
                     <input className="sign-up-btn" type="submit" value="Continue" />
                     <br/>

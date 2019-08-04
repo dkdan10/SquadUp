@@ -97,12 +97,12 @@ class LogInComponent extends React.Component {
                         </div>
                         <label htmlFor="email"> Email:
                             <input onChange={this.handleTextChange("email")} type="text" value={this.state.email} />
-                            <p>{this.state.emailErrors}</p>
+                            <p className="login-error-text">{this.state.emailErrors}</p>
                         </label>
                         <br />
                         <label htmlFor="password"> Password:
                             <input onChange={this.handleTextChange("password")} type="password" value={this.state.password} />
-                            <p>{this.state.passwordErrors}</p>
+                            <p className="login-error-text">{this.state.passwordErrors}</p>
                         </label>
                         <br />
                         <input className="login-btn" type="submit" value="Log in" />
