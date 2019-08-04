@@ -24,7 +24,6 @@ class GroupShowPage extends React.Component {
         if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
             const groupId = this.props.match.params.groupId
             this.props.fetchGroup(groupId)
-            window.scrollTo(0, 0)
         }
     }
 
