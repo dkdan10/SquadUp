@@ -7,8 +7,13 @@ export default class AboutShowPage extends React.Component {
 
         const eventLis = this.props.events.map(event => {
 
-            const dateTime = (hours12(event.startTime)) + ":" + (event.startTime.getMinutes() < 10 ? "0" : "") + (event.startTime.getMinutes()) + (event.startTime.getHours() > 11 ? " PM" : " AM")
-            const dateString = event.startTime.toDateString().slice(0, -5) + ", " + dateTime
+            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+            var dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
+
+            const splitTime = event.start_time.split(":")
+            const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")
+            const dateString = dt.toDateString().slice(0, -5) + ", " + dateTime
+
 
             return (
                 <li key={`group-show-events-${event.id}`} className="card-event">
@@ -17,7 +22,7 @@ export default class AboutShowPage extends React.Component {
                             <span className="time">{dateString}</span>
                             <span className="name">{event.name}</span>
                             <span className="description">{event.description}</span>
-                            <span className="location"><i className="fas fa-map-marker-alt"></i>{event.location}</span>
+                            <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
                         </div>
                         <div className="bottom-card">
                             <span className="attendees">{event.attendees} attendees</span>

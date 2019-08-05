@@ -12,12 +12,12 @@
 #  lng          :float
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  start_time   :datetime         not null
-#  end_time     :datetime         not null
+#  start_day    :string
+#  start_time   :string
 #
 
 class Event < ApplicationRecord
-    validates :organizer_id, :group_id, :name, :description, :end_time, :start_time, presence: true
+    validates :organizer_id, :group_id, :name, :description, :start_time, :start_day, presence: true
     validates :lat, :lng, :address, presence: true
 
     belongs_to :group

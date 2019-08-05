@@ -20,3 +20,11 @@ end
 json.location do
     json.extract! @group.location, :id, :name, :lat, :lng
 end
+
+json.events do 
+    @group.events.each do |event|
+        json.set! event.id do
+            json.extract! event, :id, :name, :start_day, :start_time, :description, :address
+        end
+    end
+end

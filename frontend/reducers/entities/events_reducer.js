@@ -1,5 +1,6 @@
 import { merge } from 'lodash'
 import { RECEIVE_ALL_EVENTS, RECEIVE_EVENT, REMOVE_EVENT } from '../../actions/event_actions';
+import { RECEIVE_GROUP } from '../../actions/group_actions';
 
 const dummyEvents = {
         1: {
@@ -37,7 +38,7 @@ const dummyEvents = {
 }
 
 
-export default (state = dummyEvents, action) => {
+export default (state = {}, action) => {
     Object.freeze(state);
 
     switch (action.type) {
@@ -49,6 +50,8 @@ export default (state = dummyEvents, action) => {
             let newState = merge({}, state)
             delete newState[action.eventId]
             return newState 
+        case RECEIVE_GROUP:
+            return Object.assign({}, state, action.groupData.events)
         default:
             return state
     }

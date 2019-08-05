@@ -7,7 +7,10 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "rc-time-picker": "^3.7.1",
     "react": "^16.8.6",
+    "react-dates": "^20.2.5",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
@@ -42,5 +45,9 @@
   "bugs": {
     "url": "https://github.com/dkdan10/SquadUp/issues"
   },
-  "homepage": "https://github.com/dkdan10/SquadUp#readme"
+  "homepage": "https://github.com/dkdan10/SquadUp#readme",
+  "devDependencies": {
+    "css-loader": "^3.1.0",
+    "style-loader": "^0.23.1"
+  }
 }
