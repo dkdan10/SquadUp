@@ -66,6 +66,8 @@ class GroupNavButtons extends React.Component {
     render () {
         const indexText = ["About", "Events", "Members", "Photos", "Discussion", "More"]
 
+        const isOwner = this.props.group.ownerId === this.props.currentUserId
+
         const navLinkLis = indexText.map((text, idx) => {
             return <li key={`show-nav-${idx}`} className={this.props.selectedIndex === idx ? "selected" : ""} onClick={this.props.setSelectedIndex(idx)}>{text}</li>
         })
@@ -79,8 +81,9 @@ class GroupNavButtons extends React.Component {
 
         // TRRIIIIIPLLLLLE TUUUUUUURNary
         const extraDropdown = this.state.showExtraDropdown ? (
-            (this.props.group.ownerId === this.props.currentUserId) ? (
+            (isOwner) ? (
                 < div className="multiple extra-drowpdown-content" >
+                    <Link to={`/groups/${this.props.group.id}/new/event`}>Create Event</Link> 
                     <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
                     <a onClick={() => {this.setState({ showExtraDropdown: false }); dispatch(openModal({type: 'delete-group', groupId: this.props.group.id}));}}>Delete Group</a>
                 </div >
@@ -101,7 +104,7 @@ class GroupNavButtons extends React.Component {
                 <ul className="nav-buttons">
                     {joinLeaveBtn}
                     <div ref={dropdownRef => this.dropdownRef = dropdownRef} className="extra-dropdown-container">
-                        <button ref={dropBtnRef => this.dropBtnRef = dropBtnRef} className="extra-btn">...</button>
+                        <button ref={dropBtnRef => this.dropBtnRef = dropBtnRef} className={isOwner ? "manage-btn" : "extra-btn"}>{isOwner ? "Manage" : "..."}</button>
                         {extraDropdown}
                     </div>
                 </ul>

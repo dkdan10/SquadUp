@@ -8,6 +8,8 @@ import GroupCreateForm from './groups/create_and_edit/create_form_container';
 import GroupShowPage from './groups/show/group_show_page';
 import GroupEditForm from './groups/create_and_edit/edit_form_container';
 
+import EventCreateForm from './events/create_and_edit/event_form'
+
 import Modal from './modals/modal'
 
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
@@ -25,7 +27,9 @@ export const App = () => (
                 <AuthRoute exact path="/signUp" component={SignUpComponent} />
                 <ProtectedRoute exact path="/groups/new" component={GroupCreateForm} />
                 <ProtectedRoute exact path="/groups/:groupId/edit" component={GroupEditForm} />
+                <ProtectedRoute exact path="/groups/:groupId/new/event" component={EventCreateForm} />
                 <Route path="/groups/:groupId" component={GroupShowPage} />
+                
                 <SplashRoute path="/"/>
             </Switch>
             </div>
