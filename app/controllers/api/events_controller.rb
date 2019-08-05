@@ -1,13 +1,14 @@
 class Api::EventsController < ApplicationController
     def index
-        @events = Event.all.where(group_id: params[:group_id])
+        @events = Event.all
         render :index
     end
 
     def create 
-        @event = Event.new(group_params)
+        @event = Event.new(event_params)
         @event[:organizer_id] = current_user.id
-        @event[:group_id] = params[:group_id]
+        @event[:end_time] = params[:event][:start_time]
+        debugger
         if @event.save 
             render :show
         else
@@ -37,6 +38,6 @@ class Api::EventsController < ApplicationController
 
     private
     def event_params
-        params.require(:event).permit(:name, :description, :lat, :lng, :address)
+        params.require(:event).permit(:name, :start_time, :group_id, :description, :lat, :lng, :address)
     end
 end
