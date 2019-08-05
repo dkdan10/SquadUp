@@ -8,7 +8,9 @@ export default class CalenderContent extends React.Component {
 
     render () {
         const eventLis = this.props.events.map(event => {
-            const dateTime = (hours12(event.startTime)) + ":" + (event.startTime.getMinutes() < 10 ? "0" : "") + (event.startTime.getMinutes()) + (event.startTime.getHours() > 11 ? " PM" : " AM")
+
+            const splitTime = event.start_time.split(":")
+            const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")
 
             return (
                 <li key={event.id} className="event-li">

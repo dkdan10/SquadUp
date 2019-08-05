@@ -2,8 +2,12 @@ import React from 'react'
 import { hours12 } from '../../../util/helper_functions';
 
 export const EventScrollerItem = ({event}) => {
-    const dateTime = (hours12(event.startTime)) + ":" + (event.startTime.getMinutes() < 10 ? "0" : "") + (event.startTime.getMinutes()) + (event.startTime.getHours() > 11 ? " PM" : " AM")
-    const dateString = event.startTime.toDateString().slice(0, -5) + ", " + dateTime
+    var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+    var dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
+
+    const splitTime = event.start_time.split(":")
+    const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")
+    const dateString = dt.toDateString().slice(0, -5) + ", " + dateTime
 
     return (
         <li className="card-event">
