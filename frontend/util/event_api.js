@@ -38,3 +38,10 @@ export const deleteEvent= (id) => (
         url: `api/events/${id}`
     })
 )
+
+export const fetchUserGroupEvents = () => (
+    $.ajax({
+        method: "GET",
+        url: `api/current_user/groups/events`
+    })
+)

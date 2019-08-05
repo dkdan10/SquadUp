@@ -57,4 +57,3 @@ g6.members << u4
 g6.members << u5
 
 
-e1 = Event.create!(name: "Craft with Betty!", organizer_id: u6.id, group_id: g6.id, description: "Fun carfting all day with betty!", lat: 0, lng: 0, address: "42 East Equator", start_time: DateTime.now, end_time: DateTime.now )

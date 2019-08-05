@@ -29,6 +29,13 @@ export const deleteEvent = (id) => dispatch => (
         .then(event => dispatch(removeGroup(event.id)))
 )
 
+
+export const fetchUserGroupEvents = () => dispatch => (
+    eventAPI.fetchUserGroupEvents()
+        .then(events => dispatch(recieveEvents(events)))
+)
+
+
 const recieveEvents = (events) => ({
     type: RECEIVE_ALL_EVENTS,
     events

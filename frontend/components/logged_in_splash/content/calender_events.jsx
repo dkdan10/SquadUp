@@ -6,6 +6,7 @@ export default class CalenderContent extends React.Component {
         super (props) 
     }
 
+    
     render () {
         const eventLis = this.props.events.map(event => {
 

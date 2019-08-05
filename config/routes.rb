@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     delete 'groups/remove_member/:id', to: 'groups#destroy_member'
 
     resources :events, only: [:destroy, :show, :index, :create, :update]
+    get 'current_user/groups/events', to: 'events#current_user_group_events'
+
+    get 'current_user', to: 'users#send_current_user'
 
     # Think about nesting events index under users or groups to get a groups/users events
     # instead of using filters. 

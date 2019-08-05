@@ -19,6 +19,11 @@ class Api::UsersController < ApplicationController
         render :show
     end
 
+    def send_current_user
+        @user = current_user
+        render :show
+    end
+
     private
     def user_params
         params.require(:user).permit(:email, :username, :password, :location_id)

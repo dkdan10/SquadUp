@@ -8,10 +8,10 @@ export const LOG_OUT_USER = "LOG_OUT_USER"
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 export const RECIEVE_SESSION_ERRORS = "RECIEVE_SESSION_ERRORS"
 
-export const fetchUsers = () => dispatch => {
-    return userAPI.getAllUsers()
-                    .then(users => {
-                        dispatch(recievedUsers(users))
+export const fetchCurrentUser = () => dispatch => {
+    return userAPI.fetchCurrentUser()
+                    .then(user => {
+                        dispatch(recievedUser(user))
                     })
                     .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
@@ -50,10 +50,10 @@ const recievedUsers = (users) => ({
     users
 })
 
-// const recievedUser = (user) => ({
-//     type: RECIEVE_USER,
-//     user
-// })
+const recievedUser = (user) => ({
+    type: RECIEVE_USER,
+    user
+})
 
 const logInUser = (user) => ({
     type: LOG_IN_USER,

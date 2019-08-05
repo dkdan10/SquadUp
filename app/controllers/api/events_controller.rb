@@ -34,6 +34,11 @@ class Api::EventsController < ApplicationController
         render :show
     end
 
+    def current_user_group_events
+        @events = current_user.joined_group_events
+        render :index
+    end
+
     private
     def event_params
         params.require(:event).permit(:name, :start_day, :start_time, :group_id, :description, :lat, :lng, :address)
