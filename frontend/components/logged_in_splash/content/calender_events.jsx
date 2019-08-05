@@ -6,7 +6,7 @@ export default class CalenderContent extends React.Component {
         super (props) 
     }
 
-    
+
     render () {
         const eventLis = this.props.events.map(event => {
 
@@ -17,7 +17,7 @@ export default class CalenderContent extends React.Component {
                 <li key={event.id} className="event-li">
                     <span className="time">{dateTime}</span>
                     <div className="content">
-                        <span className="group-name">Group Name</span>
+                        <span className="group-name">{event.groupName}</span>
                         <span className="name">{event.name}</span>
                         <span className="attendees">{event.attendees} Members going</span>
                     </div>

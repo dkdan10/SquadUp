@@ -8,7 +8,8 @@ import GroupCreateForm from './groups/create_and_edit/create_form_container';
 import GroupShowPage from './groups/show/group_show_page';
 import GroupEditForm from './groups/create_and_edit/edit_form_container';
 
-import EventCreateForm from './events/create_and_edit/event_form'
+import EventCreateForm from './events/create_and_edit/event_form';
+import EventShowPage from './events/show/event_show_page';
 
 import Modal from './modals/modal'
 
@@ -29,6 +30,7 @@ export const App = () => (
                 <ProtectedRoute exact path="/groups/:groupId/edit" component={GroupEditForm} />
                 <ProtectedRoute exact path="/groups/:groupId/new/event" component={EventCreateForm} />
                 <Route path="/groups/:groupId" component={GroupShowPage} />
+                <Route path="/events/:eventId" component={EventShowPage} />
                 
                 <SplashRoute path="/"/>
             </Switch>

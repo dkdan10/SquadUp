@@ -11,17 +11,17 @@ export const fetchEvents = () => dispatch => (
 
 export const fetchEvent = (id) => dispatch => (
     eventAPI.fetchEvent(id)
-        .then(event => dispatch(recieveEvent(event)))
+        .then(eventData => dispatch(recieveEvent(eventData)))
 )
 
 export const createEvent = (event) => dispatch => (
     eventAPI.createEvent(event)
-        .then(event => dispatch(recieveEvent(event)))
+        .then(eventData => dispatch(recieveEvent(eventData)))
 )
 
 export const updateEvent = (event) => dispatch => (
     eventAPI.updateEvent(event)
-        .then(event => dispatch(recieveEvent(event)))
+        .then(eventData => dispatch(recieveEvent(eventData)))
 )
 
 export const deleteEvent = (id) => dispatch => (
@@ -41,9 +41,9 @@ const recieveEvents = (events) => ({
     events
 })
 
-const recieveEvent = (event) => ({
+const recieveEvent = (eventData) => ({
     type: RECEIVE_EVENT,
-    event
+    eventData
 })
 
 const removeEvent = (eventId) => ({

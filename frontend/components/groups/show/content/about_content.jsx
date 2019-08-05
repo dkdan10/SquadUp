@@ -1,5 +1,6 @@
 import React from 'react'
 import { hours12 } from "../../../../util/helper_functions"
+import {Link} from 'react-router-dom'
 
 export default class AboutShowPage extends React.Component {
 
@@ -16,20 +17,22 @@ export default class AboutShowPage extends React.Component {
 
 
             return (
-                <li key={`group-show-events-${event.id}`} className="card-event">
-                    <ul className="card-content">
-                        <div className="top-card">
-                            <span className="time">{dateString}</span>
-                            <span className="name">{event.name}</span>
-                            <span className="description">{event.description}</span>
-                            <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
-                        </div>
-                        <div className="bottom-card">
-                            <span className="attendees">{event.attendees} attendees</span>
-                            <button className="attend-button">Attend</button>
-                        </div>
-                    </ul>
-                </li>
+                <Link to={`/events/${event.id}`} key={`group-show-events-${event.id}`}>
+                    <li  className="card-event">
+                        <ul className="card-content">
+                            <div className="top-card">
+                                <span className="time">{dateString}</span>
+                                <span className="name">{event.name}</span>
+                                <span className="description">{event.description}</span>
+                                <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
+                            </div>
+                            <div className="bottom-card">
+                                <span className="attendees">{event.attendees} attendees</span>
+                                <button className="attend-button">Attend</button>
+                            </div>
+                        </ul>
+                    </li>
+                </Link>
             )
         })
 
