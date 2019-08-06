@@ -258,8 +258,31 @@
                 }
                 .user-image {
                     font-size: 60px;
+                    position: relative;
                     // background-color: aqua;
                     border-radius: 30px;
+                    cursor: pointer;
+                    .tooltiptext {
+                        visibility: hidden;
+                        background-color: black;
+                        color: #fff;
+                        font-size: 14px;
+                        text-align: center;
+                        border-radius: 6px;
+                        padding: 5px;
+
+                        bottom: 100%;
+                        left: 50%;
+                        margin-left: -29px;
+                        margin-bottom: 3px;
+
+                        /* Position the tooltip */
+                        position: absolute;
+                        z-index: 1;
+                    }
+                    &:hover .tooltiptext {
+                        visibility: visible;
+                    }
                 }
                 .group-organizers {
                     margin-top: 20px;

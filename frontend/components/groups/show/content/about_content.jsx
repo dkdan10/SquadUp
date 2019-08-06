@@ -38,9 +38,13 @@ export default class AboutShowPage extends React.Component {
             )
         })
 
-        let tempUserIcons = []
-        for (let i = 0; (i < this.props.group.memberIds.length) && (i < 15); i++) {
-            tempUserIcons.push(<i key={`member-list-${i}`} className="user-image far fa-user-circle"></i>)          
+        const groupMemberLis = []
+        for (let i = 0; (i < this.props.groupMembers.length) && (i < 15); i++) {
+            groupMemberLis.push(
+                <i key={`member-list-${i}`} className="user-image far fa-user-circle">
+                    <span className="tooltiptext">{this.props.groupMembers[i].username}</span>
+                </i>
+            )          
         }
 
         return (
@@ -71,7 +75,7 @@ export default class AboutShowPage extends React.Component {
                     <div className="group-members">
                         <h2>Members ({this.props.group.memberIds.length})</h2>
                         <ul className="members-list">
-                            {tempUserIcons}
+                            {groupMemberLis}
                         </ul>
                     </div>
                 </div>

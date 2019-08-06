@@ -41,7 +41,7 @@ class GroupShowPage extends React.Component {
                 <GroupNavButtons group={this.props.group} currentUserId={this.props.currentUserId} setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
 
                 <div className="content-container">
-                    <AboutGroup owner={this.props.owner} events={this.props.events} group={this.props.group} />
+                    <AboutGroup groupMembers={this.props.groupMembers} owner={this.props.owner} events={this.props.events} group={this.props.group} />
                 </div>
             </div>
             )
@@ -53,12 +53,18 @@ const msp = (state, ownProps) => {
     const groupId = ownProps.match.params.groupId
     const group = state.entities.groups[groupId]
     if (!group) return {}
+    const groupMembers = [];
+    group.memberIds.forEach(memberId => {
+        const userToAdd = state.entities.users[memberId]
+        if (userToAdd) groupMembers.push(userToAdd)
+    })
     return {
         group: group,
         currentUserId: state.session.currentUserId,
         events: Object.values(state.entities.events),
         location: state.entities.locations[group.locationId],
-        owner: state.entities.users[group.ownerId]
+        owner: state.entities.users[group.ownerId],
+        groupMembers
     }
 }
 
