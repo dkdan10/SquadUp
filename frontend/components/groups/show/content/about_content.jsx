@@ -23,7 +23,9 @@ export default class AboutShowPage extends React.Component {
                             <div className="top-card">
                                 <span className="time">{dateString}</span>
                                 <span className="name">{event.name}</span>
-                                <span className="description">{event.description}</span>
+                                <div className="description-container">
+                                    <span className="description">{event.description}</span>
+                                </div>
                                 <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
                             </div>
                             <div className="bottom-card">
