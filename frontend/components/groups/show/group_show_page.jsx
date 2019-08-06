@@ -58,10 +58,16 @@ const msp = (state, ownProps) => {
         const userToAdd = state.entities.users[memberId]
         if (userToAdd) groupMembers.push(userToAdd)
     })
+    const events = [];
+    group.event_ids.forEach(eventId => {
+        const eventToAdd = state.entities.events[eventId]
+        if (eventToAdd) events.push(eventToAdd)
+    })
+
     return {
         group: group,
         currentUserId: state.session.currentUserId,
-        events: Object.values(state.entities.events),
+        events,
         location: state.entities.locations[group.locationId],
         owner: state.entities.users[group.ownerId],
         groupMembers

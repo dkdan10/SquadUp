@@ -1,6 +1,6 @@
 
 json.group do 
-    json.extract! @group, :id, :name, :description
+    json.extract! @group, :id, :name, :description, :event_ids
     json.locationId @group.location_id
     json.ownerId @group.owner_id
     json.memberIds @group.group_memberships.pluck(:member_id)

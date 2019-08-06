@@ -5,7 +5,7 @@ end
 
 json.group do 
     json.set! @event.group_id do 
-        json.extract! @event.group, :id, :name, :description
+        json.extract! @event.group, :id, :name, :description, :event_ids
     end
 end
 
