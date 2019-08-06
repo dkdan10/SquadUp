@@ -10,7 +10,7 @@ export default (state = {}, action) => {
         case RECEIVE_ALL_EVENTS: 
             return merge({}, action.events)
         case RECEIVE_EVENT:
-            return Object.assign({}, state, {[action.eventData.event.id]: action.eventData.event})
+gi            return Object.assign({}, state, {[action.eventData.event.id]: action.eventData.event})
         case REMOVE_EVENT:
             let newState = merge({}, state)
             delete newState[action.eventId]

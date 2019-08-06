@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     resources :events, only: [:destroy, :show, :index, :create, :update]
     get 'current_user/groups/events', to: 'events#current_user_group_events'
+    post 'events/add_rsvp/:id', to: 'events#add_rsvp'
+    delete 'events/remove_rsvp/:id', to: 'events#remove_rsvp'
 
     get 'current_user', to: 'users#send_current_user'
 

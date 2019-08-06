@@ -7,6 +7,8 @@ export default class ShowEventHeader extends React.Component {
         super(props)
         this.state = { showNav: false }
         this.handleScroll = this.handleScroll.bind(this)
+        this.rsvp = this.rsvp.bind(this)
+        this.unrsvp = this.unrsvp.bind(this)
     }
 
     componentDidMount() {
@@ -25,14 +27,49 @@ export default class ShowEventHeader extends React.Component {
         }
     }
 
+    rsvp (e) {
+        e.preventDefault()
+        if (!this.props.currentUserId) {
+            return
+        }
+        const target = e.target
+        target.disabled = true
+        this.props.rsvpToEvent(this.props.event.id).then(res => {
+            target.disabled = false
+        })
+    }
+
+    unrsvp (e) {
+        e.preventDefault()
+        if (!this.props.currentUserId) {
+            return
+        }
+        const target = e.target
+        target.disabled = true
+        this.props.unrsvpToEvent(this.props.event.id).then(res => {
+            target.disabled = false
+        })
+    }
+
     render () {
-        const { event, group, organizer } = this.props
+        const { event, group, organizer, currentUserId } = this.props
 
         const pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
         const dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
 
-        const classes = this.state.showNav ? 'sticky-div' : 'sticky-div hide'
+        const attendingButtonsDiv = event.user_ids.includes(currentUserId) ? (
+            <div className="attending-buttons">
+                <button className="check"><i className="fas fa-check"></i></button>
+                <button onClick={this.unrsvp} className="nah cancel"><i className="fas fa-skull-crossbones"></i></button>
+            </div>
+        ) : (
+            <div className="attending-buttons">
+                <button onClick={this.rsvp} className="check cancel"><i className="fas fa-check"></i></button>
+                <button className="nah"><i className="fas fa-skull-crossbones"></i></button>
+            </div>
+        )
 
+        const classes = this.state.showNav ? 'sticky-div' : 'sticky-div hide'
         const stickyNav =(
             <div className={classes}>
                 <div className="left-half">
@@ -46,10 +83,7 @@ export default class ShowEventHeader extends React.Component {
                     </div>
                 </div>
                 <div className="right-half">
-                    <div className="attending-buttons">
-                        <button className="check"><i className="fas fa-check"></i></button>
-                        <button className="nah"><i className="fas fa-skull-crossbones"></i></button>
-                    </div>
+                    {attendingButtonsDiv}
                 </div>
             </div>
         ) 
@@ -77,12 +111,9 @@ export default class ShowEventHeader extends React.Component {
                 <div className="right-header">
                     <div className="right-text">
                         <span className="going-question">Are you going?</span>
-                        <span className="members-going">2 people going</span>
+                        <span className="members-going">{event.user_ids.length} people going</span>
                     </div>
-                    <div className="attending-buttons">
-                        <button className="check"><i className="fas fa-check"></i></button>
-                        <button className="nah"><i className="fas fa-skull-crossbones"></i></button>
-                    </div>
+                    {attendingButtonsDiv}
                 </div>
             </div>    
         )

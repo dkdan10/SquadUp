@@ -4,10 +4,12 @@ class Api::EventsController < ApplicationController
         render :index
     end
 
-    def create 
+    def create
         @event = Event.new(event_params)
         @event[:organizer_id] = current_user.id
-        if @event.save 
+        
+        if @event.save
+            @event.users << current_user
             render :show
         else
             render json: @event.errors.full_messages, status: 422
@@ -34,9 +36,23 @@ class Api::EventsController < ApplicationController
         render :show
     end
 
+    # CUSTOM ROUTES
     def current_user_group_events
         @events = current_user.joined_group_events
         render :index
+    end
+
+    # CUSTOM RSVPS
+    def add_rsvp
+        @event = Event.find(params[:id])
+        @event.users << current_user
+        render :show
+    end
+
+    def remove_rsvp
+        @event = Event.find(params[:id])
+        @event.users.delete(current_user)
+        render :show
     end
 
     private

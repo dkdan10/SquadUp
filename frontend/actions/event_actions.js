@@ -41,7 +41,7 @@ const recieveEvents = (events) => ({
     events
 })
 
-const recieveEvent = (eventData) => ({
+export const recieveEvent = (eventData) => ({
     type: RECEIVE_EVENT,
     eventData
 })

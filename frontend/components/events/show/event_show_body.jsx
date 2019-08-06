@@ -1,7 +1,7 @@
 import React from 'react'
 import { hours12 } from '../../../util/helper_functions';
 
-export default class EventShowContent extends React.Component {
+export default class EventShowBody extends React.Component {
 
    
     componentDidMount () {
@@ -30,7 +30,7 @@ export default class EventShowContent extends React.Component {
 
 
     render() {
-        const { event, group, organizer } = this.props
+        const { event, group, organizer, rsvpedMembers } = this.props
 
         const pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
         const dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
@@ -38,6 +38,16 @@ export default class EventShowContent extends React.Component {
         const splitTime = event.start_time.split(":")
         const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")
 
+        const userRspvCards = []
+        for (let i = 0; (i < rsvpedMembers.length) && (i < 8); i++) {
+            userRspvCards.push(
+                <li key={`rsvp-list-${i}`} className="user-card">
+                    <i className="user-image far fa-user-circle"></i>
+                    <span className="user-name">{rsvpedMembers[i].username}</span>
+                    <span className="user-title">Member</span>
+                </li>
+            )
+        }
 
         return (
             <div className="event-show-body-container">
@@ -46,10 +56,10 @@ export default class EventShowContent extends React.Component {
                     <div className="main-content">
                         <h1>Details</h1>
                         <p>{event.description}</p>
-                        <h1 className="attendees-header">Attendees (2)</h1>
-                        <div className="attendees">
-                            
-                        </div>
+                        <h1 className="attendees-header">Attendees ({event.user_ids.length})</h1>
+                        <ul className="attendees">
+                            {userRspvCards}
+                        </ul>
                     </div>
                 </div>
                 <div className="right-side-bar">
