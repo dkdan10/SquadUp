@@ -34,6 +34,7 @@ class GroupShowPage extends React.Component {
     }
 
     render() {
+        if (!this.props.group) return null
         return (
             <div className="group-show-container">
                 <GroupHeader owner={this.props.owner} location={this.props.location} group={this.props.group} />
@@ -50,14 +51,8 @@ class GroupShowPage extends React.Component {
 
 const msp = (state, ownProps) => {
     const groupId = ownProps.match.params.groupId
-    const group = state.entities.groups[groupId] || {
-        id: null,
-        name: "",
-        description: "",
-        locationId: 1,
-        private: false,
-        memberIds: []
-    }
+    const group = state.entities.groups[groupId]
+    if (!group) return {}
     return {
         group: group,
         currentUserId: state.session.currentUserId,

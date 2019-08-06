@@ -17,7 +17,7 @@ export default (state = {}, action) => {
         case RECIEVE_USER: 
             return Object.assign({}, state, { [action.user.id]: action.user })
         case RECEIVE_EVENT:
-            return Object.assign({}, state, action.eventData.rsvpers)
+            return merge({}, state, action.eventData.rsvpers)
         default:
             return state
     }

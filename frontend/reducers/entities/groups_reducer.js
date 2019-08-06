@@ -21,7 +21,7 @@ export default (state = {}, action) => {
             return newState
         }
         case RECEIVE_EVENT:
-            return Object.assign({}, state, action.eventData.group)
+            return merge({}, state, action.eventData.group)
         default:
             return state
     }

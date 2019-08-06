@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { fetchEvent } from '../../../actions/event_actions';
+import EventShowHeader from './event_show_header';
 
 class EventShowPage extends React.Component {
 
@@ -13,19 +14,12 @@ class EventShowPage extends React.Component {
     render () {
         const { event, group, organizer } = this.props
         if (!event) return null
-        debugger
+
         return (
-            <>
-                <h1>{event.name}</h1>
-                <h1>{event.start_day}</h1>
-                <h1>{event.start_time}</h1>
-                <h1>{event.address}</h1>
-                <h1>{event.lat}</h1>
-                <h1>{event.lng}</h1>
-                <h1>{event.description}</h1>
-                <h1>{group.name}</h1>
-                <h1>{organizer.name}</h1>
-            </>
+            <div className="event-show-container">
+                <EventShowHeader event={event} group={group} organizer={organizer} />
+                <EventShowBody event={event} group={group} organizer={organizer} />
+            </div>
         )
     }
 }

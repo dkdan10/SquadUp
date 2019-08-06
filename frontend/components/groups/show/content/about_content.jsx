@@ -8,8 +8,8 @@ export default class AboutShowPage extends React.Component {
 
         const eventLis = this.props.events.map(event => {
 
-            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-            var dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
+            const pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+            const dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
 
             const splitTime = event.start_time.split(":")
             const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")

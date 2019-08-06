@@ -1,0 +1,121 @@
+// HEADER
+.event-show-header {
+    display: flex;
+    height: 170px;
+    justify-content: space-around;
+    background-color: white;
+    border-bottom: 1px solid #888;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+
+    .left-header {
+        width: 40%;
+        display: flex;
+        margin-top: 30px;
+        .calender-box {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(246, 247, 248);
+            height: 54px;
+            width: 54px;
+            text-align: center;
+            justify-content: center;
+            border: 1px solid rgba(46,62,72,.2);
+            border-radius: 8px;
+            .event-day {
+                color: rgb(241, 58, 89);
+                font-size: 20px;
+                font-weight: 700;
+            }
+            .event-month {
+                color: rgba(46,62,72,.6);
+                font-size: 12px;
+                font-weight: 700;
+            }
+        }
+        .event-info {
+            margin-left: 16px;
+            display: flex;
+            flex-direction: column;
+            .full-date {
+                color: rgb(88, 88, 88);
+                font-size: 16px;
+            }
+            .event-name {
+                margin-top: 4px;
+                color: rgb(33, 33, 33);
+                font-size: 32px;
+                font-weight: 900;
+            }
+            .second-info {
+                display: flex;
+                .user-image {
+                    font-size: 48px;
+                    border-radius: 30px;
+                    padding: 10px;
+                    padding-left: 0;
+                }
+                .inner-info {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 14px;
+                    span {
+                        font-size: 14px;
+                        color: rgb(88, 88, 88);
+                        padding: 2px;
+                        .linkable {
+                            color: rgb(0, 152, 171);
+                            &:hover {
+                                text-decoration: underline;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    .right-header {
+        width: 30%;
+        display: flex;
+        height: 50%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-self: center;
+        .right-text {
+            .going-question {
+                color: rgb(33, 33, 33);
+                font-size: 16px;
+                font-weight: 700;
+            }
+            .members-going {
+                color: rgb(88, 88, 88);
+                font-size: 14px;
+                font-weight: 400;
+                margin-left: 12px;
+            }
+        }
+        .attending-buttons {
+            margin-top: 10px;
+            display: flex;
+            button {
+                background-color: rgb(0, 152, 171);
+                font-size: 14px;
+                width: 40%;
+                height: 32px;
+                color: white;
+                border-radius: 6px;
+                border: none;
+                &:hover {
+                    background-color: rgb(0, 129, 145);
+                }
+                cursor: pointer;
+            }
+            .nah {
+                margin-left: 14px;
+            }
+        }
+    }
+}
+
+// MAIN CONTENT
