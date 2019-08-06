@@ -36,7 +36,6 @@ class EventForm extends React.Component {
         e.preventDefault()
 
         if (this.eventValid()) {
-            debugger
             const {name, start_time, start_day, group_id, address, lng, lat, description} = this.state
             this.props.createEvent({
                 name,

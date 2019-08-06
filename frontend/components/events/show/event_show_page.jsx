@@ -14,7 +14,7 @@ class EventShowPage extends React.Component {
 
     render () {
         const { event, group, organizer } = this.props
-        if (!event) return null
+        if (!event || !group || !organizer) return null
 
         return (
             <div className="event-show-container">
