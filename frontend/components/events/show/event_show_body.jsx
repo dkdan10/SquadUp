@@ -3,6 +3,7 @@ import { hours12 } from '../../../util/helper_functions';
 
 export default class EventShowContent extends React.Component {
 
+   
     componentDidMount () {
         const eventLat = this.props.event.lat;
         const evntLng = this.props.event.lng
@@ -24,6 +25,9 @@ export default class EventShowContent extends React.Component {
         });
         marker.setMap(this.map);
     }
+
+    
+
 
     render() {
         const { event, group, organizer } = this.props
