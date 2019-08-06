@@ -3,42 +3,43 @@ import { connect } from 'react-redux'
 import { deleteGroup } from '../../actions/group_actions';
 import {withRouter} from 'react-router-dom'
 import { closeModal } from '../../actions/modal_actions';
+import { deleteEvent } from '../../actions/event_actions';
 
 
-class DeleteGroupModal extends React.Component {
+class DeleteModal extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {confirmText: ""}
         this.updateText = this.updateText.bind(this)
-        this.deleteGroup = this.deleteGroup.bind(this)
+        this.delete = this.delete.bind(this)
     }
 
     updateText (e) {
         this.setState({confirmText: e.target.value})
     }
 
-    deleteGroup(e) {
-        this.props.deleteGroup(this.props.groupId).then(() => {
+    delete(e) {
+        this.props.delete(this.props.idToDelete).then(() => {
             this.props.closeModal();
             this.props.history.push("/");
         })
     }
 
     render () {
-
-        const deleteGroupBtn = (this.state.confirmText === "Delete Group") ? (
-            <button onClick={this.deleteGroup} >Delete Group</button>
+        const {deleteType} = this.props
+        const deleteBtn = (this.state.confirmText === `Delete ${deleteType}`) ? (
+            <button onClick={this.delete} >Delete {deleteType}</button>
         ) : (
-            <button disabled >Delete Group</button>
+            <button disabled >Delete {deleteType}</button>
         )
 
         return (
         <div className="delete-group-modal">
-            <h1>Are you sure? Type "Delete Group" to confirm.</h1>
+            <h1>Are you sure? Type "Delete {deleteType}" to confirm.</h1>
             <div className="delete-fields">
                 <input type="text" onChange={this.updateText} value={this.state.confirmText}/>
-                {deleteGroupBtn}
+                {deleteBtn}
             </div>
         </div>
         )
@@ -47,11 +48,25 @@ class DeleteGroupModal extends React.Component {
 }
 
 
-const mdp = (dispatch) => {
+const mdp = (dispatch, ownProps) => {
+    let deleteMethod = null
+    let idToDelete = null
+    let deleteType = ""
+    if (ownProps.eventId) {
+        deleteMethod = (id) => dispatch(deleteEvent(id))
+        idToDelete = ownProps.eventId
+        deleteType = "Event"
+    } else {
+        deleteMethod = (id) => dispatch(deleteGroup(id))
+        idToDelete = ownProps.groupId
+        deleteType = "Group"
+    }
     return {
-        deleteGroup: (id) => dispatch(deleteGroup(id)),
+        delete: deleteMethod,
+        idToDelete,
+        deleteType,
         closeModal: () => dispatch(closeModal())
     }
 }
 
-export default connect(null, mdp)(withRouter(DeleteGroupModal))
+export default connect(null, mdp)(withRouter(DeleteModal))

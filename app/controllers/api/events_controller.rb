@@ -5,6 +5,7 @@ class Api::EventsController < ApplicationController
     end
 
     def create
+        # Check if event organizer is group_id owner. 
         @event = Event.new(event_params)
         @event[:organizer_id] = current_user.id
         
@@ -17,7 +18,7 @@ class Api::EventsController < ApplicationController
     end
 
     def update
-        @event = Event.find(params[:id])
+        @event = current_user.organized_events.find(params[:id])
         if @event.update_attributes(event_params)
             render :show
         else
@@ -31,7 +32,7 @@ class Api::EventsController < ApplicationController
     end
 
     def destroy
-        @event = Event.find(params[:id])
+        @event = current_user.organized_events.find(params[:id])
         @event.destroy
         render :show
     end

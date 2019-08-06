@@ -2,7 +2,7 @@
 .event-show-header {
     display: flex;
     height: 170px;
-    justify-content: space-around;
+    justify-content: center;
     background-color: white;
     border-bottom: 1px solid #888;
     font-family: PislenFont, Helvetica, Arial, sans-serif;
@@ -23,12 +23,12 @@
         position: fixed;
         top: 0px;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         border-bottom: 1px solid rgba(46, 62, 72, 0.12);
         box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
         .left-half {
-            width: 40%;
+            width: 50%;
             display: flex;
             .calender-box {
                 display: flex;
@@ -69,6 +69,7 @@
         }
         .right-half {
             width: 30%;
+            max-width: 400px;
             .attending-buttons {
                 margin-top: 10px;
                 display: flex;
@@ -103,7 +104,7 @@
 
 
     .left-header {
-        width: 40%;
+        width: 50%;
         display: flex;
         margin-top: 30px;
         .calender-box {
@@ -166,6 +167,15 @@
                             }
                         }
                     }
+                    .delete-event {
+                        margin-top: 4px;
+                        color: rgb(241, 58, 89);
+                        font-size: 12px;
+                        cursor: pointer;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
         }
@@ -173,6 +183,7 @@
     }
     .right-header {
         width: 30%;
+        max-width: 400px;
         display: flex;
         height: 50%;
         flex-direction: column;
@@ -232,11 +243,11 @@
 // MAIN CONTENT
 .event-show-body-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     font-family: PislenFont, Helvetica, Arial, sans-serif;
 
     .left-side-content {
-        width: 40%;
+        width: 50%;
         display: flex;
         .block-spacing {
             height: 54px;
@@ -254,6 +265,7 @@
             }
             p {
                 line-height: 1.2em;
+                width: 80%;
             }
             .attendees-header {
                 padding-top: 40px;
@@ -295,6 +307,7 @@
     }
     .right-side-bar {
         width: 30%;
+        max-width: 400px;
         .location-time-info-container {
             position: sticky;
             top: 100px;

@@ -1,6 +1,4 @@
 import React from 'react'
-import { createEvent } from '../../../actions/event_actions';
-import {connect} from 'react-redux';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -12,22 +10,13 @@ import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 
+import { withRouter } from 'react-router-dom'
 
 class EventForm extends React.Component {
 
     constructor (props) {
         super(props)
-        this.state = {
-            name: "",
-            start_day: null,
-            start_time: "",
-            group_id: this.props.match.params.groupId,
-            address: "",
-            lat: "",
-            lng: "",
-            description: "",
-            errors: ""
-        }
+        this.state = this.props.event
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
         this.setNewLocation = this.setNewLocation.bind(this)
@@ -37,8 +26,8 @@ class EventForm extends React.Component {
         e.preventDefault()
 
         if (this.eventValid()) {
-            const {name, start_time, start_day, group_id, address, lng, lat, description} = this.state
-            this.props.createEvent({
+            const {name, start_time, start_day, group_id, address, lng, lat, description, id} = this.state
+            this.props.action({
                 name,
                 start_day: moment(start_day).format("YYYY/MM/DD"),
                 start_time,
@@ -46,7 +35,8 @@ class EventForm extends React.Component {
                 address,
                 lng,
                 lat,
-                description
+                description,
+                id
             }).then((res) => {
                 this.props.history.push(`/events/${res.eventData.event.id}`)
             })
@@ -98,11 +88,11 @@ class EventForm extends React.Component {
     }
 
     render () {
-
+        const {editForm} = this.props
         return (
             <>
             <div className="event-form-header">
-                <h1>Create a New Group Event!</h1>
+                <h1>{editForm ? "Edit your Event!" : "Create a New Group Event!" }</h1>
             </div>
             <div className="event-form-container">
                 <form className="event-form" onSubmit={this.handleSubmit}>
@@ -173,7 +163,7 @@ class EventForm extends React.Component {
                     </div>
                     
                     <span className="errors">{this.state.errors}</span>
-                    <input className="sign-up-btn" type="submit" value="Create Event!" />
+                    <input className="sign-up-btn" type="submit" value={editForm ? "Update Event!" : "Create Event!"} />
                 </form>
             </div>
             </>
@@ -182,10 +172,4 @@ class EventForm extends React.Component {
 }
 
 
-const mdp = (dispatch) => {
-    return {
-        createEvent: (event) => dispatch(createEvent(event))
-    }
-}
-
-export default connect(null, mdp)(EventForm)
+export default withRouter(EventForm)

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const GroupScrollerItem = ({ group }) => {
-    if (!group.memberIds) return null14
+    if (!group.memberIds) return null
     return (
         <li className="card-group">
             <ul className="card-content">

@@ -4,6 +4,7 @@ import { fetchEvent } from '../../../actions/event_actions';
 import EventShowHeader from './event_show_header';
 import EventShowBody from './event_show_body';
 import { rsvpToEvent, unrsvpFromEvent } from '../../../actions/rsvp_event_actions';
+import moment from 'moment'
 
 class EventShowPage extends React.Component {
 
@@ -13,9 +14,17 @@ class EventShowPage extends React.Component {
         window.scrollTo(0, 0)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.eventId !== this.props.match.params.eventId) {
+            const eventId = this.props.match.params.eventId
+            this.props.fetchEvent(eventId)
+        }
+    }
+
     render () {
         const { event, group, organizer, rsvpedMembers, currentUserId, rsvpToEvent, unrsvpToEvent } = this.props
         if (!event || !group || !organizer) return null
+        if (!(event.start_day instanceof String)) event.start_day = moment(event.start_day).format("YYYY/MM/DD")
 
         return (
             <div className="event-show-container">

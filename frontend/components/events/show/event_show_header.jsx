@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
+import { openModal } from '../../../actions/modal_actions';
 
 class ShowEventHeader extends React.Component {
 
@@ -60,6 +61,8 @@ class ShowEventHeader extends React.Component {
         const dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
 
         const isAttending = event.user_ids.includes(currentUserId)
+        const isOrganizer = (organizer.id === currentUserId)
+
         const attendingButtonsDiv = isAttending ? (
             <div className="attending-buttons">
                 <button className="check"><i className="fas fa-check"></i></button>
@@ -97,6 +100,12 @@ class ShowEventHeader extends React.Component {
             </div>
         ) 
 
+        const hostedByLink = isOrganizer ? (
+            <>you. <Link to={`/events/${event.id}/edit`} className="linkable">Edit Event</Link></>
+        ) : (
+            <span className="linkable">{organizer.username}</span>
+        )
+
         return (
             <div className="event-show-header">
                 {stickyNav}
@@ -111,8 +120,13 @@ class ShowEventHeader extends React.Component {
                         <div className="second-info">
                             <i className="user-image far fa-user-circle"></i>
                             <div className="inner-info">
-                                <span className="host-info">Hosted by <span className="linkable">{organizer.username}</span></span>
+                                <span className="host-info">Hosted by {hostedByLink}</span>
                                 <span className="group-info">From <Link to={`/groups/${group.id}`} className="linkable">{group.name}</Link></span>
+                                {isOrganizer ? (
+                                    <span 
+                                        onClick={() => { dispatch(openModal({ type: 'delete-event', eventId: event.id })); }}
+                                    className="delete-event">Delete Event</span>
+                                ) : null }
                             </div>
                         </div>
                     </div>

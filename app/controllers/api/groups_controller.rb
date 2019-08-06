@@ -16,7 +16,7 @@ class Api::GroupsController < ApplicationController
     end
 
     def update
-        @group = Group.find(params[:id])
+        @group = current_user.owned_groups.find(params[:id])
         if @group.update_attributes(group_params)
             render :show
         else
@@ -30,7 +30,7 @@ class Api::GroupsController < ApplicationController
     end
 
     def destroy
-        @group = Group.find(params[:id])
+        @group = current_user.owned_groups.find(params[:id])
         @group.destroy
         render :show
     end

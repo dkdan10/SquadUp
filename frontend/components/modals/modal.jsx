@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import DeleteGroupModal from './delete_group_modal';
+import DeleteModal from './delete_group_modal';
 
 const Modal = ({modal, closeModal}) => {
   if (!modal) {
@@ -10,7 +10,10 @@ const Modal = ({modal, closeModal}) => {
   let component;
   switch (modal.type) {
     case 'delete-group':
-      component = <DeleteGroupModal groupId={modal.groupId}/>;
+      component = <DeleteModal groupId={modal.groupId}/>;
+      break;
+    case 'delete-event':
+      component = <DeleteModal eventId={modal.eventId} />;
       break;
     default:
       return null;

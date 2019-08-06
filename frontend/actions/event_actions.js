@@ -26,7 +26,7 @@ export const updateEvent = (event) => dispatch => (
 
 export const deleteEvent = (id) => dispatch => (
     eventAPI.deleteEvent(id)
-        .then(event => dispatch(removeGroup(event.id)))
+        .then(event => dispatch(removeEvent(event.id)))
 )
 
 

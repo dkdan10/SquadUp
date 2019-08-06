@@ -87,13 +87,14 @@
 
 .event-form-header {
     font-family: PislenFont, Helvetica, Arial, sans-serif;
-    height: 500px;
+    height: 400px;
     width: 100%;
     overflow: hidden;
     background-image: url(https://secure.meetupstatic.com/img/start_v2/dweb_hero.jpg);
+    background-position: 0 -200px;
     h1 {
         text-align: center;
-        margin-top: 250px;
+        margin-top: 200px;
         color: white;
         font-size: 56px;
         font-weight: 700;
