@@ -119,3 +119,71 @@
 }
 
 // MAIN CONTENT
+.event-show-body-container {
+    display: flex;
+    justify-content: space-around;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+
+    .left-side-content {
+        width: 40%;
+        display: flex;
+        .block-spacing {
+            height: 54px;
+            width: 54px;
+        }
+        .main-content {
+            padding-top: 40px; 
+            margin-left: 16px;
+            h1 {
+                color: rgb(33, 33, 33);
+                font-size: 20px;
+                font-weight: 700;
+                padding-bottom: 20px;
+            }
+            .attendees-header {
+                padding-top: 40px;
+            }
+        }
+    }
+    .right-side-bar {
+        width: 30%;
+        .location-time-info-container {
+            background-color: white;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            .time-info {
+                display: flex;
+                padding: 10px 0;
+                color: rgb(33, 33, 33);
+                font-size: 14px;
+                i { 
+                    text-align: center;
+                    font-size: 20px;
+                    color: rgb(88, 88, 88);
+                    width: 15%;
+                }
+                .time {
+                    margin-top: 4px;
+                }
+            }
+            .location-info {
+                display: flex;
+                padding: 10px 0;
+                color: rgb(33, 33, 33);
+                font-size: 14px;
+                i { 
+                    text-align: center;
+                    font-size: 20px;
+                    color: rgb(88, 88, 88);
+                    width: 15%;
+                }
+            }
+            .map {
+                width: 100%;
+                height: 220px;
+            }
+        }  
+    }
+}

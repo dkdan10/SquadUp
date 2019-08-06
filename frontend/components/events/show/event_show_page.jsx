@@ -1,7 +1,8 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
 import { fetchEvent } from '../../../actions/event_actions';
 import EventShowHeader from './event_show_header';
+import EventShowBody from './event_show_body';
 
 class EventShowPage extends React.Component {
 
