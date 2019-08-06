@@ -1,7 +1,7 @@
 import React from 'react'
+import {withRouter, Link} from 'react-router-dom'
 
-
-export default class ShowEventHeader extends React.Component {
+class ShowEventHeader extends React.Component {
 
     constructor(props) {
         super(props)
@@ -30,6 +30,7 @@ export default class ShowEventHeader extends React.Component {
     rsvp (e) {
         e.preventDefault()
         if (!this.props.currentUserId) {
+            this.props.history.push('/login')
             return
         }
         const target = e.target
@@ -42,6 +43,7 @@ export default class ShowEventHeader extends React.Component {
     unrsvp (e) {
         e.preventDefault()
         if (!this.props.currentUserId) {
+            this.props.history.push('/login')
             return
         }
         const target = e.target
@@ -57,7 +59,8 @@ export default class ShowEventHeader extends React.Component {
         const pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
         const dt = new Date(event.start_day.replace(pattern, '$3-$2-$1'));
 
-        const attendingButtonsDiv = event.user_ids.includes(currentUserId) ? (
+        const isAttending = event.user_ids.includes(currentUserId)
+        const attendingButtonsDiv = isAttending ? (
             <div className="attending-buttons">
                 <button className="check"><i className="fas fa-check"></i></button>
                 <button onClick={this.unrsvp} className="nah cancel"><i className="fas fa-skull-crossbones"></i></button>
@@ -67,6 +70,12 @@ export default class ShowEventHeader extends React.Component {
                 <button onClick={this.rsvp} className="check cancel"><i className="fas fa-check"></i></button>
                 <button className="nah"><i className="fas fa-skull-crossbones"></i></button>
             </div>
+        )
+
+        const attendingText = isAttending ? (
+            <span className="attending-subtext">You are attending</span>
+        ) : (
+            <span className="attending-subtext">You are not attending</span>
         )
 
         const classes = this.state.showNav ? 'sticky-div' : 'sticky-div hide'
@@ -103,7 +112,7 @@ export default class ShowEventHeader extends React.Component {
                             <i className="user-image far fa-user-circle"></i>
                             <div className="inner-info">
                                 <span className="host-info">Hosted by <span className="linkable">{organizer.username}</span></span>
-                                <span className="group-info">From <span className="linkable">{group.name}</span></span>
+                                <span className="group-info">From <Link to={`/groups/${group.id}`} className="linkable">{group.name}</Link></span>
                             </div>
                         </div>
                     </div>
@@ -114,8 +123,11 @@ export default class ShowEventHeader extends React.Component {
                         <span className="members-going">{event.user_ids.length} people going</span>
                     </div>
                     {attendingButtonsDiv}
+                    {attendingText}
                 </div>
             </div>    
         )
     }
 }
+
+export default withRouter(ShowEventHeader)

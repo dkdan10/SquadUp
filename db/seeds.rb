@@ -12,12 +12,14 @@ Location.destroy_all
 Group.destroy_all
 GroupMembership.destroy_all
 Event.destroy_all
+EventRsvp.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('locations')
 ActiveRecord::Base.connection.reset_pk_sequence!('groups')
 ActiveRecord::Base.connection.reset_pk_sequence!('group_memberships')
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
+ActiveRecord::Base.connection.reset_pk_sequence!('event_rsvps')
 
 l1 = Location.create!(name: "New York, NY", lat: 10, lng: 10)
 l2 = Location.create!(name: "San Fransico, SF", lat: 30, lng: 20)
@@ -55,5 +57,41 @@ g6.members << u2
 g6.members << u3
 g6.members << u4
 g6.members << u5
+g6.members << u6
 
+demoG = Group.create!(name:"Demo User's Group!", description:"This is a group for the demo user to play around with!", location_id: l2.id, private: false, owner_id: demoU.id)
 
+demoG.members << demoU
+demoG.members << u1
+demoG.members << u2
+demoG.members << u3
+demoG.members << u4
+demoG.members << u5
+demoG.members << u6
+
+demoE = Event.create!(name: "Party at the Academy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+
+Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
+
+Donec ut metus eleifend, ultricies eros nec, feugiat nunc. Aenean dignissim arcu vitae dolor porttitor, at scelerisque diam fermentum. Fusce at arcu risus. Quisque vel eleifend velit. Proin et sem at libero finibus vestibulum. Maecenas in nibh ipsum. Fusce vel enim convallis, ornare ipsum vitae, tristique leo. Mauris ultricies quis sapien vitae viverra. Donec sed varius lorem. Nunc lacinia a orci sed rhoncus.
+
+Proin ante magna, hendrerit imperdiet dui sed, sodales vulputate orci. Nulla vel tempor arcu. Proin suscipit non velit sit amet sollicitudin. Sed mollis convallis lectus a aliquet. Nam vitae nibh posuere, dapibus metus ut, lacinia justo. Nullam tempus augue sed venenatis consectetur. Nulla bibendum erat erat. Donec eget tellus vitae nulla efficitur sagittis nec ac tellus. Nam laoreet orci non magna blandit facilisis. Vestibulum in elementum odio, quis ornare dui. Ut vitae mollis tellus, quis consequat ante. Nulla egestas vitae sem sit amet lobortis. Nullam nec augue congue, tempus massa eget, gravida turpis. In euismod arcu nibh, id viverra augue maximus eget. Donec sapien ligula, semper sed vestibulum et, posuere pretium dolor.
+
+Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finibus sem id ultrices. Vestibulum tincidunt eros ut mi malesuada ultricies. Maecenas suscipit nulla turpis, in imperdiet quam aliquam et. Sed euismod consequat eros sit amet interdum. Phasellus lacus nisl, eleifend in eleifend ac, gravida et sem. Quisque sed lectus sit amet dui porttitor dapibus eget eget ligula. Phasellus tristique orci sed feugiat blandit. Etiam pulvinar tortor et libero congue, vel mollis nisl varius. Quisque efficitur nibh quam, et auctor est maximus a.
+
+",
+address: "22 W 38th St, New York, NY 10018, USA",
+lat: 40.7513597,
+lng: -73.9839223,
+start_day: "2019/08/13",
+start_time: "12:50",
+group_id: demoG.id,
+organizer_id: demoU.id
+)
+demoE.users << u1
+demoE.users << u2
+demoE.users << u3
+demoE.users << u4
+demoE.users << u5
+demoE.users << u6
+demoE.users << demoU

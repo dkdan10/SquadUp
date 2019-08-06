@@ -1,6 +1,6 @@
 import * as eventAPI from '../util/event_api'
 
-export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS"
+export const RECEIVE_EVENTS = "RECEIVE_EVENTS"
 export const RECEIVE_EVENT = "RECEIVE_EVENT"
 export const REMOVE_EVENT = "REMOVE_EVENT"
 
@@ -37,7 +37,7 @@ export const fetchUserGroupEvents = () => dispatch => (
 
 
 const recieveEvents = (events) => ({
-    type: RECEIVE_ALL_EVENTS,
+    type: RECEIVE_EVENTS,
     events
 })
 

@@ -1,3 +1,6 @@
+#event_date_picker {
+    margin-top: 0px;
+}
 .event-form-container {
     width: 70%;
     margin: 0 auto;
@@ -59,6 +62,13 @@
                 }
             }
         }
+
+        .errors {
+            text-align: center;
+            color: red;
+            margin: 10px 0;
+        }
+
         input[type="submit"] {
             align-self: center;
             border-radius: 4px;

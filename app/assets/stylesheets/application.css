@@ -32,6 +32,7 @@ html {
 
 .all-content {
     min-height: 75vh;
+    padding-bottom: 25px;
 }
 
 .modal-background {

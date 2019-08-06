@@ -15,11 +15,13 @@ export const EventScrollerItem = ({event}) => {
                 <div className="top-card">
                     <span className="time">{dateString}</span>
                     <span className="name">{event.name}</span>
-                    <span className="description">{event.description}</span>
-                    <span className="location"><i className="fas fa-map-marker-alt"></i>{event.location}</span>
+                    <div className="description-container">
+                        <span className="description">{event.description}</span>
+                    </div>
+                    <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
                 </div>
                 <div className="bottom-card">
-                    <span className="attendees">{event.attendees} attendees</span>
+                    <span className="attendees">{event.user_ids.length} attendees</span>
                     <button className="attend-button">Attend</button>
                 </div>
             </ul>

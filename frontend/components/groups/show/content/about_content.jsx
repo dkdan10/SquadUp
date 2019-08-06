@@ -27,7 +27,7 @@ export default class AboutShowPage extends React.Component {
                                 <span className="location"><i className="fas fa-map-marker-alt"></i>{event.address}</span>
                             </div>
                             <div className="bottom-card">
-                                <span className="attendees">{event.attendees} attendees</span>
+                                <span className="attendees">{event.user_ids.length} attendees</span>
                                 <button className="attend-button">Attend</button>
                             </div>
                         </ul>

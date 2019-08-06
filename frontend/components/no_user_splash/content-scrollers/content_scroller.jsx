@@ -9,19 +9,23 @@ export default class ContentScroller extends React.Component {
     componentWillMount () {
         if (this.props.contentType !== "events") {
             this.props.fetchGroups()
+        } else {
+            this.props.fetchAllEvents()
         }
     }
 
     render() {
         const contentLis = this.props.contentType === "events" ? (
             this.props.events.map(event => (
-                <EventScrollerItem key={event.id} event={event}/>
+                <Link to={`/events/${event.id}`} key={`event-scroller-${event.id}`}>
+                    <EventScrollerItem event={event}/>
+                </Link>
             ))
         )
         :
         (
             this.props.groups.map(group => (
-                <Link to={`/groups/${group.id}`} key={group.id}>
+                <Link to={`/groups/${group.id}`} key={`group-scroller-${group.id}`}>
                     <GroupScrollerItem group={group} />
                 </Link>
             ))

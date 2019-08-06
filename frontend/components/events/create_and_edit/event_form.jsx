@@ -25,7 +25,8 @@ class EventForm extends React.Component {
             address: "",
             lat: "",
             lng: "",
-            description: ""
+            description: "",
+            errors: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -46,12 +47,14 @@ class EventForm extends React.Component {
                 lng,
                 lat,
                 description
-            }).then(() => this.props.history.push(`/groups/${this.state.group_id}`))
+            }).then((res) => {
+                this.props.history.push(`/events/${res.eventData.event.id}`)
+            })
         }
     }
 
     eventValid() {
-        return (this.state.name.length 
+        if (this.state.name.length 
             && 
             this.state.start_time !== "" 
             && 
@@ -65,7 +68,12 @@ class EventForm extends React.Component {
             &&
             this.state.lat !== ""
             &&
-            this.state.description.length)
+            this.state.description.length) {
+                return true
+            } else {
+                this.setState({errors: "Fill out the entire form before sumbiting!"})
+            }
+            
     }
 
     handleInputChange(field) {
@@ -164,6 +172,7 @@ class EventForm extends React.Component {
                         </div>
                     </div>
                     
+                    <span className="errors">{this.state.errors}</span>
                     <input className="sign-up-btn" type="submit" value="Create Event!" />
                 </form>
             </div>

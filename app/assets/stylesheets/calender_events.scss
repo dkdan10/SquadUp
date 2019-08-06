@@ -3,56 +3,59 @@
     margin: 0 10px;
     border-radius: 3px;
     width: 70%;
-
-    .event-li:last-child {
-        border: 1px solid #888;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
-    .event-li:first-child {
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-    }
-    .event-li {
-        cursor: pointer;
-        display: flex;
-        padding: 10px;
-        background-color: white;
-        line-height: 25px;
-
-        border: 1px solid #888;
-        border-bottom: 0;
-        
-
-        .time {
-            color: rgba(0,0,0,.54);
-            font-size: 16px;
-
+    .event-link {
+        text-decoration: none;
+        .event-li:last-child {
+            border: 1px solid #888;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
         }
-        .content {
-            margin-left: 14px;
-            .group-name {
-                display: block;
-                color: rgba(0,0,0,.54);
-                font-size: 15px;
-                font-weight: 600;
-                word-spacing: 1.3px;
-            }
-            .name {
-                display: block;
-                font-size: 20px;
-                font-weight: 600;
-            }
-            .attendees {
-                display: block;
+        .event-li:first-child {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+        .event-li {
+            color: black;
+            cursor: pointer;
+            display: flex;
+            padding: 10px;
+            background-color: white;
+            line-height: 25px;
+
+            border: 1px solid #888;
+            border-bottom: 0;
+            
+            .time {
                 color: rgba(0,0,0,.54);
                 font-size: 16px;
             }
+            .content {
+                margin-left: 14px;
+                .group-name {
+                    display: block;
+                    color: rgba(0,0,0,.54);
+                    font-size: 15px;
+                    font-weight: 600;
+                    word-spacing: 1.3px;
+                }
+                .name {
+                    display: block;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                .attendees {
+                    display: block;
+                    color: rgba(0,0,0,.54);
+                    font-size: 16px;
+                }
+            }
+            
+
         }
-        
+
+
 
     }
-
 }
 
 .splash-calender-container {

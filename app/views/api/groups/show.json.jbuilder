@@ -24,7 +24,7 @@ end
 json.events do 
     @group.events.each do |event|
         json.set! event.id do
-            json.extract! event, :id, :name, :start_day, :start_time, :description, :address, :group_id, :organizer_id, :lat, :lng
+            json.extract! event, :id, :name, :start_day, :start_time, :description, :address, :group_id, :organizer_id, :lat, :lng, :user_ids
         end
     end
 end
