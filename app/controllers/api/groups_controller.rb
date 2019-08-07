@@ -1,6 +1,9 @@
 class Api::GroupsController < ApplicationController
     def index
-        @groups = Group.all.includes(:location)
+        @groups = Group.includes(:members, :events, :location).all
+         if params[:search]
+            @groups = @groups.where("lower(groups.name) like '%#{params[:search].downcase}%' OR lower(groups.description) like '%#{params[:search].downcase}%' ")
+        end
         render :index
     end
 

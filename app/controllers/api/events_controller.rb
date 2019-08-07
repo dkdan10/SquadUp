@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
     def index
-        @events = Event.all.order(:start_day).order(:start_time)
+        @events = Event.includes(:users, :group).all.order(:start_day).order(:start_time)
         if params[:search]
             @events = @events.where("lower(events.name) like '%#{params[:search].downcase}%' OR lower(events.description) like '%#{params[:search].downcase}%'a ")
         end
@@ -43,7 +43,7 @@ class Api::EventsController < ApplicationController
 
     # CUSTOM ROUTES
     def current_user_group_events
-        @events = current_user.joined_group_events.order(:start_day).order(:start_time)
+        @events = current_user.joined_group_events.includes(:users, :group).order(:start_day).order(:start_time)
         if params[:search]
             @events = @events.where("lower(events.name) like '%#{params[:search].downcase}%' OR lower(events.description) like '%#{params[:search].downcase}%' ")
         end

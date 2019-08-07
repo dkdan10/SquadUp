@@ -11,7 +11,10 @@ export default class SplashSearch extends React.Component {
             search: ""
         }
         this.updateField = this.updateField.bind(this)
-        this._debouncedSearch = debounce(() => this.props.fetchUserGroupEvents(this.state.search), 500);
+        this._debouncedSearch = debounce(() => {
+                this.props.fetchUserGroupEvents()
+                this.props.fetchGroups()
+            }, 500);
     }
     
     

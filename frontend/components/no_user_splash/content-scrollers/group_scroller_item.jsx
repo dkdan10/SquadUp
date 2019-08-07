@@ -14,7 +14,7 @@ export const GroupScrollerItem = ({ group }) => {
                         <div className="description-container">
                             <span className="description">{group.description}</span>
                         </div>
-                        <span className="event-counts">{group.numberOfEvents} upcoming events</span>
+                        <span className="event-counts">{group.event_ids.length} upcoming events</span>
                     </div>
                     <div className="bottom-card">
                         <span className="members">{group.memberIds.length} members</span>

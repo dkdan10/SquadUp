@@ -1,12 +1,12 @@
 import * as groupAPI from '../util/group_api'
 
-export const RECEIVE_ALL_GROUPS = "RECEIVE_ALL_GROUPS"
+export const RECEIVE_GROUPS = "RECEIVE_GROUPS"
 export const RECEIVE_GROUP = "RECEIVE_GROUP"
 export const REMOVE_GROUP = "REMOVE_GROUP"
 
-export const fetchGroups = () => dispatch => (
-    groupAPI.fetchGroups()
-        .then(groups => dispatch(recieveGroups(groups)))
+export const fetchGroups = () => (dispatch, state) => (
+    groupAPI.fetchGroups(state.ui.filters)
+        .then(groupsData => dispatch(recieveGroups(groupsData)))
 )
 
 export const fetchGroup = (id) => dispatch => (
@@ -29,9 +29,9 @@ export const deleteGroup = (id) => dispatch => (
         .then(groupData => dispatch(removeGroup(groupData.group.id)))
 )
 
-const recieveGroups = (groups) => ({
-    type: RECEIVE_ALL_GROUPS,
-    groups
+const recieveGroups = (groupsData) => ({
+    type: RECEIVE_GROUPS,
+    groupsData
 })
 
 export const recieveGroup = (groupData) => ({

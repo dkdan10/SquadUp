@@ -44,6 +44,7 @@ class Splash extends React.Component {
                     toggleSelected={this.toggleSelected}
                     fetchUserGroupEvents={this.props.fetchUserGroupEvents}
                     updateSearchFilter={this.props.updateSearchFilter}
+                    fetchGroups={this.props.fetchGroups}
                 />
                 {contentComp}
             </>
@@ -67,6 +68,7 @@ const mSP = state => {
     let otherGroups = [];
     if (currentUser.group_ids) {
         Object.values(state.entities.groups).forEach(group => {
+            if (!state.ui.lastFetched.groupIds.includes(group.id)) return
             if (currentUser.group_ids.includes(group.id)) {
                 myGroups.push(group)
             } else {
