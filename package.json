@@ -10,6 +10,7 @@
     "moment": "^2.24.0",
     "rc-time-picker": "^3.7.1",
     "react": "^16.8.6",
+    "react-calendar": "^2.19.0",
     "react-dates": "^20.2.5",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

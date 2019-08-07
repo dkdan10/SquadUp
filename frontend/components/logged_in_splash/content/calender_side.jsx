@@ -1,10 +1,21 @@
 import React from 'react'
-import ReactCalender from './react_calender';
-
+import Calendar from 'react-calendar'
 
 export default class CalenderSide extends React.Component {
 
+    constructor (props) {
+        super(props)
+        this.state = {date: this.props.selectedDate.toDate() }
+        this.setNewDate = this.setNewDate.bind(this)
+    }
+
+    setNewDate (date) {
+        this.setState({date: date})
+        this.props.setNewDate(date)
+    }
+
     render() {
+
         const liContent = ["All upcoming events", "Your groups only", "Your events only"]
         const lis = liContent.map((liCont, idx) => {
             return this.props.filterSelectedIndex === idx ? (
@@ -20,10 +31,9 @@ export default class CalenderSide extends React.Component {
                     {lis}
                 </ul>
                 <div className="calender">
-                    <ReactCalender 
-                        // className="the-react-calender"
-                        initialDate={this.props.selectedDate}
-                        setParentDate={this.props.setNewDate}
+                    <Calendar
+                        onChange={this.setNewDate}
+                        value={this.state.date}
                     />
                 </div>
             </div>

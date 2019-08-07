@@ -20,12 +20,12 @@ export default class Calender extends React.Component {
 
     setNewDate(date) {
         this.setState({ selectedDate: date })
+        console.log(date)
     }
     
     render() {
         return (
             <div className="splash-calender-container">
-                {/* {this.state.selectedDate.format("YYYY/MM/DD")} */}
                 <CalenderEvents events={this.props.events} />
                 <CalenderSide 
                     toggleSelected={this.toggleSelected} 
