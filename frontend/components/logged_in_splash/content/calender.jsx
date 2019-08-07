@@ -26,7 +26,7 @@ export default class Calender extends React.Component {
     render() {
         return (
             <div className="splash-calender-container">
-                <CalenderEvents events={this.props.events} />
+                <CalenderEvents events={this.props.events} selectedDate={this.state.selectedDate}/>
                 <CalenderSide 
                     toggleSelected={this.toggleSelected} 
                     filterSelectedIndex={this.state.filterSelectedIndex}

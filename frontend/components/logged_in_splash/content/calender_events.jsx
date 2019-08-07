@@ -32,6 +32,8 @@ export default class CalenderContent extends React.Component {
             
             const currentEventDay = new Date(event.start_day) 
 
+            if (currentEventDay < this.props.selectedDate) return
+
             // Check if same day
             if (!sameDay(lastEventDay, currentEventDay) || idx === 0) {
                 if (idx !== 0) {
