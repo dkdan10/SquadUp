@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {GroupHeader} from './header_show'
 import GroupNavButtons from './group_nav_buttons'
 import AboutGroup from './content/about_content'
+import EventGroup from './content/event_content'
 
 class GroupShowPage extends React.Component {
 
@@ -35,13 +36,27 @@ class GroupShowPage extends React.Component {
 
     render() {
         if (!this.props.group || !this.props.location || !this.props.owner) return null
+
+        let contentToShow = null
+        
+        switch (this.state.selectedIndex) {
+            case 0:
+                contentToShow = <AboutGroup groupMembers={this.props.groupMembers} owner={this.props.owner} events={this.props.events} group={this.props.group} />
+                break;
+            case 1:
+                contentToShow = <EventGroup group={this.props.group} events={this.props.events} owner={this.props.owner} currentUserId={this.props.currentUserId} />
+                break;
+            default:
+                contentToShow = null
+        }
+
         return (
             <div className="group-show-container">
                 <GroupHeader owner={this.props.owner} location={this.props.location} group={this.props.group} />
                 <GroupNavButtons group={this.props.group} currentUserId={this.props.currentUserId} setSelectedIndex={this.setSelectedIndex} selectedIndex={this.state.selectedIndex} />
 
                 <div className="content-container">
-                    <AboutGroup groupMembers={this.props.groupMembers} owner={this.props.owner} events={this.props.events} group={this.props.group} />
+                    {contentToShow}
                 </div>
             </div>
             )
@@ -64,10 +79,16 @@ const msp = (state, ownProps) => {
         if (eventToAdd) events.push(eventToAdd)
     })
 
+    const comparator = (a, b) => {
+        const dateA = new Date(`${a.start_day} ${a.start_time}`)
+        const dateB = new Date(`${b.start_day} ${b.start_time}`)
+        return dateA > dateB ? 1 : dateA < dateB ? -1 : 0;
+    }
+
     return {
         group: group,
         currentUserId: state.session.currentUserId,
-        events,
+        events: events.sort((a,b) => comparator(a,b)),
         location: state.entities.locations[group.locationId],
         owner: state.entities.users[group.ownerId],
         groupMembers
