@@ -1,5 +1,5 @@
 import React from 'react'
-import CalenderEvents from "./calender_events_container"
+import CalenderEvents from "./calender_events"
 import CalenderSide from "./calender_side"
 import moment from 'moment'
 

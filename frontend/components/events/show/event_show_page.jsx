@@ -57,6 +57,8 @@ const msp = (state, ownProps) => {
         const userToAdd = state.entities.users[userId]
         if (userToAdd) rsvpedMembers.push(userToAdd)
     })
+
+
     return {
         event: event,
         currentUserId: state.session.currentUserId,

@@ -17,6 +17,7 @@ export default class Groups extends React.Component {
                 </Link>
             )
         })
+        
         const otherGroups= this.props.otherGroups.map(group => {
             return (
                 <Link key={group.id} to={`/groups/${group.id}`}>

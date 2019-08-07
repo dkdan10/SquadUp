@@ -68,9 +68,38 @@ const mSP = state => {
         })
     }
 
+    // const comparator = (a, b) => {
+    //     return (parseInt(a.start_day.slice(0, 4)) < parseInt(b.start_day.slice(0, 4)) ) ?  (
+    //         -1
+    //         ) : (parseInt(a.start_day.slice(5, 7)) < parseInt(b.start_day.slice(5, 7)) ? (
+    //             -1
+    //                 ) : (parseInt(a.start_day.slice(8)) < parseInt(b.start_day.slice(8)) ? (
+    //                     -1
+    //                     ) : (parseInt(a.start_time.slice(0, 2)) < parseInt(b.start_time.slice(0,2)) ? (
+    //                         -1
+    //                         ) : (parseInt(a.start_time.slice(3)) < parseInt(b.start_time.slice(3)) ? (
+    //                              -1
+    //                             ) : (parseInt(a.start_time.slice(3)) === parseInt(b.start_time.slice(3)) ? (
+    //                                     0
+    //                                 ) : (
+    //                                     1
+    //                                 )
+    //                             )
+    //                         )
+    //                     )
+    //                 )
+    //             )
+    // }
+
+
+    const comparator = (a, b) => {
+        const dateA = new Date(`${a.start_day} ${a.start_time}`)
+        const dateB = new Date(`${b.start_day} ${b.start_time}`)
+        return dateA > dateB ? 1 : dateA < dateB ? -1 : 0;
+    }
 
     return {
-        events,
+        events: events.sort((a, b) => comparator(a, b)),
         myGroups,
         otherGroups
     }
