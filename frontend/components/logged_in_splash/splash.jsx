@@ -7,6 +7,7 @@ import {connect} from "react-redux"
 import { fetchCurrentUser } from '../../actions/session_actions';
 import { fetchUserGroupEvents } from '../../actions/event_actions';
 import { fetchGroups } from '../../actions/group_actions';
+import { updateSearchFilter } from '../../actions/filter_actions';
 
 class Splash extends React.Component {
 
@@ -38,7 +39,12 @@ class Splash extends React.Component {
         return (
             <>
                 <SplashHeader/>
-                <SplashSearch calenderSelected={this.state.calenderSelected} toggleSelected={this.toggleSelected}/>
+                <SplashSearch 
+                    calenderSelected={this.state.calenderSelected} 
+                    toggleSelected={this.toggleSelected}
+                    fetchUserGroupEvents={this.props.fetchUserGroupEvents}
+                    updateSearchFilter={this.props.updateSearchFilter}
+                />
                 {contentComp}
             </>
         )
@@ -51,6 +57,7 @@ const mSP = state => {
     let events = [];
     if (currentUser.joined_group_event_ids) {
         currentUser.joined_group_event_ids.forEach(eventId => {
+            if (!state.ui.lastFetched.eventIds.includes(eventId)) return
             const event = state.entities.events[eventId]
             if (event) events.push(event)
         })
@@ -86,7 +93,8 @@ const mDP = dispatch => {
     return {
         fetchCurrentUser: ()  => dispatch(fetchCurrentUser()),
         fetchUserGroupEvents: () => dispatch(fetchUserGroupEvents()),
-        fetchGroups: () => dispatch(fetchGroups())
+        fetchGroups: () => dispatch(fetchGroups()),
+        updateSearchFilter: (value) => dispatch(updateSearchFilter(value))
     }
 }
 

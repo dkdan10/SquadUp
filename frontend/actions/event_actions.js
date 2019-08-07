@@ -4,9 +4,9 @@ export const RECEIVE_EVENTS = "RECEIVE_EVENTS"
 export const RECEIVE_EVENT = "RECEIVE_EVENT"
 export const REMOVE_EVENT = "REMOVE_EVENT"
 
-export const fetchEvents = () => dispatch => (
-    eventAPI.fetchEvents()
-        .then(events => dispatch(recieveEvents(events)))
+export const fetchEvents = () => (dispatch, state) => (
+    eventAPI.fetchEvents(state.ui.filters)
+        .then(eventsData => dispatch(recieveEvents(eventsData)))
 )
 
 export const fetchEvent = (id) => dispatch => (
@@ -30,15 +30,14 @@ export const deleteEvent = (id) => dispatch => (
 )
 
 
-export const fetchUserGroupEvents = () => dispatch => (
-    eventAPI.fetchUserGroupEvents()
-        .then(events => dispatch(recieveEvents(events)))
+export const fetchUserGroupEvents = () => (dispatch, state) => (
+    eventAPI.fetchUserGroupEvents(state.ui.filters)
+        .then(eventsData => dispatch(recieveEvents(eventsData)))
 )
 
-
-const recieveEvents = (events) => ({
+const recieveEvents = (eventsData) => ({
     type: RECEIVE_EVENTS,
-    events
+    eventsData
 })
 
 export const recieveEvent = (eventData) => ({

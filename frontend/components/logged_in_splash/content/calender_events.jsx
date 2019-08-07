@@ -16,10 +16,15 @@ export default class CalenderContent extends React.Component {
     constructor (props) {
         super (props) 
     }
+    
 
     render () {
         const {events} = this.props
-        if (!events.length) return null
+        if (!events.length) return (
+            <div className="calender-events">
+                <h1 className="no-events-placeholder">No Events!</h1>
+            </div>
+        )
 
         let lastEventDay = new Date(events[0].start_day)
 

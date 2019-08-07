@@ -8,7 +8,7 @@ export default (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_EVENTS: 
-            return merge({}, state, action.events)
+            return merge({}, state, action.eventsData.events)
         case RECEIVE_EVENT:
             return Object.assign({}, state, {[action.eventData.event.id]: action.eventData.event})
         case REMOVE_EVENT:

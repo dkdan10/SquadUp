@@ -1,7 +1,10 @@
-export const fetchEvents = () => (
+export const fetchEvents = (filters) => (
     $.ajax({
         method: 'GET',
-        url: 'api/events'
+        url: 'api/events',
+        data: {
+            search: filters.search
+        },
     })
 )
 
@@ -39,9 +42,12 @@ export const deleteEvent= (id) => (
     })
 )
 
-export const fetchUserGroupEvents = () => (
+export const fetchUserGroupEvents = (filters) => (
     $.ajax({
         method: "GET",
-        url: `api/current_user/groups/events`
+        url: `api/current_user/groups/events`,
+        data: {
+            search: filters.search
+        },
     })
 )

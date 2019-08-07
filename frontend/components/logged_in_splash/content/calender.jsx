@@ -20,7 +20,6 @@ export default class Calender extends React.Component {
 
     setNewDate(date) {
         this.setState({ selectedDate: date })
-        console.log(date)
     }
     
     render() {
