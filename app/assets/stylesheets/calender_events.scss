@@ -11,15 +11,20 @@
         display: block;
     }
 
+    .all-day-events .event-link:nth-child(2) .event-li {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .all-day-events .event-link:last-child .event-li {
+        border: 1px solid #888;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
     
     .event-link {
         text-decoration: none;
-        // .event-li:last-child {
-        //     border: 1px solid #888;
-        //     border-bottom-left-radius: 3px;
-        //     border-bottom-right-radius: 3px;
-        // }
-        
+
         .event-li {
             color: black;
             cursor: pointer;
@@ -29,13 +34,7 @@
             line-height: 25px;
 
             border: 1px solid #888;
-            border-top: 0;
-
-            &.first-section-li {
-                border-top-left-radius: 3px;
-                border-top-right-radius: 3px;
-                border-top: 1px solid #888;
-            }
+            border-bottom: 0;
             
             .time {
                 color: rgba(0,0,0,.54);

@@ -20,24 +20,35 @@ export default class CalenderContent extends React.Component {
     render () {
         const {events} = this.props
         if (!events.length) return null
+
         let lastEventDay = new Date(events[0].start_day)
-        
-        const eventLis = events.map((event, idx) => {
+
+        let currentDayEvents = []
+        const eventsToDisplay = []
+
+        events.forEach((event, idx) => {
             const splitTime = event.start_time.split(":")
             const dateTime = (hours12(parseInt(splitTime[0]))) + ":" + (splitTime[1]) + (parseInt(splitTime[0]) > 11 ? " PM" : " AM")
             
-            let dayText = null
             const currentEventDay = new Date(event.start_day) 
+
+            // Check if same day
             if (!sameDay(lastEventDay, currentEventDay) || idx === 0) {
-                dayText = <span key={`date-divider-${idx}`} className="day-divider">{`${DAYS[currentEventDay.getDay()]}, ${MONTHS[currentEventDay.getMonth()]} ${currentEventDay.getDate()} `}</span>
+                if (idx !== 0) {
+                    eventsToDisplay.push(
+                        <div className="all-day-events" key={`all-day-events-${idx}`}>
+                            {currentDayEvents}
+                        </div>
+                    )
+                    currentDayEvents = []
+                }
+                currentDayEvents.push(<span key={`date-divider-${idx}`} className="day-divider">{`${DAYS[currentEventDay.getDay()]}, ${MONTHS[currentEventDay.getMonth()]} ${currentEventDay.getDate()} `}</span>)
                 lastEventDay = currentEventDay
             }
-
-            return (
-                <section className="event-box" key={`section-${idx}`}>
-                {dayText}
+            // Push event
+             currentDayEvents.push(
                 <Link className="event-link" to={`/events/${event.id}`} key={`calender-show-events-${event.id}`}>
-                    <li className={`${dayText ? "first-section-li" : ""}  event-li`}>
+                    <li className="event-li">
                         <span className="time">{dateTime}</span>
                         <div className="content">
                             <span className="group-name">{event.groupName}</span>
@@ -46,12 +57,16 @@ export default class CalenderContent extends React.Component {
                         </div>
                     </li>
                 </Link>
-                </section>
             )
         })
+        eventsToDisplay.push(
+            <div className="all-day-events" key="all-day-events-last">
+                {currentDayEvents}
+            </div>
+        )
         return (
             <ul className="calender-events">
-                {eventLis}
+                {eventsToDisplay}
             </ul>
         )
     }
