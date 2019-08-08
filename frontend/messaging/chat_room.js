@@ -67,12 +67,17 @@ export default class ChatRoom extends React.Component {
             )
         })
         return (
+            <>
+                <button className="load-button"
+                    onClick={this.loadChat.bind(this)}>
+                    Load Chat History
+                </button>
             <div className="chatroom-container">
 
                 <div className="left-chat-container">
                     <div className="left-chat-header">
                         <span className="inbox">Inbox</span>
-                        <span><i class="fas fa-comment-medical"></i></span>
+                        <span><i className="fas fa-comment-medical"></i></span>
                     </div>
                     <div className="left-chat-index">
                         {chatsLis}
@@ -81,10 +86,7 @@ export default class ChatRoom extends React.Component {
                 
                 <div className="right-chat-container">
                     <h1>All Users</h1>
-                    {/* <button className="load-button"
-                        onClick={this.loadChat.bind(this)}>
-                        Load Chat History
-                    </button> */}
+                    
                     <div className="chat-messages-index">
                         <div ref={this.messageListContainer} className="message-list">{messageList}</div>
                         <MessageForm />
@@ -92,6 +94,7 @@ export default class ChatRoom extends React.Component {
                 </div>
                 
             </div>
+            </>
         );
     }
 
