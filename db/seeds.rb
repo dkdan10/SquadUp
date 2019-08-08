@@ -14,6 +14,10 @@ GroupMembership.destroy_all
 Event.destroy_all
 EventRsvp.destroy_all
 
+Message.destroy_all
+Channel.destroy_all
+ChannelMember.destroy_all
+
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('locations')
 ActiveRecord::Base.connection.reset_pk_sequence!('groups')
@@ -21,7 +25,12 @@ ActiveRecord::Base.connection.reset_pk_sequence!('group_memberships')
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
 ActiveRecord::Base.connection.reset_pk_sequence!('event_rsvps')
 
-l1 = Location.create!(name: "New York, NY", lat: 1x0, lng: 10)
+ActiveRecord::Base.connection.reset_pk_sequence!('messages')
+ActiveRecord::Base.connection.reset_pk_sequence!('channels')
+ActiveRecord::Base.connection.reset_pk_sequence!('channle-members')
+
+
+l1 = Location.create!(name: "New York, NY", lat: 10, lng: 10)
 l2 = Location.create!(name: "San Francisco, SF", lat: 30, lng: 20)
 l3 = Location.create!(name: "Tokyo, JP", lat: 123, lng: -20)
 l4 = Location.create!(name: "Paris, FR", lat: 12, lng: 42)
@@ -95,3 +104,7 @@ demoE.users << u4
 demoE.users << u5
 demoE.users << u6
 demoE.users << demoU
+
+ch1 = Channel.create!()
+ch1.members << demoU
+ch1.members << u1

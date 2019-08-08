@@ -53,6 +53,17 @@ class User < ApplicationRecord
         through: :event_rsvps,
         source: :event
 
+    has_many :messages,
+        foreign_key: :sender_id
+
+    has_many :channel_members,
+        foreign_key: :member_id
+
+    has_many :channels,
+        through: :channel_members,
+        source: :channel
+
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil unless user && user.is_password?(password)

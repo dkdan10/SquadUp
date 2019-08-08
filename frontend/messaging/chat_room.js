@@ -6,7 +6,7 @@ export default class ChatRoom extends React.Component {
         super(props)
         // GET FROM REDUX STORE IN THE FUTURE
         this.state = { messages: [] };
-        this.bottom = React.createRef();
+        this.messageListContainer = React.createRef();
     }
 
     componentDidMount() {
@@ -27,8 +27,8 @@ export default class ChatRoom extends React.Component {
                             break;
                     }
                 },
-                speak: (data) => { return this.perform("speak", data) },
-                load: () => { return this.perform("load") }
+                speak: function (data) { return this.perform("speak", data) },
+                load: function () { return this.perform("load") }
             }
         );
     }
@@ -39,24 +39,62 @@ export default class ChatRoom extends React.Component {
     }
 
     componentDidUpdate() {
-        this.bottom.current.scrollIntoView();
+        this.messageListContainer.current.scrollTop = this.messageListContainer.current.scrollHeight;
     }
 
     render() {
         const messageList = this.state.messages.map((message, idx) => {
             return (
-                <li key={`message_number-${idx}`}>
-                    {message}
-                    <div ref={this.bottom} />
+                <li className="message-li" key={`message_number-${idx}`}>
+                    <i className="user-image far fa-user-circle"></i>
+                    <div className="message-content">
+                        <span className="username">Username</span>
+                        <span className="message-text">{message}</span>
+                    </div>
                 </li>
             );
         });
+
+        const chats = [{ name: "All Users", lastMessage: messageList[messageList.length - 1]}]
+        const chatsLis = chats.map((chat, idx) => {
+            return (
+                <li className="chat-index-item" key={`chat-room-${idx}`}>
+                    <i className="user-image far fa-user-circle"></i>
+                    <div className="info">
+                        <span>{chat.name}</span>
+                    </div>
+                </li>
+            )
+        })
         return (
+            <>
+                <button className="load-button"
+                    onClick={this.loadChat.bind(this)}>
+                    Load Chat History
+                </button>
             <div className="chatroom-container">
-                <div>ChatRoom</div>
-                <div className="message-list">{messageList}</div>
-                <MessageForm />
+
+                <div className="left-chat-container">
+                    <div className="left-chat-header">
+                        <span className="inbox">Inbox</span>
+                        <span><i className="fas fa-comment-medical"></i></span>
+                    </div>
+                    <div className="left-chat-index">
+                        {chatsLis}
+                    </div>
+                </div>
+                
+                <div className="right-chat-container">
+                    <h1>All Users</h1>
+                    
+                    <div className="chat-messages-index">
+                        <div ref={this.messageListContainer} className="message-list">{messageList}</div>
+                        <MessageForm />
+                    </div>
+                </div>
+                
             </div>
+            </>
         );
     }
 
