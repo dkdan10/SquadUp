@@ -12,6 +12,8 @@ import EventCreateForm from './events/create_and_edit/create_event_container';
 import EventEditForm from './events/create_and_edit/edit_event_container';
 import EventShowPage from './events/show/event_show_page';
 
+import ChatRoom from '../messaging/chat_room'
+
 import Modal from './modals/modal'
 
 import { Switch, Route, HashRouter, Link } from 'react-router-dom'
@@ -32,7 +34,9 @@ export const App = () => (
                 <ProtectedRoute exact path="/groups/:groupId/edit" component={GroupEditForm} />
 
                 <ProtectedRoute exact path="/groups/:groupId/new/event" component={EventCreateForm} />
-                <ProtectedRoute path="/events/:eventId/edit" component={EventEditForm} />
+                <ProtectedRoute exact path="/events/:eventId/edit" component={EventEditForm} />
+
+                <ProtectedRoute exact path="/messages" component={ChatRoom} />
 
                 <Route path="/groups/:groupId" component={GroupShowPage} />
                 <Route path="/events/:eventId" component={EventShowPage} />

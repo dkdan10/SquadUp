@@ -18,8 +18,9 @@ Rails.application.routes.draw do
 
     get 'current_user', to: 'users#send_current_user'
 
-    # Think about nesting events index under users or groups to get a groups/users events
-    # instead of using filters. 
+    # Websockets
+    mount ActionCable.server, at: '/cable'
+    
   end
 
 end

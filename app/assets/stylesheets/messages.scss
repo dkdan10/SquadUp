@@ -1,0 +1,29 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.chatroom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    li {
+        list-style: decimal;
+    }
+    .message-list {
+        overflow-y: scroll;
+        height: 300px;
+        width: 400px;
+        border: solid gray 1px;
+    }
+    .load-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+.chatroom-container * {
+    margin: 2px;
+    padding: 5px;
+}
