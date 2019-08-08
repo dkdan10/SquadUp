@@ -7,6 +7,7 @@ export default class ChatRoom extends React.Component {
         // GET FROM REDUX STORE IN THE FUTURE
         this.state = { messages: [] };
         this.bottom = React.createRef();
+        this.messageListContainer = React.createRef();
     }
 
     componentDidMount() {
@@ -27,8 +28,8 @@ export default class ChatRoom extends React.Component {
                             break;
                     }
                 },
-                speak: (data) => { return this.perform("speak", data) },
-                load: () => { return this.perform("load") }
+                speak: function (data) { return this.perform("speak", data) },
+                load: function () { return this.perform("load") }
             }
         );
     }
@@ -39,7 +40,9 @@ export default class ChatRoom extends React.Component {
     }
 
     componentDidUpdate() {
-        this.bottom.current.scrollIntoView();
+        // this.bottom.current.scrollIntoView();
+        // debugger
+        this.messageListContainer.current.scrollTop = this.messageListContainer.current.scrollHeight;
     }
 
     render() {
@@ -54,7 +57,11 @@ export default class ChatRoom extends React.Component {
         return (
             <div className="chatroom-container">
                 <div>ChatRoom</div>
-                <div className="message-list">{messageList}</div>
+                <button className="load-button"
+                    onClick={this.loadChat.bind(this)}>
+                    Load Chat History
+                </button>
+                <div ref={this.messageListContainer} className="message-list">{messageList}</div>
                 <MessageForm />
             </div>
         );
