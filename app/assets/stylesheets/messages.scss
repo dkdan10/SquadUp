@@ -4,25 +4,83 @@
 
 
 .chatroom-container {
+    height: 633px;
+    width: 960px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    li {
-        list-style: decimal;
-    }
-    .message-list {
-        overflow-y: scroll;
-        height: 300px;
-        width: 400px;
-        border: solid gray 1px;
-    }
-    .load-button {
-        top: 5px;
-        right: 5px;
-    }
-}
+    margin: 0 auto;
+    margin-top: 15px;
+    font-family: PislenFont, Helvetica, Arial, sans-serif;
+    border: 1px solid #888;
+    padding: 3px;
 
-.chatroom-container * {
-    margin: 2px;
-    padding: 5px;
+    .left-chat-container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        background-color: #fafafa;
+        padding-right: 3px;
+        .left-chat-header {
+            display: flex;
+            justify-content: space-between;
+            .inbox {
+                color: rgb(31, 36, 204);
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .left-chat-index {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            margin-top: 12px;
+            .chat-index-item {
+                display: flex;
+                .info {
+                    margin-left: 12px;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    
+    .right-chat-container {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        background-color: #fafafa;
+        border-left: 1px solid #888;
+        padding-left: 3px;
+        h1 {
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 18px;
+            margin-left: 12px;
+        }
+        .chat-messages-index {
+            display: flex;
+            flex-direction: column;
+            .message-list {
+                display: flex;
+                flex-direction: column;
+                overflow-y: scroll;
+                height: 495px;
+                list-style: none;
+                .message-li {
+                    display: flex;
+                    margin-left: 12px;
+                    margin-top: 4px;
+                    margin-bottom: 4px;
+                    .message-content {
+                        margin-left: 8px;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
 }
