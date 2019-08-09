@@ -37,6 +37,7 @@ export const App = () => (
                 <ProtectedRoute exact path="/events/:eventId/edit" component={EventEditForm} />
 
                 <ProtectedRoute exact path="/messages" component={ChatRoom} />
+                <ProtectedRoute exact path="/messages/:chatId" component={ChatRoom} />
 
                 <Route path="/groups/:groupId" component={GroupShowPage} />
                 <Route path="/events/:eventId" component={EventShowPage} />

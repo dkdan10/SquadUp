@@ -6,6 +6,7 @@ import {GroupHeader} from './header_show'
 import GroupNavButtons from './group_nav_buttons'
 import AboutGroup from './content/about_content'
 import EventGroup from './content/event_content'
+import { createChannel } from '../../../actions/messaging_actions';
 
 class GroupShowPage extends React.Component {
 
@@ -41,7 +42,7 @@ class GroupShowPage extends React.Component {
         
         switch (this.state.selectedIndex) {
             case 0:
-                contentToShow = <AboutGroup groupMembers={this.props.groupMembers} owner={this.props.owner} events={this.props.events} group={this.props.group} />
+                contentToShow = <AboutGroup createChannel={this.props.createChannel} groupMembers={this.props.groupMembers} owner={this.props.owner} events={this.props.events} group={this.props.group} currentUserId={this.props.currentUserId} />
                 break;
             case 1:
                 contentToShow = <EventGroup group={this.props.group} events={this.props.events} owner={this.props.owner} currentUserId={this.props.currentUserId} />
@@ -98,6 +99,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
     return {
         fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
+        createChannel: (otherUserId) => dispatch(createChannel(otherUserId))
     }
 }
 

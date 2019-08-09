@@ -6,7 +6,7 @@ module ApplicationCable
 
     def connect
       self.current_user = User.find_by(session_token: request.session[:session_token])
-
+      # debugger
       reject_unauthorized_connection unless self.current_user
     end
 

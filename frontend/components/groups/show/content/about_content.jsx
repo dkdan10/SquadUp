@@ -1,8 +1,26 @@
 import React from 'react'
 import { hours12 } from "../../../../util/helper_functions"
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
-export default class AboutShowPage extends React.Component {
+class AboutShowPage extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.sendOwnerMessage = this.sendOwnerMessage.bind(this)
+    }
+
+    sendOwnerMessage () {
+
+        if (!this.props.currentUserId) {
+            this.props.history.push('/login')
+            return
+        }
+
+        this.props.createChannel(this.props.owner.id)
+            .then(res => {
+                this.props.history.push(`/messages/${res.channelData.channel.id}`)
+            })
+    }
 
     render () {
 
@@ -68,7 +86,11 @@ export default class AboutShowPage extends React.Component {
                             <i className="user-image far fa-user-circle"></i>
                             <div className="organizer-text">
                                 <p className="owner-name">{this.props.owner.username}</p>
-                                <p className="message-owner">Message</p>
+                                {this.props.currentUserId === this.props.owner.id ? ( 
+                                    <p className="message-owner">You are owner</p>
+                                ) : (
+                                    <p className="message-owner" onClick={this.sendOwnerMessage}>Message</p>
+                                )}
                             </div>
                         </ul>
                     </div>
@@ -84,3 +106,5 @@ export default class AboutShowPage extends React.Component {
     }
 
 }
+
+export default withRouter(AboutShowPage)

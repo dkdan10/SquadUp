@@ -20,15 +20,16 @@ export default class MessageForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input
+            <div className="message-form-container">
+                <form className="message-inputs" onSubmit={this.handleSubmit.bind(this)}>
+                    <textarea
+                        className="message-input-field"
                         type="text"
                         value={this.state.body}
                         onChange={this.update("body")}
-                        placeholder="Type message here"
+                        placeholder="Say something nice..."
                     />
-                    <input type="submit" />
+                    <button className="submit-message-btn" >Send</button>
                 </form>
             </div>
         );

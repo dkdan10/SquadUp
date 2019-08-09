@@ -3,13 +3,15 @@ import users from "./users_reducer";
 import locations from "./locations_reducer";
 import events from "./events_reducer";
 import groups from "./groups_reducer";
+import channels from './channels_reducer';
 
 
 const entitiesReducer = combineReducers({ 
     users,
     locations,
     events,
-    groups
+    groups,
+    channels
 });
 
 export default entitiesReducer;

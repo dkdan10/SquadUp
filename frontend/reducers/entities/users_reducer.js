@@ -2,6 +2,7 @@ import { RECIEVE_USERS, LOG_IN_USER, RECIEVE_USER} from "../../actions/session_a
 import {merge} from 'lodash'
 import { RECEIVE_GROUP } from "../../actions/group_actions";
 import { RECEIVE_EVENT } from "../../actions/event_actions";
+import { RECEIVE_CHANNEL, RECEIVE_CHANNELS } from "../../actions/messaging_actions";
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -18,6 +19,10 @@ export default (state = {}, action) => {
             return Object.assign({}, state, { [action.user.id]: action.user })
         case RECEIVE_EVENT:
             return merge({}, state, action.eventData.rsvpers)
+        case RECEIVE_CHANNEL:
+            return merge({}, state, action.channelData.members)
+        case RECEIVE_CHANNELS:
+            return merge({}, state, action.channelData.members)
         default:
             return state
     }

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     # Websockets
     mount ActionCable.server, at: '/cable'
+
+    resources :channels, only: [:create, :show, :index]
     
   end
 
