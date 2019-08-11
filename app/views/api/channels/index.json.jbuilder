@@ -6,11 +6,9 @@ json.channels do
     end
 end
 json.members do
-    @channels.each do |channel|
-        channel.members.each do |member|
-            json.set! member.id do
-                json.extract! member, :id, :username, :email, :location_id
-            end
+    User.all.each do |member|
+        json.set! member.id do
+            json.extract! member, :id, :username, :email, :location_id
         end
     end
 end

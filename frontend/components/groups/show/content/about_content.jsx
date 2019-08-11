@@ -18,7 +18,11 @@ class AboutShowPage extends React.Component {
 
         this.props.createChannel(this.props.owner.id)
             .then(res => {
-                this.props.history.push(`/messages/${res.channelData.channel.id}`)
+                this.props.history.push({
+                    pathname: `/messages/${res.channelData.channel.id}`,
+                    newChannel: "newChannel",
+                    otherUserId: this.props.owner.id
+                })
             })
     }
 
