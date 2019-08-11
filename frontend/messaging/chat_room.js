@@ -7,7 +7,7 @@ class ChatRoom extends React.Component {
     constructor(props) {
         super(props)
         // GET FROM REDUX STORE IN THE FUTURE
-        this.state = { messages: [], channels: {} };
+        this.state = { messages: [], channels: {}, users: {} };
         this.messageListContainer = React.createRef();
         this.messagesSubs = null
         this.channelSubs = null
@@ -19,9 +19,7 @@ class ChatRoom extends React.Component {
         // REFACTOR TO IT'S OWN COMPONENT
         // REFACTOR MESSAGES TO DISPATCH RECIEVED MESSAGES INTO STORE
         App.cable.subscriptions.subscriptions = []
-        this.props.fetchChannels().then(() => {
-            this.createChannelConnection()
-        })
+        this.createChannelConnection()
     }
 
     componentWillUnmount () {
@@ -89,12 +87,18 @@ class ChatRoom extends React.Component {
                 received: data => {
                     switch (data.type) {
                         case "channel":
+                            debugger
                             this.setState({
-                                channels: Object.assign({}, this.state.channels, data.channel)
+                                channels: Object.assign({}, this.state.channels, data.channelData.channel),
+                                users: Object.assign({}, this.state.users, data.channelData.users)
                             });
                             break;
                         case "channels":
-                            this.setState({ channels: data.channels });
+                            debugger
+                            this.setState({ 
+                                channels: data.channelData.channels,
+                                users: data.channelData.users
+                            });
                             break;
                     }
                 },
@@ -129,7 +133,7 @@ class ChatRoom extends React.Component {
         });
 
         const channelsLis = Object.values(this.state.channels).map((channel, idx) => {
-            const otherUsername = this.props.users[channel.member_ids.filter(id => id !== this.props.currentUserId)[0]].username
+            const otherUsername = this.state.users[channel.member_ids.filter(id => id !== this.props.currentUserId)[0]].username
             let isCurrentChannel = false 
             if (currentChannel)  {
                 isCurrentChannel = channel.id === currentChannel.id
@@ -176,14 +180,14 @@ class ChatRoom extends React.Component {
 const msp = (state) => {
     return {
         // channels: state.entities.channels,
-        users: state.entities.users,
+        // users: state.entities.users,
         currentUserId: state.session.currentUserId
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        fetchChannels: () => dispatch(fetchChannels())
+        // fetchChannels: () => dispatch(fetchChannels())
     }
 }
 
