@@ -24,7 +24,7 @@ class EventForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-
+        this.setState({errors: ""})
         if (this.eventValid()) {
             const {name, start_time, start_day, group_id, address, lng, lat, description, id} = this.state
             this.props.action({
@@ -43,7 +43,7 @@ class EventForm extends React.Component {
         }
     }
 
-    eventValid() {
+    eventValid () {
         if (this.state.name.length 
             && 
             this.state.start_time !== "" 
