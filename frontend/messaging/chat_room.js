@@ -87,14 +87,12 @@ class ChatRoom extends React.Component {
                 received: data => {
                     switch (data.type) {
                         case "channel":
-                            debugger
                             this.setState({
                                 channels: Object.assign({}, this.state.channels, data.channelData.channel),
                                 users: Object.assign({}, this.state.users, data.channelData.users)
                             });
                             break;
                         case "channels":
-                            debugger
                             this.setState({ 
                                 channels: data.channelData.channels,
                                 users: data.channelData.users
