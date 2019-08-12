@@ -28,11 +28,11 @@ class ChatRoom extends React.Component {
 
     loadChat() {
         this.messagesSubs.load();
+        const newChannel = (this.props.history.location.newChannel) ? "true" : ""
+        this.channelSubs.speak({ channelId: this.props.match.params.chatId, otherUserId: this.props.history.location.otherUserId, newChannel: newChannel, type: "channel" })
     }
     loadChannels() {
         this.channelSubs.load();
-        const newChannel = (this.props.history.location.newChannel) ? "true" : ""
-        this.channelSubs.speak({ channelId: this.props.match.params.chatId, otherUserId: this.props.history.location.otherUserId, newChannel: newChannel, type: "channel" })
         this.createConnection()
     }
 

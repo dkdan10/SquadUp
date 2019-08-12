@@ -22,7 +22,7 @@ class ChannelsChannel < ApplicationCable::Channel
             }
         end
         socket = { channelData: channelObj, type: 'channel' }
-        ChannelsChannel.broadcast_to(@current_user, socket)
+        # ChannelsChannel.broadcast_to(@current_user, socket)
         ChannelsChannel.broadcast_to(otherUser, socket)
     end
   end
