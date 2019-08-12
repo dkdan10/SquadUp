@@ -14,7 +14,7 @@ export default class MessageForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         // REFRENCING CHAT ROOM SUBSCRIPTION>> MAYBE PASS AS A PROP FOR MULTIPLE ROOMS
-        App.cable.subscriptions.subscriptions[0].speak({ message: this.state.body });
+        this.props.messagesSub.speak({ message: this.state.body, type: "message" });
         this.setState({ body: "" });
     }
 

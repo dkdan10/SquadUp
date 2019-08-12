@@ -27,7 +27,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('event_rsvps')
 
 ActiveRecord::Base.connection.reset_pk_sequence!('messages')
 ActiveRecord::Base.connection.reset_pk_sequence!('channels')
-ActiveRecord::Base.connection.reset_pk_sequence!('channle-members')
+ActiveRecord::Base.connection.reset_pk_sequence!('channel_members')
 
 
 l1 = Location.create!(name: "New York, NY", lat: 10, lng: 10)

@@ -7,15 +7,19 @@ class ChatRoom extends React.Component {
     constructor(props) {
         super(props)
         // GET FROM REDUX STORE IN THE FUTURE
-        this.state = { messages: [] };
+        this.state = { messages: [], channels: {}, users: {} };
         this.messageListContainer = React.createRef();
+        this.messagesSubs = null
+        this.channelSubs = null
+        this.loadChat = this.loadChat.bind(this)
+        this.loadChannels = this.loadChannels.bind(this)
     }
 
     componentDidMount() {
         // REFACTOR TO IT'S OWN COMPONENT
         // REFACTOR MESSAGES TO DISPATCH RECIEVED MESSAGES INTO STORE
         App.cable.subscriptions.subscriptions = []
-        this.props.fetchChannels().then(() => this.createConnection())
+        this.createChannelConnection()
     }
 
     componentWillUnmount () {
@@ -23,25 +27,34 @@ class ChatRoom extends React.Component {
     }
 
     loadChat() {
-        App.cable.subscriptions.subscriptions[0].load();
+        this.messagesSubs.load();
+        const newChannel = (this.props.history.location.newChannel) ? "true" : ""
+        this.channelSubs.speak({ channelId: this.props.match.params.chatId, otherUserId: this.props.history.location.otherUserId, newChannel: newChannel, type: "channel" })
+    }
+    loadChannels() {
+        this.channelSubs.load();
+        this.createConnection()
     }
 
     componentDidUpdate(prevProps) {
-        this.messageListContainer.current.scrollTop = this.messageListContainer.current.scrollHeight;
+        if (this.messageListContainer.current) {
+            this.messageListContainer.current.scrollTop = this.messageListContainer.current.scrollHeight;
+        }
 
         if (this.props.match.params.chatId !== prevProps.match.params.chatId) {
             this.setState({messages: []})
+            // this.channelSubs.speak({ channelId: this.props.match.params.chatId,  type: "channel"})
             this.createConnection()
         }
     }
 
     createConnection () {
         const { chatId } = this.props.match.params
-        if (App.messaging) {
-            App.messaging.unsubscribe();
+        if (this.messagesSubs) {
+            this.messagesSubs.unsubscribe();
         }
-        
-        App.messaging = App.cable.subscriptions.create(
+        if (!chatId) return
+        this.messagesSubs = App.cable.subscriptions.create(
             { channel: "ChatChannel", id: chatId },
             {
                 received: data => {
@@ -63,6 +76,39 @@ class ChatRoom extends React.Component {
         )
     }
 
+    createChannelConnection () {
+        if (this.channelSubs) {
+            this.channelSubs.unsubscribe();
+        }
+
+        this.channelSubs = App.cable.subscriptions.create(
+            { channel: "ChannelsChannel" },
+            {
+                received: data => {
+                    switch (data.type) {
+                        case "channel":
+                            debugger
+                            this.setState({
+                                channels: Object.assign({}, this.state.channels, data.channelData.channel),
+                                users: Object.assign({}, this.state.users, data.channelData.users)
+                            });
+                            break;
+                        case "channels":
+                            debugger
+                            this.setState({ 
+                                channels: data.channelData.channels,
+                                users: data.channelData.users
+                            });
+                            break;
+                    }
+                },
+                speak: function (data) { return this.perform("speak", data) },
+                load: function () { return this.perform("load") },
+                connected: this.loadChannels
+            }
+        )
+    }
+
     changeChannel(channelId) {
         return e => {
             this.props.history.push(`/messages/${channelId}`)
@@ -70,8 +116,9 @@ class ChatRoom extends React.Component {
     }
 
     render() {
-        let currentChatOtherUsername = "Username"
-        let currentChannel = this.props.channels[this.props.match.params.chatId]
+        if (Object.entries(this.state.channels).length === 0 && this.state.channels.constructor === Object) return  null
+        let currentChatOtherUsername = "No Chat"
+        let currentChannel = this.state.channels[this.props.match.params.chatId]
         
         const messageList = this.state.messages.map((message, idx) => {
             return (
@@ -85,8 +132,8 @@ class ChatRoom extends React.Component {
             );
         });
 
-        const channelsLis = Object.values(this.props.channels).map((channel, idx) => {
-            const otherUsername = this.props.users[channel.member_ids.filter(id => id !== this.props.currentUserId)[0]].username
+        const channelsLis = Object.values(this.state.channels).map((channel, idx) => {
+            const otherUsername = this.state.users[channel.member_ids.filter(id => id !== this.props.currentUserId)[0]].username
             let isCurrentChannel = false 
             if (currentChannel)  {
                 isCurrentChannel = channel.id === currentChannel.id
@@ -119,7 +166,7 @@ class ChatRoom extends React.Component {
                     
                     <div className="chat-messages-index">
                         <div ref={this.messageListContainer} className="message-list">{messageList}</div>
-                        <MessageForm />
+                        <MessageForm messagesSub={this.messagesSubs} />
                     </div>
                 </div>
                 
@@ -132,15 +179,15 @@ class ChatRoom extends React.Component {
 
 const msp = (state) => {
     return {
-        channels: state.entities.channels,
-        users: state.entities.users,
+        // channels: state.entities.channels,
+        // users: state.entities.users,
         currentUserId: state.session.currentUserId
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        fetchChannels: () => dispatch(fetchChannels())
+        // fetchChannels: () => dispatch(fetchChannels())
     }
 }
 
