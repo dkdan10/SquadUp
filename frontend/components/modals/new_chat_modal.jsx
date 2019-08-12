@@ -45,6 +45,7 @@ class NewChatModal extends React.Component {
         })
 
         const filteredLis = filteredLocations.map(user => {
+            if (user.id === this.props.currendUserId ) return
             return (
                 <li onClick={this.handleSelecetedUser(user)} className="user-list-item" key={user.id}><span>{user.username}</span></li>
             )
@@ -60,7 +61,7 @@ class NewChatModal extends React.Component {
         )
 
         return (
-            <div className="choose-user">
+            <div className="choose-user-container">
                 <h1>Search for a User</h1>
                 {compToShow}
             </div>
@@ -71,7 +72,8 @@ class NewChatModal extends React.Component {
 
 const msp = (state) => {
     return {
-        users: state.entities.users
+        users: state.entities.users,
+        currendUserId: state.session.currentUserId
     }
 }
 
