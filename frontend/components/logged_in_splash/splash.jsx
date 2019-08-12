@@ -13,7 +13,16 @@ class Splash extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { calenderSelected: true }
+        const splitHistory = this.props.location.pathname.split("/")
+        let calenderSelected;
+        if (splitHistory[splitHistory.length - 1] !== "my-groups") {
+            calenderSelected = true
+            this.props.history.push("/my-calender")
+        } else {
+            calenderSelected = false
+            this.props.history.push("/my-groups")
+        }
+        this.state = { calenderSelected }
         this.toggleSelected = this.toggleSelected.bind(this)
     }
 
@@ -28,6 +37,16 @@ class Splash extends React.Component {
             this.props.fetchUserGroupEvents()
             this.props.fetchGroups()
         })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.calenderSelected !== this.state.calenderSelected) {
+            if (this.state.calenderSelected) {
+                this.props.history.push("/my-calender")
+            } else {
+                this.props.history.push("/my-groups")
+            }
+        } 
     }
 
     render() {
