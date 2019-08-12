@@ -21,7 +21,6 @@ class AboutShowPage extends React.Component {
                 this.props.history.push({
                     pathname: `/messages/${res.channelData.channel.id}`,
                     newChannel: "newChannel",
-                    otherUserId: this.props.owner.id
                 })
             })
     }

@@ -5,6 +5,13 @@ export const fetchCurrentUser = () => (
     })
 )
 
+export const fetchUsers = () => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/users'
+    })
+)
+
 export const createNewUser = (user) => (
     $.ajax({
         method: 'POST',

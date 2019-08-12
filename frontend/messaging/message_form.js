@@ -13,9 +13,11 @@ export default class MessageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // REFRENCING CHAT ROOM SUBSCRIPTION>> MAYBE PASS AS A PROP FOR MULTIPLE ROOMS
-        this.props.messagesSub.speak({ message: this.state.body, type: "message" });
-        this.setState({ body: "" });
+        if (this.state.body) {
+            // REFRENCING CHAT ROOM SUBSCRIPTION>> MAYBE PASS AS A PROP FOR MULTIPLE ROOMS
+            this.props.messagesSub.speak({ message: this.state.body, type: "message" });
+            this.setState({ body: "" });
+        }
     }
 
     render() {

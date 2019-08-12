@@ -10,7 +10,7 @@ export default (state = {}, action) => {
     switch (action.type) {
         case RECIEVE_USERS:
             // if we don't want to merge
-            return merge({}, action.users)
+            return merge({}, state, action.users)
         case LOG_IN_USER:
             return merge({}, state, {[action.user.id]: action.user})
         case RECEIVE_GROUP:

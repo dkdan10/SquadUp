@@ -7,23 +7,25 @@ class ChannelsChannel < ApplicationCable::Channel
 
   def speak(data)
     channel = current_user.channels.find(data['channelId']) if data['channelId']
-    otherUser = User.find(data['otherUserId']) if data['otherUserId']
-    if (channel && otherUser && data['newChannel'] === "true" && data['channelId'])
+    if (channel && data['newChannel'] === "true" && data['channelId'])
         channelObj = {channel: {}, users: {}}
         channelObj[:channel][channel.id] = {
             id: channel.id,
             member_ids: channel.member_ids
         }
+        broadcastTo = []
         channel.member_ids.each do |user_id| 
             nextUser = User.find(user_id)
+            broadcastTo.push(nextUser) if (nextUser.id != @current_user.id) || data['modalCreated']
             channelObj[:users][nextUser.id] = {
                 id: nextUser.id,
                 username: nextUser.username
             }
         end
         socket = { channelData: channelObj, type: 'channel' }
-        # ChannelsChannel.broadcast_to(@current_user, socket)
-        ChannelsChannel.broadcast_to(otherUser, socket)
+        broadcastTo.each do |user|
+            ChannelsChannel.broadcast_to(user, socket)
+        end
     end
   end
 

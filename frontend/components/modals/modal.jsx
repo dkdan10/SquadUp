@@ -1,7 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import DeleteModal from './delete_group_modal';
+import DeleteModal from './delete_modal';
+import NewChatModal from './new_chat_modal'
 
 const Modal = ({modal, closeModal}) => {
   if (!modal) {
@@ -14,6 +15,9 @@ const Modal = ({modal, closeModal}) => {
       break;
     case 'delete-event':
       component = <DeleteModal eventId={modal.eventId} />;
+      break;
+    case 'new-chat':
+      component = <NewChatModal />
       break;
     default:
       return null;

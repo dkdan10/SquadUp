@@ -41,6 +41,11 @@ export const destroySession = () => dispatch => {
                     .fail(err => dispatch(recievedErrors(err.responseJSON)));
 }
 
+export const fetchUsers = () => dispatch => {
+    return userAPI.fetchUsers()
+                    .then((userData) => dispatch(recievedUsers(userData)))
+}
+
 export const removeErrors = () => dispatch => {
     return dispatch({ type: CLEAR_SESSION_ERRORS})
 }

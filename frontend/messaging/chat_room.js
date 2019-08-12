@@ -2,6 +2,8 @@ import React from "react";
 import MessageForm from "./message_form";
 import {connect} from "react-redux"
 import { fetchChannels } from "../actions/messaging_actions";
+import { openModal } from '../actions/modal_actions';
+
 
 class ChatRoom extends React.Component {
     constructor(props) {
@@ -29,7 +31,7 @@ class ChatRoom extends React.Component {
     loadChat() {
         this.messagesSubs.load();
         const newChannel = (this.props.history.location.newChannel) ? "true" : ""
-        this.channelSubs.speak({ channelId: this.props.match.params.chatId, otherUserId: this.props.history.location.otherUserId, newChannel: newChannel, type: "channel" })
+        this.channelSubs.speak({ channelId: this.props.match.params.chatId, newChannel: newChannel, modalCreated: this.props.history.location.modalCreated, type: "channel" })
     }
     loadChannels() {
         this.channelSubs.load();
@@ -113,6 +115,10 @@ class ChatRoom extends React.Component {
         }
     }
 
+    openNewChatModal (e) {
+        dispatch(openModal({ type: 'new-chat' })); 
+    }
+
     render() {
         if (Object.entries(this.state.channels).length === 0 && this.state.channels.constructor === Object) return  null
         let currentChatOtherUsername = "No Chat"
@@ -152,7 +158,7 @@ class ChatRoom extends React.Component {
                 <div className="left-chat-container">
                     <div className="left-chat-header">
                         <span className="inbox">Inbox</span>
-                        <span><i className="fas fa-comment-medical"></i></span>
+                        <span><i onClick={this.openNewChatModal} className="new-chat-btn fas fa-comment-medical"></i></span>
                     </div>
                     <div className="left-chat-index">
                         {channelsLis}
