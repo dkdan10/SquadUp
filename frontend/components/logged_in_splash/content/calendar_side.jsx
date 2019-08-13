@@ -1,7 +1,7 @@
 import React from 'react'
 import Calendar from 'react-calendar'
 
-export default class CalenderSide extends React.Component {
+export default class CalendarSide extends React.Component {
 
     constructor (props) {
         super(props)
@@ -26,11 +26,11 @@ export default class CalenderSide extends React.Component {
         })
 
         return (
-            <div className="calender-side">
+            <div className="calendar-side">
                 <ul className="filter">
                     {lis}
                 </ul>
-                <div className="calender">
+                <div className="calendar">
                     <Calendar
                         onChange={this.setNewDate}
                         value={this.state.date}

@@ -1,4 +1,4 @@
-.calender-events {
+.calendar-events {
     margin: 0 10px;
     border-radius: 3px;
     width: 70%;
@@ -74,13 +74,13 @@
     }
 }
 
-.splash-calender-container {
+.splash-calendar-container {
     max-width: 960px;
     font-family: PislenFont, Helvetica, Arial, sans-serif;
     margin: 0 auto;
     display: flex;
 
-    .calender-side {
+    .calendar-side {
         width: 30%;
         .filter {
             background-color: white;
@@ -99,11 +99,11 @@
                 border-left: 5px solid rgb(31, 36, 204);
             }
         }
-        .calender {
+        .calendar {
             border: 1px solid #888;
             background-color: white;
             height: auto;
-            .the-react-calender {
+            .the-react-calendar {
                 width: 100%;
             }
         }

@@ -1,9 +1,9 @@
 import React from 'react'
-import CalenderEvents from "./calender_events"
-import CalenderSide from "./calender_side"
+import CalendarEvents from "./calendar_events"
+import CalendarSide from "./calendar_side"
 import moment from 'moment'
 
-export default class Calender extends React.Component {
+export default class Calendar extends React.Component {
 
     constructor(props) {
         super(props)
@@ -24,9 +24,9 @@ export default class Calender extends React.Component {
     
     render() {
         return (
-            <div className="splash-calender-container">
-                <CalenderEvents events={this.props.events} selectedDate={this.state.selectedDate}/>
-                <CalenderSide 
+            <div className="splash-calendar-container">
+                <CalendarEvents events={this.props.events} selectedDate={this.state.selectedDate}/>
+                <CalendarSide 
                     toggleSelected={this.toggleSelected} 
                     filterSelectedIndex={this.state.filterSelectedIndex}
                     selectedDate={this.state.selectedDate}

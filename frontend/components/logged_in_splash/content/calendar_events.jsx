@@ -12,7 +12,7 @@ const MONTHS = ["January", "February", "March", "April", "May", "June", "July", 
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-export default class CalenderContent extends React.Component {
+export default class CalendarContent extends React.Component {
     constructor (props) {
         super (props) 
     }
@@ -21,7 +21,7 @@ export default class CalenderContent extends React.Component {
     render () {
         const {events} = this.props
         if (!events.length) return (
-            <div className="calender-events">
+            <div className="calendar-events">
                 <h1 className="no-events-placeholder">No Events!</h1>
             </div>
         )
@@ -54,7 +54,7 @@ export default class CalenderContent extends React.Component {
             }
             // Push event
              currentDayEvents.push(
-                <Link className="event-link" to={`/events/${event.id}`} key={`calender-show-events-${event.id}`}>
+                <Link className="event-link" to={`/events/${event.id}`} key={`calendar-show-events-${event.id}`}>
                     <li className="event-li">
                         <span className="time">{dateTime}</span>
                         <div className="content">
@@ -72,7 +72,7 @@ export default class CalenderContent extends React.Component {
             </div>
         )
         return (
-            <ul className="calender-events">
+            <ul className="calendar-events">
                 {eventsToDisplay}
             </ul>
         )

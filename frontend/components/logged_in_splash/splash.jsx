@@ -1,7 +1,7 @@
 import React from 'react'
 import {SplashHeader} from './header'
 import SplashSearch from './search'
-import Calender from "./content/calender"
+import Calendar from "./content/calendar"
 import Groups from "./content/groups"
 import {connect} from "react-redux"
 import { fetchCurrentUser } from '../../actions/session_actions';
@@ -14,21 +14,21 @@ class Splash extends React.Component {
     constructor(props) {
         super(props)
         const splitHistory = this.props.location.pathname.split("/")
-        let calenderSelected;
+        let calendarSelected;
         if (splitHistory[splitHistory.length - 1] !== "my-groups") {
-            calenderSelected = true
-            this.props.history.push("/my-calender")
+            calendarSelected = true
+            this.props.history.push("/my-calendar")
         } else {
-            calenderSelected = false
+            calendarSelected = false
             this.props.history.push("/my-groups")
         }
-        this.state = { calenderSelected }
+        this.state = { calendarSelected }
         this.toggleSelected = this.toggleSelected.bind(this)
     }
 
-    toggleSelected (selectedCalender) {
+    toggleSelected (selectedCalendar) {
         return e => {
-            this.setState({ calenderSelected: selectedCalender})
+            this.setState({ calendarSelected: selectedCalendar})
         }
     }
 
@@ -40,9 +40,9 @@ class Splash extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.calenderSelected !== this.state.calenderSelected) {
-            if (this.state.calenderSelected) {
-                this.props.history.push("/my-calender")
+        if (prevState.calendarSelected !== this.state.calendarSelected) {
+            if (this.state.calendarSelected) {
+                this.props.history.push("/my-calendar")
             } else {
                 this.props.history.push("/my-groups")
             }
@@ -50,8 +50,8 @@ class Splash extends React.Component {
     }
 
     render() {
-        const contentComp = this.state.calenderSelected ? (
-            <Calender events={this.props.events}/>
+        const contentComp = this.state.calendarSelected ? (
+            <Calendar events={this.props.events}/>
         ) : (
             <Groups myGroups={this.props.myGroups} otherGroups={this.props.otherGroups}/>
         )
@@ -59,7 +59,7 @@ class Splash extends React.Component {
             <>
                 <SplashHeader/>
                 <SplashSearch 
-                    calenderSelected={this.state.calenderSelected} 
+                    calendarSelected={this.state.calendarSelected} 
                     toggleSelected={this.toggleSelected}
                     fetchUserGroupEvents={this.props.fetchUserGroupEvents}
                     updateSearchFilter={this.props.updateSearchFilter}

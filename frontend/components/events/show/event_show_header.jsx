@@ -85,7 +85,7 @@ class ShowEventHeader extends React.Component {
         const stickyNav =(
             <div className={classes}>
                 <div className="left-half">
-                    <div className="calender-box">
+                    <div className="calendar-box">
                         <span className="event-day">{dt.getDate()}</span>
                         <span className="event-month">{dt.toDateString().slice(4, 7).toUpperCase()}</span>
                     </div>
@@ -110,7 +110,7 @@ class ShowEventHeader extends React.Component {
             <div className="event-show-header">
                 {stickyNav}
                 <div className="left-header">
-                    <div className="calender-box">
+                    <div className="calendar-box">
                         <span className="event-day">{dt.getDate()}</span>
                         <span className="event-month">{dt.toDateString().slice(4,7).toUpperCase()}</span>
                     </div>

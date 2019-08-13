@@ -34,7 +34,7 @@ export default class SplashSearch extends React.Component {
 
     render () {
 
-        const toggleComp = this.props.calenderSelected ? (
+        const toggleComp = this.props.calendarSelected ? (
             <div className="search-toggle">
                 <span onClick={this.props.toggleSelected(false)} className="toggle">Groups</span>
                 <span onClick={this.props.toggleSelected(true)} className="selected toggle">Calendar</span>
