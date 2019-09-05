@@ -47,6 +47,7 @@ demoU = User.create!(username: "DemoUser", email: "demo@user.com", password: "pa
 g1 = Group.create!(name:"First Group", description:"This is the first group. It is for people who want to be in the first group. The first group is a great time!", location_id: l1.id, private: false, owner_id: u1.id)
 g1.members << u1
 g1.members << u2
+g1.members << demoU
 g2 = Group.create!(name:"Second Group", description:"This is the second group. As the saying goes: First is the worst second is the best! ", location_id: l3.id, private: false, owner_id: u2.id)
 g2.members << u2
 g3 = Group.create!(name:"Third Group", description:"This is the third group. The third group is for people didn't want to join the first or second group.", location_id: l5.id, private: false, owner_id: u3.id)
@@ -78,7 +79,7 @@ demoG.members << u4
 demoG.members << u5
 demoG.members << u6
 
-demoE = Event.create!(name: "Party at the Academy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+demoE1 = Event.create!(name: "Party at the Academy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
 
 Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
 
@@ -92,18 +93,75 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "22 W 38th St, New York, NY 10018, USA",
 lat: 40.7513597,
 lng: -73.9839223,
-start_day: "2019/08/13",
+start_day: "2019/09/07",
 start_time: "12:50",
 group_id: demoG.id,
 organizer_id: demoU.id
 )
-demoE.users << u1
-demoE.users << u2
-demoE.users << u3
-demoE.users << u4
-demoE.users << u5
-demoE.users << u6
-demoE.users << demoU
+
+demoE2 = Event.create!(name: "Academy Round Table", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+
+Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
+
+Donec ut metus eleifend, ultricies eros nec, feugiat nunc. Aenean dignissim arcu vitae dolor porttitor, at scelerisque diam fermentum. Fusce at arcu risus. Quisque vel eleifend velit. Proin et sem at libero finibus vestibulum. Maecenas in nibh ipsum. Fusce vel enim convallis, ornare ipsum vitae, tristique leo. Mauris ultricies quis sapien vitae viverra. Donec sed varius lorem. Nunc lacinia a orci sed rhoncus.
+
+Proin ante magna, hendrerit imperdiet dui sed, sodales vulputate orci. Nulla vel tempor arcu. Proin suscipit non velit sit amet sollicitudin. Sed mollis convallis lectus a aliquet. Nam vitae nibh posuere, dapibus metus ut, lacinia justo. Nullam tempus augue sed venenatis consectetur. Nulla bibendum erat erat. Donec eget tellus vitae nulla efficitur sagittis nec ac tellus. Nam laoreet orci non magna blandit facilisis. Vestibulum in elementum odio, quis ornare dui. Ut vitae mollis tellus, quis consequat ante. Nulla egestas vitae sem sit amet lobortis. Nullam nec augue congue, tempus massa eget, gravida turpis. In euismod arcu nibh, id viverra augue maximus eget. Donec sapien ligula, semper sed vestibulum et, posuere pretium dolor.
+
+Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finibus sem id ultrices. Vestibulum tincidunt eros ut mi malesuada ultricies. Maecenas suscipit nulla turpis, in imperdiet quam aliquam et. Sed euismod consequat eros sit amet interdum. Phasellus lacus nisl, eleifend in eleifend ac, gravida et sem. Quisque sed lectus sit amet dui porttitor dapibus eget eget ligula. Phasellus tristique orci sed feugiat blandit. Etiam pulvinar tortor et libero congue, vel mollis nisl varius. Quisque efficitur nibh quam, et auctor est maximus a.
+
+",
+address: "22 W 38th St, New York, NY 10018, USA",
+lat: 40.7513597,
+lng: -73.9839223,
+start_day: "2019/08/14",
+start_time: "12:50",
+group_id: demoG.id,
+organizer_id: demoU.id
+)
+
+firstGroupE = Event.create!(name: "First Group Event!", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+
+Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
+
+Donec ut metus eleifend, ultricies eros nec, feugiat nunc. Aenean dignissim arcu vitae dolor porttitor, at scelerisque diam fermentum. Fusce at arcu risus. Quisque vel eleifend velit. Proin et sem at libero finibus vestibulum. Maecenas in nibh ipsum. Fusce vel enim convallis, ornare ipsum vitae, tristique leo. Mauris ultricies quis sapien vitae viverra. Donec sed varius lorem. Nunc lacinia a orci sed rhoncus.
+
+Proin ante magna, hendrerit imperdiet dui sed, sodales vulputate orci. Nulla vel tempor arcu. Proin suscipit non velit sit amet sollicitudin. Sed mollis convallis lectus a aliquet. Nam vitae nibh posuere, dapibus metus ut, lacinia justo. Nullam tempus augue sed venenatis consectetur. Nulla bibendum erat erat. Donec eget tellus vitae nulla efficitur sagittis nec ac tellus. Nam laoreet orci non magna blandit facilisis. Vestibulum in elementum odio, quis ornare dui. Ut vitae mollis tellus, quis consequat ante. Nulla egestas vitae sem sit amet lobortis. Nullam nec augue congue, tempus massa eget, gravida turpis. In euismod arcu nibh, id viverra augue maximus eget. Donec sapien ligula, semper sed vestibulum et, posuere pretium dolor.
+
+Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finibus sem id ultrices. Vestibulum tincidunt eros ut mi malesuada ultricies. Maecenas suscipit nulla turpis, in imperdiet quam aliquam et. Sed euismod consequat eros sit amet interdum. Phasellus lacus nisl, eleifend in eleifend ac, gravida et sem. Quisque sed lectus sit amet dui porttitor dapibus eget eget ligula. Phasellus tristique orci sed feugiat blandit. Etiam pulvinar tortor et libero congue, vel mollis nisl varius. Quisque efficitur nibh quam, et auctor est maximus a.
+
+",
+address: "Union Square",
+lat: 40.7358633,
+lng: -73.9910835,
+start_day: "2019/09/12",
+start_time: "08:30",
+group_id: g1.id,
+organizer_id: u1.id
+)
+
+demoE1.users << u1
+demoE1.users << u2
+demoE1.users << u3
+demoE1.users << u4
+demoE1.users << u5
+demoE1.users << u6
+demoE1.users << demoU
+
+demoE2.users << u1
+demoE2.users << u2
+demoE2.users << u3
+demoE2.users << u4
+demoE2.users << u5
+demoE2.users << u6
+demoE2.users << demoU
+
+firstGroupE.users << u1
+firstGroupE.users << u2
+firstGroupE.users << u3
+firstGroupE.users << u4
+firstGroupE.users << u5
+firstGroupE.users << u6
+firstGroupE.users << demoU
 
 ch1 = Channel.create!()
 ch1.members << demoU
