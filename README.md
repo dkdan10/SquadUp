@@ -1,6 +1,6 @@
 # SquadUp
 
-Visit the live site
+[Visit the live site](http://squadup-aa.herokuapp.com/)
 
 SquadUp is a single-page, full-stack web application modeled after MeetUp. SquadUp allows for users to create groups and events the serve to connect people in real life acoording to their common intrests. The clone was made with Ruby on Rails, PostgresSQL, React.js and Redux. Live messaging was incorporated with Application Cables, Rails built in Websockets. 
 
