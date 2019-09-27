@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // TESTING...
     // window.dispatch = store.dispatch;
     // type store.dispatch(fetchUsers()) to test
-    window.fetchGroups = fetchGroups;
-    window.fetchGroup = fetchGroup;
-    window.createGroup = createGroup;
-    window.deleteGroup = deleteGroup;
+    // window.fetchGroups = fetchGroups;
+    // window.fetchGroup = fetchGroup;
+    // window.createGroup = createGroup;
+    // window.deleteGroup = deleteGroup;
     // ...TESTING
 
     const root = document.getElementById('root');
