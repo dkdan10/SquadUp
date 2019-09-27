@@ -93,7 +93,7 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "22 W 38th St, New York, NY 10018, USA",
 lat: 40.7513597,
 lng: -73.9839223,
-start_day: "2019/09/07",
+start_day: "2019/10/07",
 start_time: "12:50",
 group_id: demoG.id,
 organizer_id: demoU.id
@@ -113,7 +113,7 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "22 W 38th St, New York, NY 10018, USA",
 lat: 40.7513597,
 lng: -73.9839223,
-start_day: "2019/08/14",
+start_day: "2019/10/14",
 start_time: "12:50",
 group_id: demoG.id,
 organizer_id: demoU.id
@@ -133,7 +133,7 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "Union Square",
 lat: 40.7358633,
 lng: -73.9910835,
-start_day: "2019/09/12",
+start_day: "2019/10/12",
 start_time: "08:30",
 group_id: g1.id,
 organizer_id: u1.id

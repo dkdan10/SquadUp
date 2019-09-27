@@ -1,5 +1,6 @@
 import ContentScroller from "./content_scroller";
 import { connect } from 'react-redux'
+import { fetchGroups } from "../../../actions/group_actions";
 
 const mSP = state => {
     return {
