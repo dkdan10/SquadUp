@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import { openModal } from '../../../actions/modal_actions';
 
 class ShowEventHeader extends React.Component {
@@ -124,7 +125,7 @@ class ShowEventHeader extends React.Component {
                                 <span className="group-info">From <Link to={`/groups/${group.id}`} className="linkable">{group.name}</Link></span>
                                 {isOrganizer ? (
                                     <span 
-                                        onClick={() => { dispatch(openModal({ type: 'delete-event', eventId: event.id })); }}
+                                        onClick={() => { this.props.openModal({ type: 'delete-event', eventId: event.id }); }}
                                     className="delete-event">Delete Event</span>
                                 ) : null }
                             </div>
@@ -144,4 +145,11 @@ class ShowEventHeader extends React.Component {
     }
 }
 
-export default withRouter(ShowEventHeader)
+
+const mdp = dispatch => {
+    return {
+        openModal: (modalAction) => dispatch(openModal(modalAction))
+    }
+}
+
+export default connect(null, mdp)(withRouter(ShowEventHeader))

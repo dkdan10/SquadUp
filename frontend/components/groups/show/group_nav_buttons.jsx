@@ -1,6 +1,7 @@
 import React from 'react'
 import { addMemberToGroup, removeMemberFromGroup } from '../../../actions/join_group_actions';
 import {withRouter, Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import { openModal } from '../../../actions/modal_actions';
 
 class GroupNavButtons extends React.Component {
@@ -85,7 +86,7 @@ class GroupNavButtons extends React.Component {
                 < div className="multiple extra-drowpdown-content" >
                     <Link to={`/groups/${this.props.group.id}/new/event`}>Create Event</Link> 
                     <Link to={`/groups/${this.props.group.id}/edit`}>Edit Group</Link> 
-                    <a onClick={() => {this.setState({ showExtraDropdown: false }); dispatch(openModal({type: 'delete-group', groupId: this.props.group.id}));}}>Delete Group</a>
+                    <a onClick={() => {this.setState({ showExtraDropdown: false }); this.props.openModal({type: 'delete-group', groupId: this.props.group.id});}}>Delete Group</a>
                 </div >
             ) : (
                 < div className="single extra-drowpdown-content" >
@@ -115,4 +116,10 @@ class GroupNavButtons extends React.Component {
 
 } 
 
-export default withRouter(GroupNavButtons)
+const mdp = dispatch => {
+    return {
+        openModal: (modalAction) => dispatch(openModal(modalAction))
+    }
+}
+
+export default connect(null, mdp)(withRouter(GroupNavButtons))
