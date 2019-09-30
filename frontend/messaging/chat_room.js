@@ -116,7 +116,7 @@ class ChatRoom extends React.Component {
     }
 
     openNewChatModal (e) {
-        dispatch(openModal({ type: 'new-chat' })); 
+        this.props.openModal({ type: 'new-chat' }); 
     }
 
     render() {
@@ -191,7 +191,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     return {
-        // fetchChannels: () => dispatch(fetchChannels())
+        openModal: (modalAction) => dispatch(openModal(modalAction))
     }
 }
 
