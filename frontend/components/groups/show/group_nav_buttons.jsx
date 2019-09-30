@@ -32,11 +32,12 @@ class GroupNavButtons extends React.Component {
         if (!this.props.currentUserId) {
             return
         }
-        const target = e.target
-        target.disabled = true
-        removeMemberFromGroup(this.props.group.id).then(res => {
-            target.disabled = false
-        })
+        // const target = e.target
+        // target.disabled = true
+        removeMemberFromGroup(this.props.group.id)
+        // .then(res => {
+        //     target.disabled = false
+        // })
     }
 
     componentDidUpdate (prevProps) {
