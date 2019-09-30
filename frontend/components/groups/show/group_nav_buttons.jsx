@@ -19,11 +19,12 @@ class GroupNavButtons extends React.Component {
             this.props.history.push('/login')
             return
         }
-        const target = e.target
-        target.disabled = true
-        addMemberToGroup(this.props.group.id).then(res => {
-            target.disabled = false
-        })
+        // const target = e.target
+        // target.disabled = true
+        addMemberToGroup(this.props.group.id)
+        // .then(res => {
+        //     target.disabled = false
+        // })
     }
 
     leaveGroup (e) {
