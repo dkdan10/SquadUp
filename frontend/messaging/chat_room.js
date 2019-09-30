@@ -15,6 +15,7 @@ class ChatRoom extends React.Component {
         this.channelSubs = null
         this.loadChat = this.loadChat.bind(this)
         this.loadChannels = this.loadChannels.bind(this)
+        this.openNewChatModal = this.openNewChatModal.bind(this)
     }
 
     componentDidMount() {
