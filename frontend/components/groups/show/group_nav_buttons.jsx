@@ -21,7 +21,7 @@ class GroupNavButtons extends React.Component {
         }
         // const target = e.target
         // target.disabled = true
-        addMemberToGroup(this.props.group.id)
+        this.props.addMemberToGroup(this.props.group.id)
         // .then(res => {
         //     target.disabled = false
         // })
@@ -34,7 +34,7 @@ class GroupNavButtons extends React.Component {
         }
         // const target = e.target
         // target.disabled = true
-        removeMemberFromGroup(this.props.group.id)
+        this.props.removeMemberFromGroup(this.props.group.id)
         // .then(res => {
         //     target.disabled = false
         // })
@@ -120,7 +120,9 @@ class GroupNavButtons extends React.Component {
 
 const mdp = dispatch => {
     return {
-        openModal: (modalAction) => dispatch(openModal(modalAction))
+        openModal: (modalAction) => dispatch(openModal(modalAction)),
+        addMemberToGroup: (groupId) => dispatch(addMemberToGroup(groupId)),
+        removeMemberFromGroup: (groupId) => dispatch(removeMemberFromGroup(groupId))
     }
 }
 
