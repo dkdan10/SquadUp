@@ -208,7 +208,8 @@
             display: flex;
             justify-content: space-between;
             align-content: center;
-            height: 8vh;
+            height: 10vh;
+            vertical-align: middle;
             .hide-btn {
                 visibility: hidden;
             }
