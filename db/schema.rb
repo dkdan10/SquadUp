@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_08_08_182716) do
     t.boolean "private", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_groups_on_location_id"
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
   end
 
   create_table "locations", force: :cascade do |t|
