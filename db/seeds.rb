@@ -143,7 +143,6 @@ demoE1.users << u1
 demoE1.users << u2
 demoE1.users << u3
 demoE1.users << u4
-demoE1.users << u5
 demoE1.users << u6
 demoE1.users << demoU
 
@@ -157,8 +156,6 @@ demoE2.users << demoU
 
 firstGroupE.users << u1
 firstGroupE.users << u2
-firstGroupE.users << u3
-firstGroupE.users << u4
 firstGroupE.users << u5
 firstGroupE.users << u6
 firstGroupE.users << demoU
