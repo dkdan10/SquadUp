@@ -79,7 +79,7 @@ demoG.members << u4
 demoG.members << u5
 demoG.members << u6
 
-demoE1 = Event.create!(name: "Party at the Academy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+demoE1 = Event.create!(name: "Happy Hour at the Academy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
 
 Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
 
@@ -93,13 +93,13 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "22 W 38th St, New York, NY 10018, USA",
 lat: 40.7513597,
 lng: -73.9839223,
-start_day: "2019/10/07",
+start_day: "2019/11/07",
 start_time: "12:50",
 group_id: demoG.id,
 organizer_id: demoU.id
 )
 
-demoE2 = Event.create!(name: "Academy Round Table", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
+demoE2 = Event.create!(name: "Round Table", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus sit amet dui convallis sagittis. Quisque a justo nec est venenatis euismod. Sed fermentum tortor nec lacus vehicula, non accumsan velit ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam condimentum, velit eu suscipit ornare, sem sem sodales mi, id dictum neque erat nec nunc. Vestibulum posuere purus in nulla auctor vestibulum. Aliquam condimentum, lorem et tincidunt efficitur, dolor tellus imperdiet quam, in tempor justo erat in velit. Duis porta ullamcorper diam, sit amet mollis felis laoreet quis. Aenean scelerisque blandit condimentum. Suspendisse quis dui auctor, volutpat eros ac, sodales leo.
 
 Etiam dui est, hendrerit id tempus nec, aliquam non diam. Vestibulum dui nisl, consequat eget neque sed, scelerisque fringilla lectus. Cras quis justo nisi. Nullam mattis ligula iaculis interdum hendrerit. Praesent rutrum turpis eget faucibus tempus. Aenean tempus porttitor ipsum, non pulvinar metus gravida in. Maecenas facilisis nisl vel diam vulputate pharetra. Pellentesque ipsum sem, tempor nec porta ac, sagittis non sapien. Duis vulputate ut elit in ultrices. Morbi et diam sed leo pellentesque consequat vitae et elit. Suspendisse pulvinar magna turpis, vel cursus justo aliquet at. Praesent lectus est, elementum vel finibus suscipit, posuere eget dolor. Duis dignissim eget sem in aliquet. Integer fringilla turpis varius, consequat nisl eget, commodo risus. Vivamus venenatis lacinia velit, nec mattis arcu gravida sit amet. Vivamus mattis gravida tempus.
 
@@ -113,7 +113,7 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "22 W 38th St, New York, NY 10018, USA",
 lat: 40.7513597,
 lng: -73.9839223,
-start_day: "2019/10/14",
+start_day: "2019/11/14",
 start_time: "12:50",
 group_id: demoG.id,
 organizer_id: demoU.id
@@ -133,7 +133,7 @@ Mauris vel odio et velit euismod commodo ac at lectus. Vestibulum sagittis finib
 address: "Union Square",
 lat: 40.7358633,
 lng: -73.9910835,
-start_day: "2019/10/12",
+start_day: "2019/11/12",
 start_time: "08:30",
 group_id: g1.id,
 organizer_id: u1.id
