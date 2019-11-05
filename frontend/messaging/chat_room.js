@@ -3,6 +3,7 @@ import MessageForm from "./message_form";
 import {connect} from "react-redux"
 import { fetchChannels } from "../actions/messaging_actions";
 import { openModal } from '../actions/modal_actions';
+import{isEmpty} from "lodash"
 
 
 class ChatRoom extends React.Component {
@@ -42,6 +43,10 @@ class ChatRoom extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.messageListContainer.current) {
             this.messageListContainer.current.scrollTop = this.messageListContainer.current.scrollHeight;
+        }
+
+        if (this.state.channels[this.props.match.params.chatId] === undefined && !isEmpty(this.state.channels) ) {
+            this.props.history.push(`/messages/${Object.keys(this.state.channels)[0]}`)
         }
 
         if (this.props.match.params.chatId !== prevProps.match.params.chatId) {
