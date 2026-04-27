@@ -22,8 +22,11 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  # JavaScript is bundled and minified by webpack (TerserPlugin) in
+  # production mode, so Sprockets doesn't need to compress it again.
+  # Uglifier 4.x also doesn't support ES2015+ without harmony mode and
+  # would fail on the webpack bundle's modern output.
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
