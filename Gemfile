@@ -4,15 +4,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.8'
+gem 'rails', '~> 6.1.7'
 # Drop dependency on yanked mimemagic 0.3.10 by upgrading marcel
 gem 'marcel', '~> 1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '~> 3.12'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# Use Puma as the app server (5.x required by Rails 6.1)
+gem 'puma', '~> 5.6'
+# Use SCSS for stylesheets (6.x required by Rails 6.1; 5.x has a hard pin on railties < 6)
+gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -44,10 +44,9 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.8'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # Pinned to < 4 because spring 4.x dropped Rails 5 support.
-  gem 'spring', '< 4'
-  gem 'spring-watcher-listen', '~> 2.0'
+  # Spring speeds up development by keeping your application running in the background.
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.1'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'

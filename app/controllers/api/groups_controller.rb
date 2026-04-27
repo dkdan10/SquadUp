@@ -20,7 +20,7 @@ class Api::GroupsController < ApplicationController
 
     def update
         @group = current_user.owned_groups.find(params[:id])
-        if @group.update_attributes(group_params)
+        if @group.update(group_params)
             render :show
         else
             render json: @group.errors.full_messages, status: 422

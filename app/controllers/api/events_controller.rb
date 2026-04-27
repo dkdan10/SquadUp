@@ -29,7 +29,7 @@ class Api::EventsController < ApplicationController
             current_user.owned_groups.find(event_params[:group_id])
         end
 
-        if @event.update_attributes(event_params)
+        if @event.update(event_params)
             render :show
         else
             render json: @event.errors.full_messages, status: 422
