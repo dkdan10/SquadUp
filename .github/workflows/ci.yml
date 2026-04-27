@@ -26,6 +26,11 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/SquadUp_test
+      # Rails 5.2 + Ruby 3.1 has a kwargs bug in EncryptedFile::MissingKeyError.
+      # Providing any value for RAILS_MASTER_KEY makes the railtie skip the
+      # missing-key code path. Credentials are not actually used by the app
+      # (all secrets read from ENV), so the value is irrelevant.
+      RAILS_MASTER_KEY: ci0123456789abcdef0123456789abcdef
 
     steps:
       - uses: actions/checkout@v4
