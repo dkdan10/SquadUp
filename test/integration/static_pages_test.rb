@@ -11,7 +11,7 @@ class StaticPagesTest < ActionDispatch::IntegrationTest
     payload_block = response.body[/<script type="application\/json" id="bootstrap-current-user">(.*?)<\/script>/m, 1]
     assert payload_block.present?, "expected JSON bootstrap script in layout"
     refute_includes payload_block, "</script>", "raw </script> must not appear inside the JSON payload"
-    refute_includes payload_block, "onerror=alert", "attacker payload must be escaped, not present verbatim as HTML"
+    refute_includes payload_block, "<img", "raw <img tag must not appear unescaped inside the JSON payload"
   end
 
   test "root page renders without bootstrap when logged out" do

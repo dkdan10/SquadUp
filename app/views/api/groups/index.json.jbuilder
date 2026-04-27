@@ -1,13 +1,12 @@
-json.groups do
-    @groups.each do |group|
-        json.set! group.id do
-            json.extract! group, :id, :name, :description, :event_ids
-            json.location group.location.name
-            json.memberIds group.group_memberships.pluck(:member_id)
-        end
-    end
-end
+json.groups @groups.each_with_object({}) { |group, hash|
+  hash[group.id] = {
+    id: group.id,
+    name: group.name,
+    description: group.description,
+    event_ids: group.event_ids,
+    location: group.location.name,
+    memberIds: group.group_memberships.pluck(:member_id)
+  }
+}
 
-json.fetchedGroupIds do 
-    json.array! @groups.ids
-end
+json.fetchedGroupIds @groups.ids
