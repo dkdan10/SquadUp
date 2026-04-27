@@ -15,7 +15,7 @@ Squadup was built using:
 
 SquadUp is a single-page, full-stack web application modeled after MeetUp. SquadUp allows users to create groups and events that serve to connect people in real life according to their common interests. The clone was made with Ruby on Rails, PostgreSQL, React.js, and Redux. Live messaging was incorporated with Action Cable, Rails' built-in WebSockets layer.
 
-The original Heroku deployment is no longer maintained. The repo is now configured to deploy on Render via [render.yaml](render.yaml) — see "Hosting on Render" below.
+The original Heroku deployment is no longer maintained. The repo is now configured to deploy on Render via [render.yaml](render.yaml)
 
 ## Local setup
 
