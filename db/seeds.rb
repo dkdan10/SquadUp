@@ -1,11 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# Idempotency guard: skip if the demo data already exists. This file is invoked
+# on every Render deploy (via bin/render-build.sh), so without this short-circuit
+# the destructive User.destroy_all would wipe production data on every push.
+return if User.exists?
 
 User.destroy_all
 Location.destroy_all
