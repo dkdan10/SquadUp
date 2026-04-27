@@ -50,5 +50,5 @@ services:
         sync: false
       - key: GOOGLE_MAPS_API_KEY
         sync: false
-      - key: RAILS_MASTER_KEY
-        sync: false
+      - key: SECRET_KEY_BASE
+        generateValue: true

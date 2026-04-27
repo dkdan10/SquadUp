@@ -55,11 +55,12 @@ The repository is configured for Render via [render.yaml](render.yaml) (Postgres
 
 1. Push this repo to GitHub.
 2. In the Render dashboard, **New → Blueprint** and point it at the repo. Render reads `render.yaml` and provisions the database, Redis, and web service.
-3. Set the four secret env vars (Render won't sync them from the blueprint):
-   * `RAILS_MASTER_KEY` — value of `config/master.key` (decrypts `config/credentials.yml.enc`).
+3. Set the three secret env vars (Render won't sync them from the blueprint):
    * `GOOGLE_MAPS_API_KEY` — Google Maps Places API key.
    * `ACTION_CABLE_URL` — `wss://<your-render-host>/cable`.
    * `ACTION_CABLE_ALLOWED_ORIGINS` — `https://<your-render-host>`.
+
+   `SECRET_KEY_BASE` is generated automatically by Render via `generateValue: true` in the Blueprint — no manual step. Encrypted credentials (`config/credentials.yml.enc`) are not used; all secrets are env-only.
 4. Wait for the build (~5 min on first run). Render runs [bin/render-build.sh](bin/render-build.sh), which installs Ruby + Node deps, builds the Webpack bundle, precompiles assets, and runs `db:prepare`.
 5. Manually run seeds once via Render Shell: `bin/rails db:seed`.
 6. Smoke-test the live URL: sign up, create a group, RSVP to an event, send a chat message (verifies the Action Cable mount).
