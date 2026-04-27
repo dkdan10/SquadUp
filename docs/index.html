@@ -12,7 +12,7 @@
     <div class="container">
       <h1>SquadUp</h1>
       <p class="tagline">A real-time Meetup clone built with Rails, React, and Action Cable.</p>
-      <p class="meta">2019 capstone &middot; modernized 2026 &middot; by <a href="https://github.com/dkdan10">Daniel Keinan</a></p>
+      <p class="meta">2019 capstone &middot; relaunched 2026 on Rails 6.1 + Ruby 3.1 &middot; by <a href="https://github.com/dkdan10">Daniel Keinan</a></p>
       <div class="cta-row">
         <a class="btn btn-primary" id="demo-link" href="#demo">Live demo &rarr;</a>
         <a class="btn btn-secondary" href="https://github.com/dkdan10/SquadUp">Source on GitHub</a>
@@ -34,12 +34,12 @@
     <section id="stack">
       <h2>Stack</h2>
       <ul class="stack-grid">
-        <li><strong>Backend</strong><br>Ruby on Rails 5.2 &middot; PostgreSQL &middot; Redis &middot; Action Cable</li>
+        <li><strong>Backend</strong><br>Ruby 3.1 &middot; Rails 6.1 &middot; PostgreSQL &middot; Redis &middot; Action Cable</li>
         <li><strong>Frontend</strong><br>React 16 &middot; Redux 4 &middot; React Router 5 &middot; Webpack 4</li>
         <li><strong>Auth</strong><br>BCrypt password digest &middot; cookie-persisted sessions</li>
         <li><strong>Integrations</strong><br>Google Places autocomplete &middot; Airbnb react-dates</li>
-        <li><strong>Hosting</strong><br>Render (web + Postgres + Redis Blueprint)</li>
-        <li><strong>CI</strong><br>GitHub Actions: Ruby 2.6 &middot; Node 10 &middot; Postgres 13</li>
+        <li><strong>Hosting</strong><br>Render Blueprint (web + Postgres + Redis)</li>
+        <li><strong>CI</strong><br>GitHub Actions: Ruby 3.1 &middot; Node 10 &middot; Postgres 13</li>
       </ul>
     </section>
 
@@ -68,26 +68,6 @@
       </ul>
     </section>
 
-    <section id="2026">
-      <h2>What I&rsquo;d do differently in 2026</h2>
-      <p>
-        Reading my own 2019 code with senior eyes was the most useful part of this relaunch.
-        Things I shipped in this <a href="https://github.com/dkdan10/SquadUp/pulls">Fix First branch</a>:
-      </p>
-      <ul>
-        <li>Closed an XSS vector in the layout where <code>html_safe</code> bootstrapped a user-controlled JSON payload directly into a <code>&lt;script&gt;</code> tag.</li>
-        <li>Fixed an Action Cable mount-path bug that silently broke production messaging (mounted under <code>/api/cable</code> while the client connected to <code>/cable</code>).</li>
-        <li>Unbroke <code>bundle install</code> by replacing the yanked <code>mimemagic 0.3.10</code> via <code>marcel ~&gt; 1.0</code>, and bumped to Rails 5.2.8.1 for backported security patches.</li>
-        <li>Added GitHub Actions CI and a Render Blueprint so the deploy story is reproducible.</li>
-        <li>Wrote regression tests for the XSS fix and the cable mount path.</li>
-      </ul>
-      <p>
-        The longer modernization track &mdash; Ruby 3.3, Rails 7, React 18 + hooks, replacing
-        jQuery <code>$.ajax</code> with <code>fetch</code>, swapping Webpack for Vite &mdash; is
-        the next branch.
-      </p>
-    </section>
-
     <section id="demo">
       <h2>Try it</h2>
       <p>
@@ -112,7 +92,7 @@
 
   <script>
     // Set the live-demo URL in one place by editing the data-demo-url meta below.
-    var demoUrl = document.documentElement.getAttribute('data-demo-url') || 'https://squadup.onrender.com';
+    var demoUrl = document.documentElement.getAttribute('data-demo-url') || 'https://squadup-uu1k.onrender.com';
     document.getElementById('demo-link').setAttribute('href', demoUrl);
     document.getElementById('demo-link-bottom').setAttribute('href', demoUrl);
   </script>

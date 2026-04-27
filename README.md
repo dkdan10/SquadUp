@@ -1,36 +1,37 @@
 # SquadUp
 
-[Project page](https://dkdan10.github.io/SquadUp/) &middot; [Live demo](https://squadup.onrender.com)
+[Project page](https://dkdan10.github.io/SquadUp/) &middot; [Live demo](https://squadup-uu1k.onrender.com)
+
+Originally a 2019 capstone, relaunched in 2026 on a modernized runtime.
 
 ## Architecture and Technologies
-Squadup was built using:
 
-* JavaScript (ES2017+)
-* Ruby 2.6.10
+* Ruby 3.1.6
+* Ruby on Rails 6.1.7
+* PostgreSQL
+* Redis (Action Cable backend in production)
 * React 16.8.6
 * Redux 4.0.4
-* Ruby on Rails 5.2.8
-* PostgreSQL
+* React Router 5
 * webpack 4.37.0
 
 SquadUp is a single-page, full-stack web application modeled after MeetUp. SquadUp allows users to create groups and events that serve to connect people in real life according to their common interests. The clone was made with Ruby on Rails, PostgreSQL, React.js, and Redux. Live messaging was incorporated with Action Cable, Rails' built-in WebSockets layer.
 
-The original Heroku deployment is no longer maintained. The repo is now configured to deploy on Render via [render.yaml](render.yaml)
+The original Heroku deployment is no longer maintained. The repo is configured to deploy on Render via [render.yaml](render.yaml) — see [Hosting on Render](#hosting-on-render) below.
 
 ## Local setup
 
-This is a legacy Rails 5.2 app. Use the pinned runtimes before installing dependencies:
+Use the pinned runtimes before installing dependencies:
 
-* Ruby 2.6.10 (`.ruby-version`)
+* Ruby 3.1.6 (`.ruby-version`)
 * Node 10.13.0 (`.node-version` / `.nvmrc`)
-* npm 6.x
-* PostgreSQL
+* PostgreSQL 13+
 
 Install and prepare the app:
 
 ```sh
-gem install bundler -v 2.0.2
-bundle _2.0.2_ install
+gem install bundler
+bundle install
 npm install
 bin/rails db:setup
 npm run webpack
@@ -61,9 +62,8 @@ The repository is configured for Render via [render.yaml](render.yaml) (Postgres
    * `ACTION_CABLE_ALLOWED_ORIGINS` — `https://<your-render-host>`.
 
    `SECRET_KEY_BASE` is generated automatically by Render via `generateValue: true` in the Blueprint — no manual step. Encrypted credentials (`config/credentials.yml.enc`) are not used; all secrets are env-only.
-4. Wait for the build (~5 min on first run). Render runs [bin/render-build.sh](bin/render-build.sh), which installs Ruby + Node deps, builds the Webpack bundle, precompiles assets, and runs `db:prepare`.
-5. Manually run seeds once via Render Shell: `bin/rails db:seed`.
-6. Smoke-test the live URL: sign up, create a group, RSVP to an event, send a chat message (verifies the Action Cable mount).
+4. Wait for the build (~5 min on first run). Render runs [bin/render-build.sh](bin/render-build.sh), which installs Ruby + Node deps, builds the Webpack bundle, precompiles assets, runs `db:prepare`, and runs `db:seed`. The seed file is idempotent — it short-circuits with `return if User.exists?` so subsequent deploys don't wipe data.
+5. Smoke-test the live URL: sign up, create a group, RSVP to an event, send a chat message (verifies the Action Cable mount).
 
 `Procfile` is also included for any other PaaS that auto-detects process types.
 

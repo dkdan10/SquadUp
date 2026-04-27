@@ -9,7 +9,7 @@ html, body {
   line-height: 1.55;
 }
 
-a { color: #c2185b; text-decoration: none; }
+a { color: #2563eb; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 code {
@@ -27,7 +27,7 @@ code {
 }
 
 .hero {
-  background: linear-gradient(135deg, #c2185b 0%, #880e4f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
   color: #fff;
   padding: 72px 0 56px;
   text-align: center;
@@ -74,7 +74,7 @@ code {
   transition: transform 0.05s ease, box-shadow 0.15s ease;
 }
 .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
-.btn-primary { background: #fff; color: #c2185b; }
+.btn-primary { background: #fff; color: #1e3a8a; }
 .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
 
 .demo-creds {
@@ -113,7 +113,7 @@ main p, main li { font-size: 16px; }
   font-size: 14px;
   line-height: 1.5;
 }
-.stack-grid strong { color: #c2185b; font-size: 13px; letter-spacing: 0.4px; text-transform: uppercase; }
+.stack-grid strong { color: #1e3a8a; font-size: 13px; letter-spacing: 0.4px; text-transform: uppercase; }
 
 .features { padding-left: 22px; }
 .features li { margin-bottom: 12px; }
