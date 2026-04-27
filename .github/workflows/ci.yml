@@ -31,6 +31,9 @@ jobs:
       # missing-key code path. Credentials are not actually used by the app
       # (all secrets read from ENV), so the value is irrelevant.
       RAILS_MASTER_KEY: ci0123456789abcdef0123456789abcdef
+      # Spring is dev-convenience and adds a layer that obscures stack traces
+      # in CI failures. Disabling it makes errors point at real frames.
+      DISABLE_SPRING: "1"
 
     steps:
       - uses: actions/checkout@v4
@@ -54,7 +57,7 @@ jobs:
         run: npm run webpack
 
       - name: Prepare database
-        run: bundle exec rails db:test:prepare
+        run: bundle exec rails db:test:prepare --trace
 
       - name: Run tests
         run: bundle exec rails test
