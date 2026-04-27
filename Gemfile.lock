@@ -271,6 +271,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.8)
+  logger
   marcel (~> 1.0)
   pg (>= 0.18, < 2.0)
   pry-rails

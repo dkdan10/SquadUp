@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.6'
 
+# Required for Rails 6.1 + Ruby 3.x: logger_thread_safe_level.rb references
+# Logger::Severity at module-eval time without `require "logger"`. Pulling
+# logger explicitly via Bundler.require ensures the constant exists by then.
+gem 'logger'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.7'
 # Drop dependency on yanked mimemagic 0.3.10 by upgrading marcel

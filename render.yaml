@@ -52,9 +52,3 @@ services:
         sync: false
       - key: SECRET_KEY_BASE
         generateValue: true
-      # Rails 5.2.8.1 + Ruby 3.1 hits a kwargs bug in EncryptedFile when
-      # the master key is missing. We don't use credentials (all secrets
-      # come from ENV) but the railtie still checks for the key at boot,
-      # so we provide an auto-generated dummy value to short-circuit it.
-      - key: RAILS_MASTER_KEY
-        generateValue: true
