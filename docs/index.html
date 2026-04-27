@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SquadUp — Daniel Keinan</title>
+  <meta name="description" content="SquadUp is a real-time Meetup clone built with Rails, React, and Action Cable. Originally my 2019 capstone, modernized for relaunch in 2026.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>SquadUp</h1>
+      <p class="tagline">A real-time Meetup clone built with Rails, React, and Action Cable.</p>
+      <p class="meta">2019 capstone &middot; modernized 2026 &middot; by <a href="https://github.com/dkdan10">Daniel Keinan</a></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="demo-link" href="#demo">Live demo &rarr;</a>
+        <a class="btn btn-secondary" href="https://github.com/dkdan10/SquadUp">Source on GitHub</a>
+      </div>
+      <p class="demo-creds">Demo login: <code>demo@user.com</code> / <code>password</code></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="overview">
+      <h2>What it is</h2>
+      <p>
+        Users sign up against a city, create or join interest-based groups, organize events
+        with map-pinned locations and RSVPs, and DM each other in real time. The chat layer
+        runs over Rails Action Cable WebSockets backed by Redis.
+      </p>
+    </section>
+
+    <section id="stack">
+      <h2>Stack</h2>
+      <ul class="stack-grid">
+        <li><strong>Backend</strong><br>Ruby on Rails 5.2 &middot; PostgreSQL &middot; Redis &middot; Action Cable</li>
+        <li><strong>Frontend</strong><br>React 16 &middot; Redux 4 &middot; React Router 5 &middot; Webpack 4</li>
+        <li><strong>Auth</strong><br>BCrypt password digest &middot; cookie-persisted sessions</li>
+        <li><strong>Integrations</strong><br>Google Places autocomplete &middot; Airbnb react-dates</li>
+        <li><strong>Hosting</strong><br>Render (web + Postgres + Redis Blueprint)</li>
+        <li><strong>CI</strong><br>GitHub Actions: Ruby 2.6 &middot; Node 10 &middot; Postgres 13</li>
+      </ul>
+    </section>
+
+    <section id="features">
+      <h2>Features worth pointing at</h2>
+      <ul class="features">
+        <li>
+          <strong>5-step group creation wizard.</strong>
+          Sibling React components share state through a parent reducer; Auth Routes block edits
+          to groups the user doesn&rsquo;t own.
+        </li>
+        <li>
+          <strong>Real-time chat.</strong>
+          Two parallel Action Cable connections per user: one streams messages for the open
+          conversation, the other broadcasts new-channel notifications.
+        </li>
+        <li>
+          <strong>Debounced search.</strong>
+          Client-side filter with server-side <code>ILIKE</code> queries on groups and events,
+          parameterized to defeat SQL injection (covered by integration tests).
+        </li>
+        <li>
+          <strong>Maps integration.</strong>
+          Google Places autocomplete on event creation; lat/lng persisted alongside addresses.
+        </li>
+      </ul>
+    </section>
+
+    <section id="2026">
+      <h2>What I&rsquo;d do differently in 2026</h2>
+      <p>
+        Reading my own 2019 code with senior eyes was the most useful part of this relaunch.
+        Things I shipped in this <a href="https://github.com/dkdan10/SquadUp/pulls">Fix First branch</a>:
+      </p>
+      <ul>
+        <li>Closed an XSS vector in the layout where <code>html_safe</code> bootstrapped a user-controlled JSON payload directly into a <code>&lt;script&gt;</code> tag.</li>
+        <li>Fixed an Action Cable mount-path bug that silently broke production messaging (mounted under <code>/api/cable</code> while the client connected to <code>/cable</code>).</li>
+        <li>Unbroke <code>bundle install</code> by replacing the yanked <code>mimemagic 0.3.10</code> via <code>marcel ~&gt; 1.0</code>, and bumped to Rails 5.2.8.1 for backported security patches.</li>
+        <li>Added GitHub Actions CI and a Render Blueprint so the deploy story is reproducible.</li>
+        <li>Wrote regression tests for the XSS fix and the cable mount path.</li>
+      </ul>
+      <p>
+        The longer modernization track &mdash; Ruby 3.3, Rails 7, React 18 + hooks, replacing
+        jQuery <code>$.ajax</code> with <code>fetch</code>, swapping Webpack for Vite &mdash; is
+        the next branch.
+      </p>
+    </section>
+
+    <section id="demo">
+      <h2>Try it</h2>
+      <p>
+        <a class="btn btn-primary" id="demo-link-bottom" href="#">Open the live demo &rarr;</a>
+      </p>
+      <p class="demo-creds">
+        Use <code>demo@user.com</code> / <code>password</code> to log in, or sign up fresh.
+        The Render free tier sleeps after 15&nbsp;minutes of inactivity, so the first request
+        may take ~30&nbsp;seconds to wake up.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Source: <a href="https://github.com/dkdan10/SquadUp">github.com/dkdan10/SquadUp</a>
+        &middot; Page last updated April 2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Set the live-demo URL in one place by editing the data-demo-url meta below.
+    var demoUrl = document.documentElement.getAttribute('data-demo-url') || 'https://squadup.onrender.com';
+    document.getElementById('demo-link').setAttribute('href', demoUrl);
+    document.getElementById('demo-link-bottom').setAttribute('href', demoUrl);
+  </script>
+</body>
+</html>

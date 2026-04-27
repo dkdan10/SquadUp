@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'static_pages#root'
 
+  # Action Cable mounts at /cable so the default `App.cable` consumer (created in
+  # app/assets/javascripts/cable.js) connects without client-side configuration.
+  mount ActionCable.server, at: '/cable'
+
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:index, :create, :show]
     resource :session, only: [:create, :destroy]
@@ -18,12 +22,7 @@ Rails.application.routes.draw do
 
     get 'current_user', to: 'users#send_current_user'
 
-    # Websockets
-    mount ActionCable.server, at: '/cable'
-
     resources :channels, only: [:create, :show, :index]
-    
   end
-
 end
  

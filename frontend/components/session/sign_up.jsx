@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { createNewUser, removeErrors } from "../../actions/session_actions";
 import { Link } from 'react-router-dom';
-import { fetchLocations } from "../../actions/loaction_actions";
+import { fetchLocations } from "../../actions/location_actions";
 
 class SignUpComponent extends React.Component {
     constructor(props) {

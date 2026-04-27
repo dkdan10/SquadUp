@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { fetchLocations } from '../../../../actions/loaction_actions';
+import { fetchLocations } from '../../../../actions/location_actions';
 
 class FormStepOne extends React.Component {
     constructor (props) {

@@ -13,10 +13,10 @@ end
 json.rsvpers do 
     @event.users.each do |user|
         json.set! user.id do
-            json.extract! user, :id, :username, :email
+            json.extract! user, :id, :username
         end
     end
     json.set! @event.organizer_id do 
-        json.extract! @event.organizer, :id, :username, :email, :location_id
+        json.extract! @event.organizer, :id, :username, :location_id
     end
 end

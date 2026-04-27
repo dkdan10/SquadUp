@@ -1,16 +1,16 @@
 class Api::EventsController < ApplicationController
+    before_action :ensure_logged_in, only: [:create, :update, :destroy, :current_user_group_events, :add_rsvp, :remove_rsvp]
+
     def index
         @events = Event.includes(:users, :group).all.order(:start_day).order(:start_time)
-        if params[:search]
-            @events = @events.where("lower(events.name) like '%#{params[:search].downcase}%' OR lower(events.description) like '%#{params[:search].downcase}%' ")
-        end
+        @events = apply_search_filter(@events)
 
         render :index
     end
 
     def create
-        # Check if event organizer is group_id owner. 
-        @event = Event.new(event_params)
+        group = current_user.owned_groups.find(event_params[:group_id])
+        @event = group.events.new(event_params)
         @event[:organizer_id] = current_user.id
         
         if @event.save
@@ -23,6 +23,12 @@ class Api::EventsController < ApplicationController
 
     def update
         @event = current_user.organized_events.find(params[:id])
+        current_user.owned_groups.find(@event.group_id)
+
+        if event_params[:group_id] && event_params[:group_id].to_i != @event.group_id
+            current_user.owned_groups.find(event_params[:group_id])
+        end
+
         if @event.update_attributes(event_params)
             render :show
         else
@@ -37,6 +43,7 @@ class Api::EventsController < ApplicationController
 
     def destroy
         @event = current_user.organized_events.find(params[:id])
+        current_user.owned_groups.find(@event.group_id)
         @event.destroy
         render :show
     end
@@ -44,9 +51,7 @@ class Api::EventsController < ApplicationController
     # CUSTOM ROUTES
     def current_user_group_events
         @events = current_user.joined_group_events.includes(:users, :group).order(:start_day).order(:start_time)
-        if params[:search]
-            @events = @events.where("lower(events.name) like '%#{params[:search].downcase}%' OR lower(events.description) like '%#{params[:search].downcase}%' ")
-        end
+        @events = apply_search_filter(@events)
         render :index
     end
 
@@ -64,6 +69,13 @@ class Api::EventsController < ApplicationController
     end
 
     private
+    def apply_search_filter(events)
+        return events unless params[:search].present?
+
+        query = "%#{params[:search].downcase}%"
+        events.where("lower(events.name) like :query OR lower(events.description) like :query", query: query)
+    end
+
     def event_params
         params.require(:event).permit(:name, :start_day, :start_time, :group_id, :description, :lat, :lng, :address)
     end

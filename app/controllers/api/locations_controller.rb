@@ -8,9 +8,4 @@ class Api::LocationsController < ApplicationController
         @location = Location.find(params[:id])
         render :show
     end
-
-    private
-    def location_params
-        params.require(:user).permit(:name, :lng, :lat)
-    end
 end

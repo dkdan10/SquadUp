@@ -96,7 +96,7 @@ export default class GroupCreateForm extends React.Component {
 
     handleSubmitForm (e) {
         e.preventDefault()
-        if (this.validGroup) {
+        if (this.validGroup()) {
             const stateGroup = this.state.group
             const groupToCreate = {
                 name: stateGroup.name,

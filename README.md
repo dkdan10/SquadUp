@@ -1,27 +1,78 @@
 # SquadUp
 
+[Project page](https://dkdan10.github.io/SquadUp/) &middot; [Live demo](https://squadup.onrender.com)
+
 ## Architecture and Technologies
 Squadup was built using:
 
-* JavaScript 9
-* Ruby 2.5.1
+* JavaScript (ES2017+)
+* Ruby 2.6.10
 * React 16.8.6
 * Redux 4.0.4
-* Ruby on Rails 5.2.3
+* Ruby on Rails 5.2.8
 * PostgreSQL
 * webpack 4.37.0
 
-SquadUp is a single-page, full-stack web application modeled after MeetUp. SquadUp allows for users to create groups and events the serve to connect people in real life acoording to their common intrests. The clone was made with Ruby on Rails, PostgresSQL, React.js and Redux. Live messaging was incorporated with Application Cables, Rails built in Websockets. 
+SquadUp is a single-page, full-stack web application modeled after MeetUp. SquadUp allows users to create groups and events that serve to connect people in real life according to their common interests. The clone was made with Ruby on Rails, PostgreSQL, React.js, and Redux. Live messaging was incorporated with Action Cable, Rails' built-in WebSockets layer.
 
-[Visit the live site](http://squadup-aa.herokuapp.com/)
+The original Heroku deployment is no longer maintained. The repo is now configured to deploy on Render via [render.yaml](render.yaml) — see "Hosting on Render" below.
+
+## Local setup
+
+This is a legacy Rails 5.2 app. Use the pinned runtimes before installing dependencies:
+
+* Ruby 2.6.10 (`.ruby-version`)
+* Node 10.13.0 (`.node-version` / `.nvmrc`)
+* npm 6.x
+* PostgreSQL
+
+Install and prepare the app:
+
+```sh
+gem install bundler -v 2.0.2
+bundle _2.0.2_ install
+npm install
+bin/rails db:setup
+npm run webpack
+bin/rails server
+```
+
+For frontend development with rebuilds:
+
+```sh
+npm run webpack:watch
+```
+
+Run the Rails tests:
+
+```sh
+bin/rails test
+```
+
+## Hosting on Render
+
+The repository is configured for Render via [render.yaml](render.yaml) (Postgres + Redis + web service in one Blueprint). To deploy:
+
+1. Push this repo to GitHub.
+2. In the Render dashboard, **New → Blueprint** and point it at the repo. Render reads `render.yaml` and provisions the database, Redis, and web service.
+3. Set the four secret env vars (Render won't sync them from the blueprint):
+   * `RAILS_MASTER_KEY` — value of `config/master.key` (decrypts `config/credentials.yml.enc`).
+   * `GOOGLE_MAPS_API_KEY` — Google Maps Places API key.
+   * `ACTION_CABLE_URL` — `wss://<your-render-host>/cable`.
+   * `ACTION_CABLE_ALLOWED_ORIGINS` — `https://<your-render-host>`.
+4. Wait for the build (~5 min on first run). Render runs [bin/render-build.sh](bin/render-build.sh), which installs Ruby + Node deps, builds the Webpack bundle, precompiles assets, and runs `db:prepare`.
+5. Manually run seeds once via Render Shell: `bin/rails db:seed`.
+6. Smoke-test the live URL: sign up, create a group, RSVP to an event, send a chat message (verifies the Action Cable mount).
+
+`Procfile` is also included for any other PaaS that auto-detects process types.
 
 ## Why MeetUp?
 
-Meetup has a place close to my heart because when I was growing up I moved countries every two years. I would use Meetup to quickly find communities of people that share my intrests. Meetup's mission of getting people to meet in the real world is something special to me.
+Meetup has a place close to my heart because when I was growing up I moved countries every two years. I would use Meetup to quickly find communities of people that share my interests. Meetup's mission of getting people to meet in the real world is something special to me.
 
 ## Authorization
 
-Squadup has backend authentication through the use of a password digest. The password digest is hashed using BCrypt and stored in the database. There is also a persisted user state which allows a user to remain logged in through refresh with cookies. The approrate error messages will also appear when a user logs in incorrectly or enters an invalid sign up form. 
+Squadup has backend authentication through the use of a password digest. The password digest is hashed using BCrypt and stored in the database. There is also a persisted user state which allows a user to remain logged in through refresh with cookies. The appropriate error messages will also appear when a user logs in incorrectly or enters an invalid sign up form.
 
 ## Groups
 
@@ -54,8 +105,8 @@ Also, in order to get an address for the locations a user would input, the input
 
 ## Search and Filter Features
 
-A user can search though Groups and Events on their splash page. An input field updates a search filter in the redux state. Aditionally it makes a debounced call to the database to recieve Groups and Events that meet that search filter. Events can also be filter by their start date using a calender with selectable dates. 
+A user can search through Groups and Events on their splash page. An input field updates a search filter in the redux state. Additionally, it makes a debounced call to the database to receive Groups and Events that meet that search filter. Events can also be filtered by their start date using a calendar with selectable dates.
 
 ## Messaging
 
-Squadup uses Rails Action Cables to allow users to connected to a chat room channel and recieve messages from other users in their groups. There are two active connections created when a user goes to check their messages, a connection to get new messages from the chat they have open and a connection to get new chats created with a new user. 
+Squadup uses Rails Action Cable to allow users to connect to a chat room channel and receive messages from other users in their groups. There are two active connections created when a user goes to check their messages: a connection to get new messages from the chat they have open, and a connection to get new chats created with a new user.

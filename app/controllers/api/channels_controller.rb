@@ -1,4 +1,5 @@
 class Api::ChannelsController < ApplicationController 
+    before_action :ensure_logged_in
 
     def create
         other_user = User.find(params[:otherUserId].to_i)
@@ -20,7 +21,7 @@ class Api::ChannelsController < ApplicationController
     end
 
     def show
-        @channel = Channel.find(params[:id])
+        @channel = current_user.channels.find(params[:id])
         render :show
     end
 

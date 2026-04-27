@@ -9,16 +9,19 @@
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 
 
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ Rails.application.credentials.google[:api_key] }&libraries=places" %>
+    <% google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"] || Rails.application.credentials.dig(:google, :api_key) %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{google_maps_api_key}&libraries=places" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <script src="https://kit.fontawesome.com/caa36ac162.js"></script>
 
 
     <% if logged_in? %>
+      <script type="application/json" id="bootstrap-current-user">
+        <%=raw json_escape(render("api/users/user.json.jbuilder", user: current_user)) %>
+      </script>
       <script type="text/javascript">
-          window.currentUser =
-            <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+        window.currentUser = JSON.parse(document.getElementById('bootstrap-current-user').textContent);
       </script>
     <% end %>
     

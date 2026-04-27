@@ -1,9 +1,9 @@
 class Api::GroupsController < ApplicationController
+    before_action :ensure_logged_in, only: [:create, :update, :destroy, :create_member, :destroy_member]
+
     def index
         @groups = Group.includes(:members, :events, :location).all
-         if params[:search]
-            @groups = @groups.where("lower(groups.name) like '%#{params[:search].downcase}%' OR lower(groups.description) like '%#{params[:search].downcase}%' ")
-        end
+        @groups = apply_search_filter(@groups)
         render :index
     end
 
@@ -53,6 +53,13 @@ class Api::GroupsController < ApplicationController
     end
 
     private
+    def apply_search_filter(groups)
+        return groups unless params[:search].present?
+
+        query = "%#{params[:search].downcase}%"
+        groups.where("lower(groups.name) like :query OR lower(groups.description) like :query", query: query)
+    end
+
     def group_params
         params.require(:group).permit(:name, :description, :location_id, :private)
     end

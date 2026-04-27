@@ -9,11 +9,11 @@ end
 json.members do 
     @group.members.each do |user|
         json.set! user.id do
-            json.extract! user, :id, :username, :email, :location_id
+            json.extract! user, :id, :username, :location_id
         end
     end
     json.set! @group.owner_id do 
-        json.extract! @group.owner, :id, :username, :email, :location_id
+        json.extract! @group.owner, :id, :username, :location_id
     end
 end
 

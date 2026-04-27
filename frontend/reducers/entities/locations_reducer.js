@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_LOCATIONS } from "../../actions/loaction_actions";
+import { RECEIVE_ALL_LOCATIONS } from "../../actions/location_actions";
 import { merge } from 'lodash'
 import { RECEIVE_GROUP } from "../../actions/group_actions";
 

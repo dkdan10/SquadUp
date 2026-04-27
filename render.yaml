@@ -1,0 +1,54 @@
+databases:
+  - name: squadup-postgres
+    plan: free
+    databaseName: squadup_production
+    user: squadup
+
+services:
+  - type: redis
+    name: squadup-redis
+    plan: free
+    ipAllowList: []
+    maxmemoryPolicy: noeviction
+
+  - type: web
+    name: squadup
+    runtime: ruby
+    plan: free
+    region: oregon
+    branch: master
+    buildCommand: ./bin/render-build.sh
+    startCommand: bundle exec puma -C config/puma.rb
+    healthCheckPath: /
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
+      - key: RAILS_SERVE_STATIC_FILES
+        value: "true"
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"
+      - key: FORCE_SSL
+        value: "true"
+      - key: RAILS_MAX_THREADS
+        value: "5"
+      - key: WEB_CONCURRENCY
+        value: "2"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: squadup-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: squadup-redis
+          property: connectionString
+      - key: ACTION_CABLE_URL
+        sync: false
+      - key: ACTION_CABLE_ALLOWED_ORIGINS
+        sync: false
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
